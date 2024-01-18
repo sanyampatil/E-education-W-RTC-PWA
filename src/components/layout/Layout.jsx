@@ -4,7 +4,11 @@ export const Layout = () => {
   return (
 
    <>
-    <h1>Layout</h1>
+   <div className='pl-[50px] pr-[50px]'>
+
+   </div>
    </>
   )
 }
+
+export default Layout;
