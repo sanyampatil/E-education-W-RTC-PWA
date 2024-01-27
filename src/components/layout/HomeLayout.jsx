@@ -9,7 +9,7 @@ export const Layout = () => {
     <div className='bg-gradient-to-r  from-blue-300  relative '>
 
       <Header />
-      <Home />
+      <Outlet/>
       <Footer />
     </div>
     </>

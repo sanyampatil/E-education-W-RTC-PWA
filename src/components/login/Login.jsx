@@ -2,11 +2,13 @@ import React from 'react'
 import { TEInput, TERipple } from 'tw-elements-react'
 
 function Login () {
+
   return (
-    <section className='h-full bg-neutral-200 dark:bg-neutral-700'>
+    
+    <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
       <div className='container h-full p-10'>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
-          <div className='w-full'>
+          <div className=' mt-7 w-full'>
             <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800'>
               <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}

@@ -7,7 +7,7 @@ const Home = () => {
 
       <div className=' w-[40%] h-[80vh] mt-32'>
         <div>
-          <h1 className='text-[5.1rem]  font-bold'>
+          <h1 className='text-[5.1rem] text-blue-900  font-bold'>
             The E-eduction and video chat application
           </h1>
         </div>
