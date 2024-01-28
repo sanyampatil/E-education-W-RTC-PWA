@@ -1,5 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 function Signup () {
+  
+ 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  
+
+  const [signupData, setSignupData] = useState({
+      fullName: "",
+      email: "",
+      password: "",
+      avatar: ""
+  });
+
+  function handleUserInput(e) {
+      const {name, value} = e.target;
+      setSignupData({
+          ...signupData,
+          [name]: value
+      })
+  }
+
   return (
     <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
       <div className='container h-full p-10'>
@@ -42,8 +66,8 @@ function Signup () {
                           id='fullName'
                           placeholder='Enter your name..'
                           className='bg-transparent px-2 py-1 border'
-                          // onChange={handleUserInput}
-                          // value={signupData.fullName}
+                          onChange={handleUserInput}
+                          value={signupData.fullName}
                         />
                       </div>
                       <div className='flex flex-col gap-1'>
@@ -58,8 +82,8 @@ function Signup () {
                           id='email'
                           placeholder='Enter your email..'
                           className='bg-transparent px-2 py-1 border'
-                          // onChange={handleUserInput}
-                          // value={signupData.email}
+                          onChange={handleUserInput}
+                          value={signupData.email}
                         />
                       </div>
                       <div className='flex flex-col gap-1'>
@@ -74,8 +98,8 @@ function Signup () {
                           id='password'
                           placeholder='Enter your password..'
                           className='bg-transparent px-2 py-1 border'
-                          // onChange={handleUserInput}
-                          // value={signupData.password}
+                          onChange={handleUserInput}
+                          value={signupData.password}
                         />
                       </div>
 
@@ -87,13 +111,13 @@ function Signup () {
                       </button>
 
                       <p className='text-center'>
-                        {/* Already have an account ? <Link to="/login" className='link text-accent cursor-pointer'> Login</Link> */}
+                        Already have an account ? <Link to="/login" className='link text-accent cursor-pointer'> Login</Link>
                       </p>
                     </form>
                   </div>
                 </div>
 
-                {/* <!-- Right column container with background and description--> */}
+                {/* <!-- Right column background and description--> */}
                 <div
                   className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none'
                   style={{
