@@ -48,14 +48,14 @@ function Signup () {
     }
 
     const formData = new FormData()
-    formData.append('username' , signupData.username)
-    formData.append('email' , signupData.email)
-    formData.append('password' , signupData.password)
+    formData.append('username', signupData.username)
+    formData.append('email', signupData.email)
+    formData.append('password', signupData.password)
 
-    console.log("fromData from Signup",formData)
-    
-    const res =  dispatch(createAccount(formData))
+    console.log('fromData from Signup', formData)
 
+    const response = dispatch(createAccount(formData))
+    if (response?.payload?.success) navigate('/')
 
     setSignupData({
       username: '',
