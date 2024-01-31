@@ -1,27 +1,67 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-function Signup () {
-  
- 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
+import { createAccount } from '../../redux/slices/authSlices'
 
-  
+function Signup () {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [signupData, setSignupData] = useState({
-      fullName: "",
-      email: "",
-      password: "",
-      avatar: ""
-  });
+    username: '',
+    email: '',
+    password: ''
+  })
 
-  function handleUserInput(e) {
-      const {name, value} = e.target;
-      setSignupData({
-          ...signupData,
-          [name]: value
-      })
+  function handleUserInput (e) {
+    const { name, value } = e.target
+    setSignupData({
+      ...signupData,
+      [name]: value
+    })
+    // console.log(signupData)
+  }
+
+  async function createNewAccount (event) {
+    event.preventDefault()
+    if (!signupData.username || !signupData.email || !signupData.password) {
+      toast.error('All required')
+      return
+    }
+
+    // checking name field length
+    if (signupData.username.length < 5) {
+      toast.error('Name should be atleast of 5 characters')
+      return
+    }
+    if (!isEmail(signupData.email)) {
+      toast.error('Invalid email id')
+      return
+    }
+    if (!isValidPassword(signupData.password)) {
+      toast.error(
+        'Password should be 6 - 16 character long with atleast a number and special character'
+      )
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('username' , signupData.username)
+    formData.append('email' , signupData.email)
+    formData.append('password' , signupData.password)
+
+    console.log("fromData from Signup",formData)
+    
+    const res =  dispatch(createAccount(formData))
+
+
+    setSignupData({
+      username: '',
+      email: '',
+      password: ''
+    })
   }
 
   return (
@@ -48,29 +88,30 @@ function Signup () {
 
                     <form
                       noValidate
-                      className='flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 '
+                      onSubmit={createNewAccount}
+                      className='flex flex-col justify-center gap-3 rounded-lg p-4 text-black w-96 '
                     >
                       <h1 className='text-center text-2xl font-bold'>
                         Registration Page
                       </h1>
 
                       <div className='flex flex-col gap-1'>
-                        <label htmlFor='fullName' className='font-semibold'>
+                        <label htmlFor='username' className='font-semibold'>
                           {' '}
                           Name{' '}
                         </label>
                         <input
                           type='text'
                           required
-                          name='fullName'
-                          id='fullName'
+                          name='username'
+                          id='username'
                           placeholder='Enter your name..'
                           className='bg-transparent px-2 py-1 border'
                           onChange={handleUserInput}
-                          value={signupData.fullName}
+                          value={signupData.username}
                         />
                       </div>
-                      <div className='flex flex-col gap-1'>
+                      <div className='  flex flex-col gap-1'>
                         <label htmlFor='email' className='font-semibold'>
                           {' '}
                           Email{' '}
@@ -111,7 +152,14 @@ function Signup () {
                       </button>
 
                       <p className='text-center'>
-                        Already have an account ? <Link to="/login" className='link text-accent cursor-pointer'> Login</Link>
+                        Already have an account ?{' '}
+                        <Link
+                          to='/login'
+                          className='link text-accent cursor-pointer'
+                        >
+                          {' '}
+                          Login
+                        </Link>
                       </p>
                     </form>
                   </div>
