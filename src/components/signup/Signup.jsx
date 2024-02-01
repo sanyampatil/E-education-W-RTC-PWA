@@ -52,11 +52,18 @@ function Signup () {
     formData.append('email', signupData.email)
     formData.append('password', signupData.password)
 
-    console.log('fromData from Signup', formData)
+    // console.log('fromData from Signup', formData)
 
-    const response = dispatch(createAccount(formData))
-    
-    if (response?.payload?.success) navigate('/')
+    const response =  await dispatch(createAccount(formData))
+    console.log("one",response)
+
+
+    // console.log("three",response.[[PromiseResult]])
+    console.log("two",response.payload)  
+
+    if (response?.payload?.success) {
+      navigate('/')
+    }
 
     setSignupData({
       username: '',
