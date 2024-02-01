@@ -1,10 +1,59 @@
-import React from 'react'
-import { TEInput, TERipple } from 'tw-elements-react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
+import { loginAccount } from '../../redux/slices/authSlices'
+function Signup () {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-function Login () {
+  const [loginData, setloginData] = useState({
+    email: '',
+    password: ''
+  })
+
+  function handleUserInput (e) {
+    const { name, value } = e.target
+    setloginData({
+      ...loginData,
+      [name]: value
+    })
+  }
+
+  async function AccountLogin (event) {
+    event.preventDefault()
+    if (!loginData.email || !loginData.password) {
+      toast.error('All required')
+      return
+    }
+
+    if (!isEmail(loginData.email)) {
+      toast.error('Invalid email id')
+      return
+    }
+    if (!isValidPassword(loginData.password)) {
+      toast.error(
+        'Password should be 6 - 16 character long with atleast a number and special character'
+      )
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('email', loginData.email)
+    formData.append('password', loginData.password)
+
+    const response = dispatch(loginAccount(formData))
+
+    if (response?.payload?.success) navigate('/')
+
+    setloginData({
+      email: '',
+      password: ''
+    })
+  }
 
   return (
-    
     <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
       <div className='container h-full p-10'>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
@@ -26,58 +75,59 @@ function Login () {
                       </h4>
                     </div>
 
-                    <form>
-                      <p className='mb-4'>Please login to your account</p>
-                      {/* <!--Username input--> */}
-                      <TEInput
-                        type='text'
-                        label='Username'
-                        className='mb-4'
-                      ></TEInput>
+                    <form
+                      noValidate
+                      onSubmit={AccountLogin}
+                      className='flex flex-col justify-center gap-3 rounded-lg p-4 text-black w-96 '
+                    >
+                      <h1 className='text-center text-2xl font-bold'>
+                        LOG IN PAGE
+                      </h1>
 
-                      {/* <!--Password input--> */}
-                      <TEInput
-                        type='password'
-                        label='Password'
-                        className='mb-4'
-                      ></TEInput>
-
-                      {/* <!--Submit button--> */}
-                      <div className='mb-12 pb-1 pt-1 text-center'>
-                        <TERipple rippleColor='light' className='w-full'>
-                          <button
-                            className='mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_rgba(0,0,0,0.2)] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)] focus:outline-none focus:ring-0 active:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.1),0_4px_18px_0_rgba(0,0,0,0.2)]'
-                            type='button'
-                            style={{
-                              background:
-                                'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)'
-                            }}
-                          >
-                            Log in
-                          </button>
-                        </TERipple>
-
-                        {/* <!--Forgot password link--> */}
-                        <a href='#!'>Forgot password?</a>
+                      <div className='  flex flex-col gap-1'>
+                        <label htmlFor='email' className='font-semibold'>
+                          {' '}
+                          Email{' '}
+                        </label>
+                        <input
+                          type='email'
+                          required
+                          name='email'
+                          id='email'
+                          placeholder='Enter your email..'
+                          className='bg-transparent px-2 py-1 border'
+                          onChange={handleUserInput}
+                          value={loginData.email}
+                        />
+                      </div>
+                      <div className='flex flex-col gap-1'>
+                        <label htmlFor='password' className='font-semibold'>
+                          {' '}
+                          Password{' '}
+                        </label>
+                        <input
+                          type='password'
+                          required
+                          name='password'
+                          id='password'
+                          placeholder='Enter your password..'
+                          className='bg-transparent px-2 py-1 border'
+                          onChange={handleUserInput}
+                          value={loginData.password}
+                        />
                       </div>
 
-                      {/* <!--Register button--> */}
-                      <div className='flex items-center justify-between pb-6'>
-                        <p className='mb-0 mr-2'>Don't have an account?</p>
-                        <TERipple rippleColor='light'>
-                          <button
-                            type='button'
-                            className='inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-danger transition duration-150 ease-in-out hover:border-danger-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-danger-600 focus:border-danger-600 focus:text-danger-600 focus:outline-none focus:ring-0 active:border-danger-700 active:text-danger-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
-                          >
-                            Register
-                          </button>
-                        </TERipple>
-                      </div>
+                      <button
+                        type='submit'
+                        className='mt-2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer'
+                      >
+                        LOG IN
+                      </button>
                     </form>
                   </div>
                 </div>
 
-                {/* <!-- Right column container with background and description--> */}
+                {/* <!-- Right column background and description--> */}
                 <div
                   className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none'
                   style={{
@@ -106,4 +156,4 @@ function Login () {
   )
 }
 
-export default Login
+export default Signup

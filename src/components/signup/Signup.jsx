@@ -55,6 +55,7 @@ function Signup () {
     console.log('fromData from Signup', formData)
 
     const response = dispatch(createAccount(formData))
+    
     if (response?.payload?.success) navigate('/')
 
     setSignupData({
