@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom' 
 const Error = () => {
   return (
     <div class='h-screen w-screen bg-gray-50 flex items-center'>
