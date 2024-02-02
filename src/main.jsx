@@ -9,7 +9,7 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements
-} from 'react-router-dom'
+} from 'react-router-dom' 
 import Layout from './components/layout/HomeLayout.jsx'
 import Header from './components/header/Header.jsx'
 import Footer from './components/footer/Footer.jsx'
@@ -19,7 +19,7 @@ import Signup from './components/signup/Signup.jsx'
 import store from './redux/store.js'
 import { Provider } from 'react-redux'
 import { Toaster } from 'react-hot-toast'
-
+import Error from './components/Error.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
