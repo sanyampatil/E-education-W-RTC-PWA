@@ -6,7 +6,7 @@ import React from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaDotCircle } from 'react-icons/fa'
-import { loginAccount } from '../../redux/slices/authSlices'
+import { loginAccount, logoutAccount } from '../../redux/slices/authSlices'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const Header = () => {
   async function handleLogout(e) {
     e.preventDefault();
 
-    const res = await dispatch(loginAccount());
+    const res = await dispatch(logoutAccount());
     if(res?.payload?.success)
     navigate("/");
 }
