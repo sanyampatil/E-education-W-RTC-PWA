@@ -43,7 +43,7 @@ function Signup () {
     formData.append('email', loginData.email)
     formData.append('password', loginData.password)
 
-    const response =  await dispatch(loginAccount(formData))
+    const response =  dispatch(loginAccount(formData))
 
     if (response?.payload?.success) navigate('/')
 
