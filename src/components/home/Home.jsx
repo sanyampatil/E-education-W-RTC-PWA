@@ -36,7 +36,7 @@ const Home = () => {
               <FaPenToSquare className='text-[42px]' />
             </Link>
           </div>
-        )}
+            )}
       </div>
 
       <div className=' w-[50%] h-[80vh] mt-32'>

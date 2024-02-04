@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import Layout from '../layout/HomeLayout'
 // import { Fragment } from 'react'
 // import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -7,8 +7,10 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaDotCircle } from 'react-icons/fa'
 import { loginAccount, logoutAccount } from '../../redux/slices/authSlices'
-
+import SignupPopUp from '../signup/Popup'
 const Header = () => {
+  const [showSignup, setshowSignup] = useState(false)
+
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
@@ -48,7 +50,11 @@ const Header = () => {
                   type='button'
                   className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link to='/signup'>Get started</Link>
+                  <Link onClick={() => setshowSignup(true)} >Get started</Link>
+                  
+                  {showSignup && (
+                  <SignupPopUp onClose={() => setshowSignup(false)} />
+                )}
                 </button>
 
                 <button

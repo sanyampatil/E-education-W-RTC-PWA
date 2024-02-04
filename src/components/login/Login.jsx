@@ -43,9 +43,11 @@ function Signup () {
     formData.append('email', loginData.email)
     formData.append('password', loginData.password)
 
-    const response =  dispatch(loginAccount(formData))
+    const response =   dispatch(loginAccount(formData))
 
-    if (response?.payload?.success) navigate('/')
+    if (response?.payload?.success) 
+    console.log(response)
+    navigate('/profile')
 
     setloginData({
       email: '',

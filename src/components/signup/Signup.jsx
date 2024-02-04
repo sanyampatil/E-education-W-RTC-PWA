@@ -84,7 +84,7 @@ function Signup () {
                   <div className='md:mx-6 md:p-12'>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
-                      <img
+                      <img  
                         className='mx-auto w-48'
                         src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
                         alt='logo'
