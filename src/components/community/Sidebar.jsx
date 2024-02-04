@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import GroupAddIcon from '@mui/icons-material/GroupAdd'
 import NightlightIcon from '@mui/icons-material/Nightlight'
@@ -9,7 +9,34 @@ import SearchIcon from '@mui/icons-material/Search'
 import { IconBase } from 'react-icons'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { IconButton } from '@mui/material'
+import ConversationItem from './ConversationItem'
 const Sidebar = () => {
+
+ const [conversation, setconversation] = useState([
+  {
+   name:"Test#1",
+   lastMessage:"hii love",
+   timeStamp:"today"
+  },
+
+
+  {
+   name:"Test#1",
+   lastMessage:"hii love",
+   timeStamp:"today"
+  },
+
+
+  {
+   name:"Test#1",
+   lastMessage:"hii love",
+   timeStamp:"today"
+  },
+
+
+
+ ]
+  )
   return (
     <div className='sidebar-container'>
       <div className='sb-header'>
@@ -37,10 +64,16 @@ const Sidebar = () => {
 
       <div className='sb-search'>
       <SearchIcon/>
-      <input placeholder='search' />
+      <input placeholder='search' className='search-box' />
 
       </div>
-      <div className='sb-conversations'>conversations</div>
+      <div className='sb-conversations'>
+      {conversation.map((conversation)=>{
+     return <ConversationItem props={conversation}/>
+
+      })}
+
+      </div>
     </div>
   )
 }
