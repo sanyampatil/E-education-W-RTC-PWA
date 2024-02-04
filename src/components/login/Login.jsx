@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAccount } from '../../redux/slices/authSlices'
-function Signup () {
+function Login () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -158,4 +158,4 @@ function Signup () {
   )
 }
 
-export default Signup
+export default Login
