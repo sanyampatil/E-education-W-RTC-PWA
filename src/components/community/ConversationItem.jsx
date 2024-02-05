@@ -1,23 +1,18 @@
 import React from 'react'
 
-const ConversationItem = ({props}) => {
+const ConversationItem = ({ props }) => {
+  return (
+    <>
+      <div className='.conversation-container'>
+        <p className='con-icon'>{props.name[0]}</p>
 
- return (
+        <p className='con-title '>{props.name}</p>
 
-  <>
-   <div className='.conversation-container'>
-    
-
-   <p className='con-icon'>{props.name[0]}</p>
-
-   <p className='con-title '>{props.name}</p>
-
-   <p className='con-timeStamp'> {props.lastMessage}</p>
-   <p className='con-timeStamp'>{props.timeStamp}</p>
-   </div>
-  </>
+        <p className='con-timeStamp'>{props.lastMessage}</p>
+        <p className='con-timeStamp'>{props.timeStamp}</p>
+      </div>
+    </>
   )
-
 }
 
 export default ConversationItem

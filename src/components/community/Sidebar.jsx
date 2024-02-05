@@ -11,32 +11,25 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { IconButton } from '@mui/material'
 import ConversationItem from './ConversationItem'
 const Sidebar = () => {
+  const [conversation, setconversation] = useState([
+    {
+      name: 'Test#1',
+      lastMessage: 'hii love',
+      timeStamp: 'today'
+    },
 
- const [conversation, setconversation] = useState([
-  {
-   name:"Test#1",
-   lastMessage:"hii love",
-   timeStamp:"today"
-  },
+    {
+      name: 'Test#2',
+      lastMessage: 'hii love',
+      timeStamp: 'today'
+    },
 
-
-  {
-   name:"Test#1",
-   lastMessage:"hii love",
-   timeStamp:"today"
-  },
-
-
-  {
-   name:"Test#1",
-   lastMessage:"hii love",
-   timeStamp:"today"
-  },
-
-
-
- ]
-  )
+    {
+      name: 'Test#2',
+      lastMessage: 'hii love',
+      timeStamp: 'today'
+    }
+  ])
   return (
     <div className='sidebar-container'>
       <div className='sb-header'>
@@ -63,16 +56,15 @@ const Sidebar = () => {
       </div>
 
       <div className='sb-search'>
-      <SearchIcon/>
-      <input placeholder='search' className='search-box' />
-
+        <SearchIcon />
+        <input placeholder='search' className='search-box' />
       </div>
       <div className='sb-conversations'>
-      {conversation.map((conversation)=>{ 
-     return <ConversationItem props={conversation} key={conversation.name}/>
-
-      })}
-
+        {conversation.map(conversation => {
+          return (
+            <ConversationItem props={conversation} key={conversation.name} />
+          )
+        })}
       </div>
     </div>
   )
