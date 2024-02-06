@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
   return (
     <>
-      <div className='.conversation-container'
+      <div className='conversation-container'
        onClick={() => navigate('chat')}
        >
         <p className='con-icon'>{props.name[0]}</p>
