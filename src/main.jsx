@@ -36,9 +36,9 @@ const router = createBrowserRouter(
       <Route path='/community' element={<ChatCommunity />}>
         <Route path='/community/welcome' element={<Welcome />} />
         <Route path='/community/chat' element={<ChatArea />} />
-        <Route path='/community/user' element={<Users />} />
-        <Route path='/community/group' element={<Groups />} />
-        <Route path='/community/create-group' element={<CreateGroups />} />
+        <Route path='/community/users' element={<Users />} />
+        <Route path='/community/groups' element={<Groups />} />
+        <Route path='/community/create-groups' element={<CreateGroups />} />
 
       </Route>
     </Route>
