@@ -31,44 +31,52 @@ const Sidebar = () => {
       timeStamp: 'today'
     }
   ])
+  const navigate = useNavigate()
+  const [lightTheme, setlightTheme] = useState(true)
 
   return (
     <div className='sidebar-container'>
-      <div className='sb-header'>
+      <div className={'sb-header' + (lightTheme ? '' : ' dark')}>
         <div>
           <IconButton>
-            <AccountCircleIcon />
+            <AccountCircleIcon className={'icon' + (lightTheme ? '' : ' dark')} />
           </IconButton>
         </div>
 
         <div>
           <IconButton onClick={() => navigate('users')}>
-            <PersonAddIcon />
+            <PersonAddIcon  className={'icon' + (lightTheme ? '' : ' dark')} />
           </IconButton>{' '}
           <IconButton onClick={() => navigate('groups')}>
-            <GroupAddIcon />
+            <GroupAddIcon className={'icon' + (lightTheme ? '' : ' dark')} />
           </IconButton>{' '}
           <IconButton onClick={() => navigate('create-groups')}>
-            <AddCircleIcon />
+            <AddCircleIcon className={'icon' + (lightTheme ? '' : ' dark')} />
           </IconButton>{' '}
-          <IconButton onClick={() => navigate('')}>
-            <NightlightIcon />
+          <IconButton
+          className={'icon' + (lightTheme ? '' : ' dark')}
+            onClick={() => {
+              setlightTheme(prevValue => {
+                return !prevValue
+              })
+            }}
+          >
+            {lightTheme && <LightModeIcon />}
+
+            {!lightTheme && <NightlightIcon />}
           </IconButton>
         </div>
       </div>
 
-      <div className='sb-search'>
+      <div className={'sb-search' + (lightTheme ? '' : ' dark')}>
         <SearchIcon />
-        <input placeholder='search' className='search-box' />
+        <input placeholder='search' className={'search-box' + (lightTheme ? '' : ' dark')} />
+
       </div>
-      <div className='sb-conversations'>
+      <div className={'sb-conversations' + (lightTheme ? '' : ' dark')}>
         {conversation.map(conversation => {
           return (
-            <ConversationItem
-              props={conversation}
-              key={conversation.name}
-             
-            />
+            <ConversationItem props={conversation} key={conversation.name} />
           )
         })}
       </div>
