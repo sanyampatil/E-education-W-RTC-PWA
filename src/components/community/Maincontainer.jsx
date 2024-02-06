@@ -5,7 +5,9 @@ import ChatArea from './ChatArea'
 import ConversationItem from './ConversationItem'
 import Welcome from './Welcome'
 import CreateGroups from './Creategroups'
-  
+import Users_Groups from './Users_Groups'
+import { Outlet } from 'react-router-dom'
+
 function MainContainer () {
 
   const [conversation, setconversation] = useState([
@@ -32,9 +34,12 @@ function MainContainer () {
     <>
       <div className=' mt-[9vh] main-container'>
       <Sidebar/>
+      <Outlet/>
+    
       {/* <Welcome/> */}
-      <CreateGroups/>
+      {/* <CreateGroups/> */}
       {/* <ChatArea props={conversation[0]}/> */}
+      {/* <Users_Groups/> */}
       </div>
     </>
   )
