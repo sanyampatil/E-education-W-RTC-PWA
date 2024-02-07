@@ -25,19 +25,25 @@ import ChatArea from './components/community/ChatArea.jsx'
 import Users from './components/community/Users.jsx'
 import { Groups } from '@mui/icons-material'
 import CreateGroups from './components/community/Creategroups.jsx'
+import StudentSignup from './components/signup/StudentSingup.jsx'
+import LoginStudent from './components/login/LoginStudent.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
+      <Route path='/admin/login' element={<Login />} />
+      <Route path='/admin/signup' element={<Signup />} />
+      <Route path='/student/signup' element={< StudentSignup/>} />
+      <Route path='/student/login' element={<LoginStudent/>} />
+
+
       <Route path='*' element={<Error />} />
       <Route path='/community' element={<ChatCommunity />}>
         <Route path='/community/welcome' element={<Welcome />} />
         <Route path='/community/chat' element={<ChatArea />} />
         <Route path='/community/users' element={<Users />} />
-        <Route path='/community/groups' element={<Groups />} />
+        <Route path='/community/groups' element ={<Groups />} />
         <Route path='/community/create-groups' element={<CreateGroups />} />
 
       </Route>

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
-import { createAccount } from '../../redux/slices/authSlices'
-
+import { createAdminAccount } from '../../redux/slices/adminAuthSlices'
 function Signup () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -54,7 +53,7 @@ function Signup () {
 
     // console.log('fromData from Signup', formData)
 
-    const response =  await dispatch(createAccount(formData))
+    const response =  await dispatch(createAdminAccount(formData))
     console.log("one",response)
 
 
@@ -154,7 +153,7 @@ function Signup () {
 
                       <button
                         type='submit'
-                        className='mt-2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer'
+                        className='mt-2 bg-gradient-to-r from-sky-500 to-indigo-500 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer'
                       >
                         Create account
                       </button>
@@ -175,11 +174,11 @@ function Signup () {
 
                 {/* <!-- Right column background and description--> */}
                 <div
-                  className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none'
-                  style={{
-                    background:
-                      'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)'
-                  }}
+                  className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-sky-500 to-indigo-500 '
+                  // style={{
+                  //   background:
+                  //     'bg-gradient-to-r from-sky-500 to-indigo-500'
+                  // }}
                 >
                   <div className='px-4 py-6 text-white md:mx-6 md:p-12'>
                     <h4 className='mb-6 text-xl font-semibold'>

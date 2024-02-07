@@ -3,36 +3,44 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
-import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
-function Login () {
+import { createAdminAccount } from '../../redux/slices/adminAuthSlices'
+import { createStudentAccount } from '../../redux/slices/studentauthSlices'
+function StudentSignup () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [loginData, setloginData] = useState({
+  const [signupData, setSignupData] = useState({
+    username: '',
     email: '',
     password: ''
   })
 
   function handleUserInput (e) {
     const { name, value } = e.target
-    setloginData({
-      ...loginData,
+    setSignupData({
+      ...signupData,
       [name]: value
     })
+    // console.log(signupData)
   }
 
-  async function AccountLogin (event) {
+  async function createNewAccount (event) {
     event.preventDefault()
-    if (!loginData.email || !loginData.password) {
+    if (!signupData.username || !signupData.email || !signupData.password) {
       toast.error('All required')
       return
     }
 
-    if (!isEmail(loginData.email)) {
+    // checking name field length
+    if (signupData.username.length < 5) {
+      toast.error('Name should be atleast of 5 characters')
+      return
+    }
+    if (!isEmail(signupData.email)) {
       toast.error('Invalid email id')
       return
     }
-    if (!isValidPassword(loginData.password)) {
+    if (!isValidPassword(signupData.password)) {
       toast.error(
         'Password should be 6 - 16 character long with atleast a number and special character'
       )
@@ -40,16 +48,25 @@ function Login () {
     }
 
     const formData = new FormData()
-    formData.append('email', loginData.email)
-    formData.append('password', loginData.password)
+    formData.append('username', signupData.username)
+    formData.append('email', signupData.email)
+    formData.append('password', signupData.password)
 
-    const response =   dispatch(loginAdminAccount(formData))
+    // console.log('fromData from Signup', formData)
 
-    if (response?.payload?.success) 
-    console.log(response)
-    navigate('/profile')
+    const response =  await dispatch(createStudentAccount(formData))
+    console.log("one",response)
 
-    setloginData({
+
+    // console.log("three",response.[[PromiseResult]])
+    console.log("two",response.payload)  
+
+    if (response?.payload?.success) {
+      navigate('/')
+    }
+
+    setSignupData({
+      username: '',
       email: '',
       password: ''
     })
@@ -67,7 +84,7 @@ function Login () {
                   <div className='md:mx-6 md:p-12'>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
-                      <img
+                      <img  
                         className='mx-auto w-48'
                         src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
                         alt='logo'
@@ -79,13 +96,29 @@ function Login () {
 
                     <form
                       noValidate
-                      onSubmit={AccountLogin}
+                      onSubmit={createNewAccount}
                       className='flex flex-col justify-center gap-3 rounded-lg p-4 text-black w-96 '
                     >
                       <h1 className='text-center text-2xl font-bold'>
-                        LOG IN PAGE
+                        Registration Page
                       </h1>
 
+                      <div className='flex flex-col gap-1'>
+                        <label htmlFor='username' className='font-semibold'>
+                          {' '}
+                          Name{' '}
+                        </label>
+                        <input
+                          type='text'
+                          required
+                          name='username'
+                          id='username'
+                          placeholder='Enter your name..'
+                          className='bg-transparent px-2 py-1 border'
+                          onChange={handleUserInput}
+                          value={signupData.username}
+                        />
+                      </div>
                       <div className='  flex flex-col gap-1'>
                         <label htmlFor='email' className='font-semibold'>
                           {' '}
@@ -99,7 +132,7 @@ function Login () {
                           placeholder='Enter your email..'
                           className='bg-transparent px-2 py-1 border'
                           onChange={handleUserInput}
-                          value={loginData.email}
+                          value={signupData.email}
                         />
                       </div>
                       <div className='flex flex-col gap-1'>
@@ -115,7 +148,7 @@ function Login () {
                           placeholder='Enter your password..'
                           className='bg-transparent px-2 py-1 border'
                           onChange={handleUserInput}
-                          value={loginData.password}
+                          value={signupData.password}
                         />
                       </div>
 
@@ -123,18 +156,29 @@ function Login () {
                         type='submit'
                         className='mt-2 bg-gradient-to-r from-sky-500 to-indigo-500 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer'
                       >
-                        LOG IN
+                        Create account
                       </button>
+
+                      <p className='text-center'>
+                        Already have an account ?{' '}
+                        <Link
+                          to='/login'
+                          className='link text-accent cursor-pointer'
+                        >
+                          {' '}
+                          Login
+                        </Link>
+                      </p>
                     </form>
                   </div>
                 </div>
 
                 {/* <!-- Right column background and description--> */}
                 <div
-                  className='flex items-center bg-gradient-to-r from-sky-500 to-indigo-500 rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none'
+                  className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-sky-500 to-indigo-500 '
                   // style={{
                   //   background:
-                  //     'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)'
+                  //     'bg-gradient-to-r from-sky-500 to-indigo-500'
                   // }}
                 >
                   <div className='px-4 py-6 text-white md:mx-6 md:p-12'>
@@ -158,4 +202,4 @@ function Login () {
   )
 }
 
-export default Login
+export default StudentSignup

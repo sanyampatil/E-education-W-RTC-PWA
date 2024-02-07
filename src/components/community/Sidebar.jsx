@@ -13,7 +13,6 @@ import ConversationItem from './ConversationItem'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import themeSlice, { toggleTheme } from '../../redux/slices/themeSlice'
-
 const Sidebar = () => {
   const [conversation, setconversation] = useState([
     {
@@ -36,7 +35,7 @@ const Sidebar = () => {
   ])
   const navigate = useNavigate()
   const dispatch = useDispatch(toggleTheme())
-  const lightTheme = useSelector((state)=>state.themeKey)
+  const lightTheme = useSelector((state)=>state.themeKey) 
 console.log(lightTheme)
   return (
     <div className='sidebar-container'>
@@ -90,6 +89,7 @@ console.log(lightTheme)
           )
         })}
       </div>
+      {/* <Conversation/> */}
     </div>
   )
 }

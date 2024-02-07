@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
-// import Layout from '../layout/HomeLayout'
-// import { Fragment } from 'react'
-// import { Disclosure, Menu, Transition } from '@headlessui/react'
-// import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { FaDotCircle } from 'react-icons/fa'
-import { loginAccount, logoutAccount } from '../../redux/slices/authSlices'
 import SignupPopUp from '../signup/Popup'
+import Signup from '../signup/Signup'
+import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
 const Header = () => {
   const [showSignup, setshowSignup] = useState(false)
 
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
-  const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn)
+  const adminIslogin = useSelector(state => state?.auth?.adminIslogin)
 
   // for displaying the options acc to role
   const role = useSelector(state => state?.auth?.role)
@@ -22,7 +19,7 @@ const Header = () => {
   async function handleLogout (e) {
     e.preventDefault()
 
-    const res = await dispatch(logoutAccount())
+    const res = await dispatch(logoutAdminAccount())
     if (res?.payload?.success) navigate('/')
   }
 
@@ -44,29 +41,29 @@ const Header = () => {
             </span>
           </a>
           <div className='flex gap-3 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-            {!isLoggedIn && (
+            {!adminIslogin && (
               <ul className=' flex gap-5'>
                 <button
                   type='button'
                   className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link to='/signup'>Get started</Link>
-                  
-                  {/* {showSignup && (
-                  {/* <SignupPopUp onClose={() => setshowSignup(false)} /> */}
-            
+                  <Link onClick={() => setshowSignup(true)}>Get started</Link>
+
+                  {showSignup && (
+                    <SignupPopUp onClose={() => setshowSignup(false)} />
+                  )}
                 </button>
 
                 <button
                   type='button'
                   className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link to='/Login'>login</Link>
+                  <Link to='/admin/Login'>login</Link>
                 </button>
               </ul>
             )}
 
-            {isLoggedIn && (
+            {adminIslogin && (
               <ul className=' flex gap-5 '>
                 <button
                   type='button'

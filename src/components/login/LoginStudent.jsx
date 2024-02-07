@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
-function Login () {
+function LoginStudent () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -158,4 +158,4 @@ function Login () {
   )
 }
 
-export default Login
+export default LoginStudent

@@ -3,12 +3,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axiosInstance from '../../helpers/axiosinstance.js'
 
 const initialState = {
-  isLoggedIn: localStorage.getItem('isLoggedIn') || false,
+  adminIslogin: localStorage.getItem('adminIslogin') || false,
   role: localStorage.getItem('role') || '',
   data: localStorage.getItem('data') || {}
 }
 
-export const createAccount = createAsyncThunk('/signup', async data => {
+export const createAdminAccount = createAsyncThunk('/admin/signup', async data => {
   try {
     const config = {
       headers: {
@@ -16,7 +16,7 @@ export const createAccount = createAsyncThunk('/signup', async data => {
       }
     }
 
-    const res = axiosInstance.post('/register', data, config)
+    const res = axiosInstance.post('/admin/register', data, config)
     toast.promise(res, {
       loading: 'Wait! creating your account',
       success: data => {
@@ -31,7 +31,7 @@ export const createAccount = createAsyncThunk('/signup', async data => {
   }
 })
 
-export const loginAccount = createAsyncThunk('/Login', async data => {
+export const loginAdminAccount = createAsyncThunk('/admin/Login', async data => {
   try {
     const config = {
       headers: {
@@ -39,7 +39,7 @@ export const loginAccount = createAsyncThunk('/Login', async data => {
       }
     }
 
-    const res = axiosInstance.post('/login', data, config)
+    const res = axiosInstance.post('/admin/login', data, config)
     toast.promise(res, {
       loading: 'Wait! creating your account',
       success: data => {
@@ -54,7 +54,7 @@ export const loginAccount = createAsyncThunk('/Login', async data => {
   }
 })
 
-export const logoutAccount = createAsyncThunk('/logout', async () => {
+export const logoutAdminAccount = createAsyncThunk('/admin/logout', async () => {
   try {
     const config = {
       headers: {
@@ -62,7 +62,7 @@ export const logoutAccount = createAsyncThunk('/logout', async () => {
       }
     }
 
-    const res = axiosInstance.get('/logout')
+    const res = axiosInstance.get('/admin/logout')
     toast.promise(res, {
       loading: 'Wait! logout in progress...',
       success: data => {
@@ -82,19 +82,19 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(loginAccount.fulfilled, (state, action) => {
+      .addCase(loginAdminAccount.fulfilled, (state, action) => {
         localStorage.setItem('data', JSON.stringify(action?.payload?.user))
-        localStorage.setItem('isLoggedIn', true)
+        localStorage.setItem('adminIslogin', true)
         localStorage.setItem('role', action?.payload?.user?.role)
-        state.isLoggedIn = true
+        state.adminIslogin = true
         state.data = action?.payload?.user
         state.role = action?.payload?.user?.role
       })
 
-      .addCase(logoutAccount.fulfilled, state => {
+      .addCase(logoutAdminAccount.fulfilled, state => {
         localStorage.clear()
         state.data = {}
-        state.isLoggedIn = false
+        state.adminIslogin = false
         state.role = ''
       })
   }
