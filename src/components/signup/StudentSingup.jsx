@@ -162,7 +162,7 @@ function StudentSignup () {
                       <p className='text-center'>
                         Already have an account ?{' '}
                         <Link
-                          to='/login'
+                          to='/student/login'
                           className='link text-accent cursor-pointer'
                         >
                           {' '}

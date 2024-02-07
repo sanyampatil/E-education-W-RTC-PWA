@@ -4,22 +4,42 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
+
 import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
+import {
+  admineRegister,
+  studentRegister
+} from '../../redux/slices/registerSlices'
+import studentauthSlices, { logoutStudentAccount } from '../../redux/slices/studentauthSlices'
+
 const Header = () => {
+  const AdminRegister = useSelector(state => state.register.admineRegister)
+  const StudentRegister = useSelector(state => state.register.studentRegister)
+
   const [showSignup, setshowSignup] = useState(false)
 
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
   const adminIslogin = useSelector(state => state?.auth?.adminIslogin)
-
+  console.log(useSelector(state => state?.auth?.adminIslogin))
+  const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
+  
   // for displaying the options acc to role
   const role = useSelector(state => state?.auth?.role)
 
-  async function handleLogout (e) {
+  async function adminHandleLogout (e) {
     e.preventDefault()
 
     const res = await dispatch(logoutAdminAccount())
+    if (res?.payload?.success) navigate('/')
+  }
+
+
+  async function studentHandleLogout (e) {
+    e.preventDefault()
+
+    const res = await dispatch(logoutStudentAccount() )
     if (res?.payload?.success) navigate('/')
   }
 
@@ -41,7 +61,7 @@ const Header = () => {
             </span>
           </a>
           <div className='flex gap-3 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-            {!adminIslogin && (
+            {!adminIslogin &&  !studentIslogged &&(
               <ul className=' flex gap-5'>
                 <button
                   type='button'
@@ -58,7 +78,11 @@ const Header = () => {
                   type='button'
                   className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link to='/admin/Login'>login</Link>
+                  {AdminRegister && <Link to='/admin/login'> A-login</Link>}
+                  {StudentRegister && (
+                    <Link to='/student/login'> Ahh-login</Link>
+                  )}
+                  {/* <Link to='/admin/Login'>login</Link> */}
                 </button>
               </ul>
             )}
@@ -69,17 +93,35 @@ const Header = () => {
                   type='button'
                   className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link to='/profile'>Profile</Link>
+                  <Link to='admin/profile'>admin Profile</Link>
                 </button>
 
                 <button
                   type='button'
                   className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  <Link onClick={handleLogout}>Logout</Link>
+                  <Link onClick={adminHandleLogout}>admin Logout</Link>
                 </button>
               </ul>
             )}
+
+            {studentIslogged && !adminIslogin &&(
+                <ul className=' flex gap-5 '>
+                  <button
+                    type='button'
+                    className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  >
+                    <Link to='student/profile'> student Profile</Link>
+                  </button>
+
+                  <button
+                    type='button'
+                    className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  >
+                    <Link onClick={studentHandleLogout}>student Logout</Link>
+                  </button>
+                </ul>
+              )}
 
             <button
               data-collapse-toggle='navbar-sticky'

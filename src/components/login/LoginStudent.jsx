@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
+import { loginStudentAccount } from '../../redux/slices/studentauthSlices'
 function LoginStudent () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -43,7 +44,7 @@ function LoginStudent () {
     formData.append('email', loginData.email)
     formData.append('password', loginData.password)
 
-    const response =   dispatch(loginAdminAccount(formData))
+    const response =   dispatch(loginStudentAccount(formData))
 
     if (response?.payload?.success) 
     console.log(response)

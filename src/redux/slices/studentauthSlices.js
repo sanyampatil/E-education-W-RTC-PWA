@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axiosInstance from '../../helpers/axiosinstance.js'
 
 const initialState = {
-  adminIslogin: localStorage.getItem('adminIslogin') || false,
+  studentIslogged: localStorage.getItem('studentIslogged') || false,
   role: localStorage.getItem('role') || '',
   data: localStorage.getItem('data') || {}
 }
@@ -84,9 +84,9 @@ const authSlice = createSlice({
     builder
       .addCase(loginStudentAccount.fulfilled, (state, action) => {
         localStorage.setItem('data', JSON.stringify(action?.payload?.user))
-        localStorage.setItem('adminIslogin', true)
+        localStorage.setItem('studentIslogged', true)
         localStorage.setItem('role', action?.payload?.user?.role)
-        state.adminIslogin = true
+        state.studentIslogged = true
         state.data = action?.payload?.user
         state.role = action?.payload?.user?.role
       })
@@ -94,7 +94,7 @@ const authSlice = createSlice({
       .addCase(logoutStudentAccount.fulfilled, state => {
         localStorage.clear()
         state.data = {}
-        state.adminIslogin = false
+        state.studentIslogged = false
         state.role = ''
       })
   }
