@@ -6,6 +6,16 @@
 }
 
 
+.dark-layout{
+ background: rgb(2,0,36);
+ background: linear-gradient(90deg, rgba(2,0,36,1) 100%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
+}
+.dark-text{
+  color:white !important;
+
+}
+
+
 .icon {
   width: 1.25em !important;
   height: 1.25em !important;

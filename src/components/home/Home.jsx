@@ -6,15 +6,17 @@ import { MdGroupAdd } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
+
 const Home = () => {
   //
   const isLoggedIn = useSelector(state => state?.auth?.isLoggedIn)
+  const lightTheme = useSelector((state) => state.themeKey);
 
   return (
-    <div className='w-[100%] h-[92vh] flex justify-evenly items-center gap-4'>
+    <div className='w-[100%] h-[92vh] flex justify-evenly items-center gap-4' >
       <ToastContainer />
 
-      <div className='  relative w-[45%] h-[80vh] shadow-lg shadow-indigo-500/40  border-2  ml-9 mt-[50px]'>
+      <div className={' relative w-[45%] h-[80vh] shadow-lg shadow-indigo-500/40  border-2  ml-9 mt-[50px]'  + (lightTheme ? "" : " dark")}>
         {isLoggedIn && (
           <div
             className='  shadow-lg shadow-indigo-500/50  p-10 rounded-lg bg-white text-black  flex items-center  justify-evenly gap-10 absolute left-[100px] bottom-[10%] w-[70%] h-[50px]  
@@ -41,11 +43,11 @@ const Home = () => {
 
       <div className=' w-[50%] h-[80vh] mt-32'>
         <div>
-          <h1 className=' leading-none text-[8.7rem] mt-5 text-unwrap text-blue-900  font-bold'>
+          <div className={' leading-none text-[8.7rem] mt-5 text-unwrap text-blue-900  font-bold'  + (lightTheme ? "" : " text-white")}>
             <h1 className=''>E-eduction </h1>
             <h1>and video </h1>
             <h1>chat app</h1>
-          </h1>
+          </div>    
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ console.log("conversation",conversations)
             <AddCircleIcon className={"icon" + (lightTheme ? "" : " dark")} />
           </IconButton>
 
-          <IconButton
+          {/* <IconButton
             onClick={() => {
               dispatch(toggleTheme());
             }}
@@ -101,7 +101,7 @@ console.log("conversation",conversations)
             {!lightTheme && (
               <LightModeIcon className={"icon" + (lightTheme ? "" : " dark")} />
             )}
-          </IconButton>
+          </IconButton> */}
           <IconButton
             onClick={() => {
               localStorage.removeItem("userData");

@@ -4,12 +4,17 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
-
+import {toggleTheme} from '../../redux/slices/themeSlice'
 import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
 import { admineRegister,studentRegister} from '../../redux/slices/registerSlices'
 import studentauthSlices, { logoutStudentAccount } from '../../redux/slices/studentauthSlices'
+import NightlightIcon from "@mui/icons-material/Nightlight";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { IconButton } from '@mui/material'
 
 const Header = () => {
+  
+  const lightTheme = useSelector((state) => state.themeKey);
   
   const AdminRegister = useSelector(state => state.register.admineRegister)
   const StudentRegister = useSelector(state => state.register.studentRegister)
@@ -47,7 +52,7 @@ const Header = () => {
   
   return (
     <>
-      <nav className=' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'>
+      <nav className={' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'  + (lightTheme ? "" : "dark")}>
         <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
           <a
             // href='https://flowbite.com/'
@@ -55,11 +60,11 @@ const Header = () => {
           >
             <img
               // src='https://flowbite.com/docs/images/logo.svg'
-              className='h-8'
-              alt='Flowbite Logo'
+              // className='h-8'
+              // alt='EduCollab'
             />
-            <span className='self-center text-2xl font-semibold whitespace-nowrap dark:text-white'>
-              Flowbite
+            <span className={'self-center text-2xl font-semibold whitespace-nowrap dark:text-white' + (lightTheme ? "" : "text-white")}>
+              EduCollab
             </span>
           </a>
           <div className='flex gap-3 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
@@ -124,6 +129,20 @@ const Header = () => {
                   </button>
                 </ul>
               )}
+              <IconButton
+            onClick={() => {
+              dispatch(toggleTheme());
+            }}
+          >
+            {lightTheme && (
+              <NightlightIcon
+                className={"icon" + (lightTheme ? "" : " dark")}
+              />
+            )}
+            {!lightTheme && ( 
+              <LightModeIcon className={"icon text-black" + (lightTheme ? "" : " dark")} />
+            )}
+          </IconButton>
 
             <button
               data-collapse-toggle='navbar-sticky'
@@ -158,7 +177,7 @@ const Header = () => {
               <li>
                 <Link
                   to='/'
-                  className='block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500'
+                  className={'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' + (lightTheme ? "" : "dark-text")} 
                   aria-current='page'
                 >
                   Home
