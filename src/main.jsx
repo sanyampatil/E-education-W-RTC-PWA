@@ -28,7 +28,8 @@ import CreateGroups from './components/community/Creategroups.jsx'
 // import StudentSignup from './components/signup/StudentSingup.jsx'
 // import LoginStudent from './components/login/LoginStudent.jsx'
 import LoginRo from './components/community/LoginRo.jsx'
-
+import Classroom from './components/classroom/Classroom.jsx'
+import MainRoom from './components/classroom/MainRoom.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,8 +37,8 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />} />
       <Route path='/admin/login' element={<Login />} />
       <Route path='/admin/signup' element={<Signup />} />\
-      {/* <Route path='/classroom' element={<Classroom />} /> */}
-      {/* <Route path='/room/:roomId' element={<MainRoom />} />+ */}
+      <Route path='/classroom' element={<Classroom />} />
+      <Route path='/room/:roomId' element={<MainRoom />} />+
 
 
 
