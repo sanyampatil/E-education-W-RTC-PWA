@@ -66,7 +66,7 @@ export const logoutStudentAccount = createAsyncThunk('/student/logout', async ()
     toast.promise(res, {
       loading: 'Wait! logout in progress...',
       success: data => {
-        return data?.data?.message
+        return data?.data?.message  
       },
       error: 'Failed to log out'
     })

@@ -10,6 +10,7 @@ export const Layout = () => {
 
       <Header />
       <Outlet/>
+      {/* <Home/> */}
       <Footer />
     </div>
     </>

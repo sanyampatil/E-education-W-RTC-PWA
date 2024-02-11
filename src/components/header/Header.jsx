@@ -6,25 +6,25 @@ import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
 
 import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
-import {
-  admineRegister,
-  studentRegister
-} from '../../redux/slices/registerSlices'
+import { admineRegister,studentRegister} from '../../redux/slices/registerSlices'
 import studentauthSlices, { logoutStudentAccount } from '../../redux/slices/studentauthSlices'
 
 const Header = () => {
+  
   const AdminRegister = useSelector(state => state.register.admineRegister)
   const StudentRegister = useSelector(state => state.register.studentRegister)
 
   const [showSignup, setshowSignup] = useState(false)
-
+  
   const dispatch = useDispatch()
-
   const navigate = useNavigate()
+
   const adminIslogin = useSelector(state => state?.auth?.adminIslogin)
   console.log(useSelector(state => state?.auth?.adminIslogin))
   const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
   
+
+
   // for displaying the options acc to role
   const role = useSelector(state => state?.auth?.role)
 
@@ -43,16 +43,18 @@ const Header = () => {
     if (res?.payload?.success) navigate('/')
   }
 
+
+  
   return (
     <>
       <nav className=' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'>
         <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
           <a
-            href='https://flowbite.com/'
+            // href='https://flowbite.com/'
             className='flex items-center space-x-3 rtl:space-x-reverse'
           >
             <img
-              src='https://flowbite.com/docs/images/logo.svg'
+              // src='https://flowbite.com/docs/images/logo.svg'
               className='h-8'
               alt='Flowbite Logo'
             />

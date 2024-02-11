@@ -3,6 +3,7 @@ import themeSliceReducer from "./slices/themeSlice";
 import adminauthSlice from './slices/adminAuthSlices';
 import studentauthSlice from "./slices/studentauthSlices";
 import registerSlices from "./slices/registerSlices";
+import refreshSidebar from "./slices/refreshsidebar";
 
 
 const store = configureStore({
@@ -10,7 +11,8 @@ const store = configureStore({
         themeKey: themeSliceReducer,    
         auth: adminauthSlice,
         stuAuth:studentauthSlice,
-        register:registerSlices
+        register:registerSlices,
+        refreshKey: refreshSidebar
 
 
     },
