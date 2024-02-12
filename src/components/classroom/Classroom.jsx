@@ -1,39 +1,25 @@
-import React, { useState } from 'react'
+import React  from 'react'
 import { useNavigate } from 'react-router-dom'
-
-
+import VideoConfPopup from './VideoConfPopup'
 const Classroom = () => {
-  const navigate = useNavigate()
-  const [roomCode, setroomCode] = useState("")
-  const handelFfromSubmit = ev => {
-    ev.preventDefault()
-
-    navigate(`/room/${roomCode}`)
-  }
+  // const navigate = useNavigate()
   return (
-    <div className='w-[100%] h-[90vh] flex justify-center items-center '>
-      <div  className=' flex flex-col  bg-blue-50  p-20 '>
-        <form onSubmit={handelFfromSubmit} action=''>
-          <div className=' flex flex-col gap-5'>
-            <label>Enter the room code</label>
+    <div className='w-full h-screen'>
+      <div className=' w-full h-screen flex justify-center items-center  gap-10'>
+        <div
+          className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col items-center  cursor-pointer '
+          
+        >
+          <p className='text-4xl'>Dout solving class</p>
 
-            <input
-            className=' p-3 rounded-xl border-2'
-              value={roomCode}
-              onChange={e => setroomCode(e.target.value)}
-              type='text'
-              required
-              placeholder='Enter Room code'
-            />
-          </div>
+          <p className='text-2xl'>one-to-one</p>
+        </div>
+        <div className=' w-[30%] h-[30%] bg-white rounded '></div>
 
-          <button className='p-3 bg-blue-700  mt-5  rounded-xl text-white' type='submit'>Enter Room</button>
-        </form>
+        <div></div>
       </div>
     </div>
   )
 }
 
 export default Classroom
-
-

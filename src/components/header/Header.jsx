@@ -1,34 +1,35 @@
 import React, { useState } from 'react'
-
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
-import {toggleTheme} from '../../redux/slices/themeSlice'
+import { toggleTheme } from '../../redux/slices/themeSlice'
 import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
-import { admineRegister,studentRegister} from '../../redux/slices/registerSlices'
-import studentauthSlices, { logoutStudentAccount } from '../../redux/slices/studentauthSlices'
-import NightlightIcon from "@mui/icons-material/Nightlight";
-import LightModeIcon from "@mui/icons-material/LightMode";
+import {
+  admineRegister,
+  studentRegister
+} from '../../redux/slices/registerSlices'
+import studentauthSlices, {
+  logoutStudentAccount
+} from '../../redux/slices/studentauthSlices'
+import NightlightIcon from '@mui/icons-material/Nightlight'
+import LightModeIcon from '@mui/icons-material/LightMode'
 import { IconButton } from '@mui/material'
 
 const Header = () => {
-  
-  const lightTheme = useSelector((state) => state.themeKey);
-  
+  const lightTheme = useSelector(state => state.themeKey)
+
   const AdminRegister = useSelector(state => state.register.admineRegister)
   const StudentRegister = useSelector(state => state.register.studentRegister)
 
   const [showSignup, setshowSignup] = useState(false)
-  
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const adminIslogin = useSelector(state => state?.auth?.adminIslogin)
   console.log(useSelector(state => state?.auth?.adminIslogin))
   const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
-  
-
 
   // for displaying the options acc to role
   const role = useSelector(state => state?.auth?.role)
@@ -40,35 +41,42 @@ const Header = () => {
     if (res?.payload?.success) navigate('/')
   }
 
-
   async function studentHandleLogout (e) {
     e.preventDefault()
 
-    const res = await dispatch(logoutStudentAccount() )
+    const res = await dispatch(logoutStudentAccount())
     if (res?.payload?.success) navigate('/')
   }
 
-
-  
   return (
     <>
-      <nav className={' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'  + (lightTheme ? "" : "dark")}>
+      <nav
+        className={
+          ' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600' +
+          (lightTheme ? '' : 'dark')
+        }
+      >
         <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
           <a
             // href='https://flowbite.com/'
             className='flex items-center space-x-3 rtl:space-x-reverse'
           >
             <img
-              // src='https://flowbite.com/docs/images/logo.svg'
-              // className='h-8'
-              // alt='EduCollab'
+            // src='https://flowbite.com/docs/images/logo.svg'
+            // className='h-8'
+            // alt='EduCollab'
             />
-            <span className={'self-center text-2xl font-semibold whitespace-nowrap dark:text-white' + (lightTheme ? "" : "text-white")}>
+            <span
+              className={
+                'self-center text-2xl font-semibold whitespace-nowrap dark:text-white' +
+                (lightTheme ? '' : 'text-white')
+              }
+            >
               EduCollab
             </span>
           </a>
           <div className='flex gap-3 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-            {!adminIslogin &&  !studentIslogged &&(
+            {!adminIslogin && !studentIslogged && (
               <ul className=' flex gap-5'>
                 <button
                   type='button'
@@ -112,37 +120,39 @@ const Header = () => {
               </ul>
             )}
 
-            {studentIslogged && !adminIslogin &&(
-                <ul className=' flex gap-5 '>
-                  <button
-                    type='button'
-                    className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-                  >
-                    <Link to='student/profile'> student Profile</Link>
-                  </button>
+            {studentIslogged && !adminIslogin && (
+              <ul className=' flex gap-5 '>
+                <button
+                  type='button'
+                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                >
+                  <Link to='student/profile'> student Profile</Link>
+                </button>
 
-                  <button
-                    type='button'
-                    className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-                  >
-                    <Link onClick={studentHandleLogout}>student Logout</Link>
-                  </button>
-                </ul>
+                <button
+                  type='button'
+                  className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                >
+                  <Link onClick={studentHandleLogout}>student Logout</Link>
+                </button>
+              </ul>
+            )}
+            <IconButton
+              onClick={() => {
+                dispatch(toggleTheme())
+              }}
+            >
+              {lightTheme && (
+                <NightlightIcon
+                  className={'icon ' + (lightTheme ? '' : 'dark')}
+                />
               )}
-              <IconButton
-            onClick={() => {
-              dispatch(toggleTheme());
-            }}
-          >
-            {lightTheme && (
-              <NightlightIcon
-                className={"icon" + (lightTheme ? "" : " dark")}
-              />
-            )}
-            {!lightTheme && ( 
-              <LightModeIcon className={"icon text-black" + (lightTheme ? "" : " dark")} />
-            )}
-          </IconButton>
+              {!lightTheme && (
+                <LightModeIcon
+                  className={'icon text-black' + (lightTheme ? '' : 'dark')}
+                />
+              )}
+            </IconButton>
 
             <button
               data-collapse-toggle='navbar-sticky'
@@ -177,7 +187,10 @@ const Header = () => {
               <li>
                 <Link
                   to='/'
-                  className={'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' + (lightTheme ? "" : "dark-text")} 
+                  className={
+                    'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' +
+                    (lightTheme ? '' : 'dark-text')
+                  }
                   aria-current='page'
                 >
                   Home
