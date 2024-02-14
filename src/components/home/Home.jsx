@@ -43,7 +43,7 @@ const Home = () => {
 
       <div className=' w-[50%] h-[80vh] mt-32'>
         <div>
-          <div className={' leading-none text-[8.7rem] mt-5 text-unwrap text-blue-900  font-bold'  + (lightTheme ? "" : " text-white")}>
+          <div className={' leading-none text-[8.7rem] mt-5 text-unwrap  text-black  font-bold'  + (lightTheme ? "" : " text-white")}>
             <h1 className=''>E-eduction </h1>
             <h1>and video </h1>
             <h1>chat app</h1>

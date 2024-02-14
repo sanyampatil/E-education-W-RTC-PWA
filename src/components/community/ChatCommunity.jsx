@@ -3,7 +3,10 @@ import MainContainer from './Maincontainer'
 
 const ChatCommunity = () => {
   return (
+    <div className=''>
+
    <MainContainer/>
+    </div>
   )
 }
 
