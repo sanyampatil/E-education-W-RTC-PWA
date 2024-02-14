@@ -302,16 +302,21 @@ input:focus {
 
 .login-container {
   height: 90vh;
-  width: 90vw;
-  background-color: #f4f5f8;
+  width: 80vw;
+  padding-top: 5%;
+  /* background-color: #f4f5f8; */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center  ; */
   border-radius: 20px;
   display: flex;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 
 .image-container {
-  flex: 0.3;
+  flex: 0.8;
   display: flex;
+  font-size: 42px;
   justify-content: center;
   align-items: center;
 }
@@ -323,11 +328,11 @@ input:focus {
 
 .login-box {
   flex: 0.7;
-  background-color: white;
+  background-color: white;    
   border-radius: 20px;
   margin: 10px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #63d7b0;
+  /* color: #63d7b0; */
   font-weight: bolder;
   display: flex;
   flex-direction: column;

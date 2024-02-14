@@ -11,7 +11,7 @@ const [showP2PPopUp, setshowP2PPopUp] = useState(false)
       <div className=' w-full h-screen flex justify-center items-center  gap-10'>
         <div className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col items-center  cursor-pointer ' onClick={()=>setshowP2PPopUp(true)} >
 
-        {showP2PPopUp && <P2pPopup onClose={() => setshowP2PPopUp(false)} />}
+        {showP2PPopUp && <P2pPopup closeahes={() => setshowP2PPopUp(false)} />}
 
           <p className='text-4xl'> Dout solving class</p>
 
@@ -19,7 +19,7 @@ const [showP2PPopUp, setshowP2PPopUp] = useState(false)
         </div>
         <div className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col  items-center  cursor-pointer ' onClick={()=> setshowPopUp(true)}>
 
-        {showPopUp && <VideoConfPopup onClose={() => setshowPopUp(false)} />}
+        {showPopUp && <VideoConfPopup onClose={()=>{setshowPopUp(false)}} />}
         
           <p className='text-4xl'>video cnf class</p>
 

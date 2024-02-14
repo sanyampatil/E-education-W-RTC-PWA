@@ -73,30 +73,31 @@ function Signup () {
 
   return (
     <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
-      <div className='container h-full p-10'>
+      <div className='container h-full p-10 '>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
-          <div className=' mt-7 w-full'>
+          <div className=' mt-10 '>
             <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800'>
               <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}
                 <div className='px-4 md:px-0 lg:w-6/12'>
                   <div className='md:mx-6 md:p-12'>
-                    {/* <!--Logo--> */}
+                    {/* <!--Logo--> */} 
                     <div className='text-center'>
-                      <img  
+                      {/* <img  
                         className='mx-auto w-48'
                         src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
                         alt='logo'
-                      />
+                      /> */}
+                      <h1 className=' text-5xl font-bold text-indigo-500'>EduCollab</h1>
                       <h4 className='mb-12 mt-1 pb-1 text-xl font-semibold'>
-                        We are The Lotus Team
+                      E-Education Online Learning Platform with Live Video Streaming and Chat
                       </h4>
                     </div>
 
                     <form
                       noValidate
                       onSubmit={createNewAccount}
-                      className='flex flex-col justify-center gap-3 rounded-lg p-4 text-black w-96 '
+                      className='flex flex-col ml-20 justify-center gap-3 rounded-lg p-4 text-black w-96 '
                     >
                       <h1 className='text-center text-2xl font-bold'>
                         Registration Page

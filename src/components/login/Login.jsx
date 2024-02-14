@@ -4,7 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
+import { LinkOff } from '@mui/icons-material'
 function Login () {
+  const lightTheme = useSelector(state => state.themeKey)
+  console.log("theam in login",lightTheme)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -56,31 +59,28 @@ function Login () {
   }
 
   return (
-    <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
-      <div className='container h-full p-10'>
+    <section className={'h-full   flex justify-center items-center ' + (lightTheme ? '' : 'dark')}>
+      <div className='container h-full  p-16  '>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
           <div className=' mt-7 w-full'>
-            <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800'>
+            <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800 h-[80vh ] '>
               <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}
-                <div className='px-4 md:px-0 lg:w-6/12'>
-                  <div className='md:mx-6 md:p-12'>
+                <div className='px-4 md:px-0 lg:w-6/12 '>
+                  <div className={'md:mx-6 md:p-12' + (lightTheme ? '' : 'text-white bg-black')}>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
-                      <img
-                        className='mx-auto w-48'
-                        src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
-                        alt='logo'
-                      />
-                      <h4 className='mb-12 mt-1 pb-1 text-xl font-semibold'>
-                        We are The Lotus Team
+                      
+                      <h4 className=' text-5xl font-bold mb-12 mt-1 pb-1 text-indigo-500 '>
+                      EduCollab
                       </h4>
+                      <p>welcome</p>
                     </div>
 
                     <form
                       noValidate
                       onSubmit={AccountLogin}
-                      className='flex flex-col justify-center gap-3 rounded-lg p-4 text-black w-96 '
+                      className='flex flex-col ml-20 justify-center gap-3 rounded-lg p-4 text-black w-96 '
                     >
                       <h1 className='text-center text-2xl font-bold'>
                         LOG IN PAGE

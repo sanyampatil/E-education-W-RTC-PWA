@@ -4,6 +4,8 @@ import { Backdrop, Button, CircularProgress, TextField } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Toaster from "./Toaster";
+import StuChat from '../../images/StuChat.svg'
+import { useSelector } from "react-redux";
 
 function LoginRo() {
   const [showlogin, setShowLogin] = useState(false);
@@ -14,7 +16,7 @@ function LoginRo() {
   const [signInStatus, setSignInStatus] = React.useState("");
 
   const navigate = useNavigate();
-
+  const lightTheme = useSelector(state => state.themeKey)
   const changeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -93,12 +95,13 @@ function LoginRo() {
       >
         <CircularProgress color="secondary" />
       </Backdrop>
-      <div className="login-container">
+      <div className="login-container ">
         <div className="image-container">
-          {/* <img src={logo} alt="Logo" className="welcome-logo" /> */}
+          {/* <img src={StuChat} alt="Logo" className="welcome-logo" /> */}
+          <h1 className={"text-5xl  font-bold "+(lightTheme ? "" :"text-white")}>Student login for community</h1>
         </div>
         {showlogin && (
-          <div className="login-box">
+          <div className={"login-box "+(lightTheme ? "" :"text-white bg-black")}>
             <p className="login-text">Login to your Account</p>
             <TextField
               onChange={changeHandler}
@@ -154,7 +157,7 @@ function LoginRo() {
           </div>
         )}
         {!showlogin && (
-          <div className="login-box">
+          <div className={"login-box "+(lightTheme ? "" :"")} >
             <p className="login-text">Create your Account</p>
             <TextField
               onChange={changeHandler}
