@@ -9,8 +9,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 // import { refreshSidebarFun } from "../Features/refreshSidebar";
-import { myContext } from "./MainContainer";
+import { myContext } from './MainContainer'
 import { refreshSidebarFun } from '../../redux/slices/refreshsidebar'
+import { CleaningServices } from '@mui/icons-material'
 
 function Users () {
   // const [refresh, setRefresh] = useState(true);
@@ -22,12 +23,12 @@ function Users () {
   // console.log("Data from LocalStorage : ", userData);
   const nav = useNavigate()
   const dispatch = useDispatch()
-
+  
   if (!userData) {
     console.log('User not Authenticated')
     nav(-1)
   }
-
+  
   useEffect(() => {
     console.log('Users refreshed')
     const config = {
@@ -36,14 +37,15 @@ function Users () {
       }
     }
     axios
-      .get('http://localhost:7861/api/v1/student/getusers', config)
-      .then(data => {
-        console.log('UData refreshed in Users panel ')
-        setUsers(data.data)
-        // setRefresh(!refresh);
-      })
+    .get('http://localhost:7861/api/v1/student/getusers', config)
+    .then(data => {
+      console.log('UData refreshed in Users panel ')
+      setUsers(data.data)
+      // setRefresh(!refresh);
+    })
   }, [refresh])
-
+  
+  // console.log('from users',users[0]._id)
   return (
     <AnimatePresence>
       <motion.div
@@ -91,11 +93,13 @@ function Users () {
                 key={index}
                 onClick={() => {
                   console.log('Creating chat with ', students.username)
+                  console.log('student id', students._id)
                   const config = {
                     headers: {
                       Authorization: `Bearer ${userData.data.token}`
-                    } 
+                    }
                   }
+
                   axios.post(
                     'http://localhost:7861/api/v1/chat/',
                     {
@@ -107,11 +111,11 @@ function Users () {
                 }}
               >
                 <p className={'con-icon' + (lightTheme ? '' : ' dark')}>T</p>
-                <p className={'con-title' + (lightTheme ? '' : ' dark')}>
+                <p className={'con-title' + (lightTheme ? ' ' : ' dark')}>
                   {students.username}
                 </p>
               </motion.div>
-            ) 
+            )
           })}
         </div>
       </motion.div>

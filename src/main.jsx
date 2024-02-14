@@ -39,21 +39,19 @@ const router = createBrowserRouter(
       <Route path='/admin/signup' element={<Signup />} />\
       <Route path='/classroom' element={<Classroom />} />
       <Route path='/room/:roomId' element={<MainRoom />} />+
-
-
-
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}
-
       <Route path='*' element={<Error />} />
-      <Route path='/community' element={<ChatCommunity />}>
-        <Route path='/community' element={<LoginRo />} />
-
-        <Route path='/community/welcome' element={<Welcome />} />
-        <Route path='/community/chat' element={<ChatArea />} />
-        <Route path='/community/users' element={<Users />} />
-        <Route path='/community/groups' element={<Groups />} />
-        <Route path='/community/create-groups' element={<CreateGroups />} />
+      <Route path='/community' element={<LoginRo/>}/  >
+      <Route path='/community/mychat' element={<ChatCommunity />}>
+        <Route path='/community/mychat/welcome' element={<Welcome />} />
+        <Route path='/community/mychat/chat/:_id' element={<ChatArea />} />
+        <Route path='/community/mychat/users' element={<Users />} />
+        <Route path='/community/mychat/groups' element={<Groups />} />
+        <Route
+          path='/community/mychat/create-groups'
+          element={<CreateGroups />}
+        />
       </Route>
     </Route>
   )

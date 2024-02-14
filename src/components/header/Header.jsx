@@ -53,7 +53,7 @@ const Header = () => {
       <nav
         className={
           ' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600' +
-          (lightTheme ? '' : 'dark')
+          (lightTheme ? '' : '')
         }
       >
         <div className='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
@@ -68,7 +68,7 @@ const Header = () => {
             />
             <span
               className={
-                'self-center text-2xl font-semibold whitespace-nowrap dark:text-white' +
+                'self-center text-2xl text-white font-semibold whitespace-nowrap dark:text-white' +
                 (lightTheme ? '' : 'text-white')
               }
             >
@@ -137,7 +137,7 @@ const Header = () => {
                 </button>
               </ul>
             )}
-            <IconButton
+            <IconButton className=' border-2 border-white'
               onClick={() => {
                 dispatch(toggleTheme())
               }}
@@ -149,7 +149,7 @@ const Header = () => {
               )}
               {!lightTheme && (
                 <LightModeIcon
-                  className={'icon text-black' + (lightTheme ? '' : 'dark')}
+                  className={'icon text-white   ' + (lightTheme ? '' : 'dark')}
                 />
               )}
             </IconButton>
@@ -188,8 +188,8 @@ const Header = () => {
                 <Link
                   to='/'
                   className={
-                    'block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500' +
-                    (lightTheme ? '' : 'dark-text')
+                    'block py-2 px-3 text-white rounded md:bg-transparent  md:p-0 md:dark:text-blue-500' +
+                    (lightTheme ? '' : 'text-dark')
                   }
                   aria-current='page'
                 >
@@ -199,7 +199,7 @@ const Header = () => {
               <li>
                 <Link
                   to='/community'
-                  className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
+                  className='block py-2 px-3 text-white  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
                 >
                   community
                 </Link>
@@ -207,15 +207,15 @@ const Header = () => {
               <li>
                 <Link
                   to='/classroom'
-                  className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
+                  className='block py-2 px-3 text-white  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
                 >
                   classroom
-                </Link>
+                </Link> 
               </li>
               <li>
                 <Link
                   to='/notes'
-                  className='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
+                  className='block py-2 px-3 text-white  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
                 >
                   notes
                 </Link>

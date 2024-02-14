@@ -16,7 +16,7 @@ const Home = () => {
     <div className='w-[100%] h-[92vh] flex justify-evenly items-center gap-4' >
       <ToastContainer />
 
-      <div className={' relative w-[45%] h-[80vh] shadow-lg shadow-indigo-500/40  border-2  ml-9 mt-[50px]'  + (lightTheme ? "" : " dark")}>
+      <div className={' relative w-[45%] h-[70  vh] shadow-lg shadow-indigo-500/40  border-1  ml-9 mt-[50px]'  + (lightTheme ? "" : " dark-layout ")}>
         {isLoggedIn && (
           <div
             className='  shadow-lg shadow-indigo-500/50  p-10 rounded-lg bg-white text-black  flex items-center  justify-evenly gap-10 absolute left-[100px] bottom-[10%] w-[70%] h-[50px]  

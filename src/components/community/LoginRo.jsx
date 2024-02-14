@@ -38,7 +38,7 @@ function LoginRo() {
       setLogInStatus({ msg: "Success", key: Math.random() });
       setLoading(false);
       localStorage.setItem("userData", JSON.stringify(response));
-      navigate("/community/welcome");
+      navigate("/community/mychat/welcome");
     } catch (error) {
       setLogInStatus({
         msg: "Invalid User name or Password",
@@ -62,9 +62,9 @@ function LoginRo() {
         data,
         config
       );
-      console.log(response);
+      console.log("signup",response);
       setSignInStatus({ msg: "Success", key: Math.random() });
-      navigate("/community/welcome");
+      navigate("/community/mychat/welcome");
       localStorage.setItem("userData", JSON.stringify(response));
       setLoading(false);
     } catch (error) {
