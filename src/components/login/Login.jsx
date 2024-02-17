@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
 import { LinkOff } from '@mui/icons-material'
+
 function Login () {
   const lightTheme = useSelector(state => state.themeKey)
   console.log("theam in login",lightTheme)
@@ -48,9 +49,12 @@ function Login () {
 
     const response =   dispatch(loginAdminAccount(formData))
 
-    if (response?.payload?.success) 
-    console.log(response)
-    navigate('/profile')
+    if (response?.payload?.success) {
+
+      console.log(response)
+      navigate('/profile')
+      
+    }
 
     setloginData({
       email: '',
@@ -128,6 +132,7 @@ function Login () {
                     </form>
                   </div>
                 </div>
+                
 
                 {/* <!-- Right column background and description--> */}
                 <div

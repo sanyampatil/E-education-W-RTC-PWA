@@ -4,9 +4,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { createAdminAccount } from '../../redux/slices/adminAuthSlices'
+import SignupPopUp from './Popup'
+import PopupmodelAdmin from './PopupmodelAdmin'
+
 function Signup () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [Success, setSuccess] = useState(null)
+
 
   const [signupData, setSignupData] = useState({
     username: '',
@@ -53,15 +58,18 @@ function Signup () {
 
     // console.log('fromData from Signup', formData)
 
-    const response =  await dispatch(createAdminAccount(formData))
-    console.log("one",response)
-
+    const response = await dispatch(createAdminAccount(formData))
+    console.log('one', response)
 
     // console.log("three",response.[[PromiseResult]])
-    console.log("two",response.payload)  
+    console.log('two', response.payload)
 
+    
+    // const Success = response?.payload?.success
     if (response?.payload?.success) {
-      navigate('/')
+      // navigate('/my-info')
+      setSuccess(true)
+
     }
 
     setSignupData({
@@ -70,7 +78,6 @@ function Signup () {
       password: ''
     })
   }
-
   return (
     <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
       <div className='container h-full p-10 '>
@@ -81,16 +88,19 @@ function Signup () {
                 {/* <!-- Left column container--> */}
                 <div className='px-4 md:px-0 lg:w-6/12'>
                   <div className='md:mx-6 md:p-12'>
-                    {/* <!--Logo--> */} 
+                    {/* <!--Logo--> */}
                     <div className='text-center'>
                       {/* <img  
                         className='mx-auto w-48'
                         src='https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp'
                         alt='logo'
                       /> */}
-                      <h1 className=' text-5xl font-bold text-indigo-500'>EduCollab</h1>
+                      <h1 className=' text-5xl font-bold text-indigo-500'>
+                        EduCollab
+                      </h1>
                       <h4 className='mb-12 mt-1 pb-1 text-xl font-semibold'>
-                      E-Education Online Learning Platform with Live Video Streaming and Chat
+                        E-Education Online Learning Platform with Live Video
+                        Streaming and Chat
                       </h4>
                     </div>
 
@@ -170,6 +180,7 @@ function Signup () {
                         </Link>
                       </p>
                     </form>
+                    
                   </div>
                 </div>
 
@@ -198,6 +209,7 @@ function Signup () {
           </div>
         </div>
       </div>
+      {Success &&( <PopupmodelAdmin  />)}
     </section>
   )
 }

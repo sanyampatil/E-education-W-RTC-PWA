@@ -16,7 +16,7 @@
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@mui/icons-material": "^5.15.7",
-    "@mui/material": "^5.15.7",
+    "@mui/material": "^5.15.10",
     "@reduxjs/toolkit": "^2.0.1",
     "@zegocloud/zego-uikit-prebuilt": "^1.10.2",
     "axios": "^1.6.7",
@@ -28,6 +28,7 @@
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
     "react-toastify": "^10.0.4",
+    "reactjs-popup": "^2.0.6",
     "socket.io-client": "^4.7.4",
     "tw-elements-react": "^1.0.0-alpha2"
   },

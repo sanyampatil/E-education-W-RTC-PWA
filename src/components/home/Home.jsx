@@ -16,6 +16,7 @@ const Home = () => {
     <div className='w-[100%] h-[92vh] flex justify-evenly items-center gap-4' >
       <ToastContainer />
 
+          <div className=' text-[13.3rem] absolute  top-52 font-bold text-gray-800' >EduCollab</div>
       <div className={' relative w-[45%] h-[70  vh] shadow-lg shadow-indigo-500/40  border-1  ml-9 mt-[50px]'  + (lightTheme ? "" : " dark-layout ")}>
         {isLoggedIn && (
           <div
@@ -41,8 +42,8 @@ const Home = () => {
             )}
       </div>
 
-      <div className=' w-[50%] h-[80vh] mt-32'>
-        <div>
+      <div className=' w-[50%] h-[80vh] mt-32  relative'>
+        <div className='relative '>
           <div className={' leading-none text-[8.7rem] mt-5 text-unwrap  text-black  font-bold'  + (lightTheme ? "" : " text-white")}>
             <h1 className=''>E-eduction </h1>
             <h1>and video </h1>

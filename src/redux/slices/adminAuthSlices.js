@@ -15,7 +15,7 @@ export const createAdminAccount = createAsyncThunk('/admin/signup', async data =
         'content-Type': 'application/json'
       }
     }
-
+    
     const res = axiosInstance.post('/admin/register', data, config)
     toast.promise(res, {
       loading: 'Wait! creating your account',

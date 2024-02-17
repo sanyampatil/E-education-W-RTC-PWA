@@ -30,15 +30,18 @@ import CreateGroups from './components/community/Creategroups.jsx'
 import LoginRo from './components/community/LoginRo.jsx'
 import Classroom from './components/classroom/Classroom.jsx'
 import MainRoom from './components/classroom/MainRoom.jsx'
+import PopupmodelAdmin from './components/signup/PopupmodelAdmin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='/admin/login' element={<Login />} />
-      <Route path='/admin/signup' element={<Signup />} />\
+      <Route path='/admin/signup' element={<Signup />} />
+      <Route path='/notes' element={<PopupmodelAdmin />} />
       <Route path='/classroom' element={<Classroom />} />
-      <Route path='/room/:roomId' element={<MainRoom />} />+
+
+      <Route path='/room/:roomId' element={<MainRoom />} />
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}
       <Route path='*' element={<Error />} />
