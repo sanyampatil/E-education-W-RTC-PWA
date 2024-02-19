@@ -23,7 +23,7 @@ export const createAdminAccount = createAsyncThunk('/admin/signup', async data =
         return data?.data?.message
       },
       error: 'Failed to create account'
-    })
+    })      
     console.log(data)
     return (await res).data
   } catch (error) {

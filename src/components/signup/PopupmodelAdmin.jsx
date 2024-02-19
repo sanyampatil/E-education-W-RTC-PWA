@@ -13,18 +13,17 @@ const PopupmodelAdmin = () => {
 
   const [previewImage, setPreviewImage] = useState('')
 
-  const [signupData, setSignupData] = useState({
+  const [infoData, setSignupData] = useState({
     fullName: '',
     branch: '',
-    class: '',
-    subject: '',
+    subs: '',
     avatar: ''
   })
 
   function handleUserInput (e) {
     const { name, value } = e.target
     setSignupData({
-      ...signupData,
+      ...infoData,
       [name]: value
     })
   }
@@ -36,7 +35,7 @@ const PopupmodelAdmin = () => {
 
     if (uploadedImage) {
       setSignupData({
-        ...signupData,
+        ...infoData,
         avatar: uploadedImage
       })
       const fileReader = new FileReader()
@@ -47,28 +46,29 @@ const PopupmodelAdmin = () => {
     }
   }
 
-  async function createNewAccount (event) {
+  async function createAdminInfo (event) {
     event.preventDefault()
     if (
-      !signupData.branch ||
-      !signupData.class ||
-      !signupData.fullName ||
-      !signupData.avatar
-    ) {
-      toast.error('Please fill all the details')
-      return
+      !infoData.fullName ||
+      !infoData.branch ||
+      !infoData.subs ||
+      !infoData.avatar
+    ) 
+    {
+      alert("plz fill all details")
+      // toast.error('Please fill all the details')
+      // return
     }
 
     // checking name field length
 
     const formData = new FormData()
-    formData.append('fullName', signupData.fullName)
-    formData.append('branch', signupData.branch)
-    formData.append('class  ', signupData.class)
-    formData.append('subject  ', signupData.subject)
+    formData.append('fullName', infoData.fullName)
+    formData.append('branch', infoData.branch)
+    formData.append('subs  ', infoData.subs)
 
-    formData.append('avatar', signupData.avatar)
-
+    formData.append('avatar', infoData.avatar)
+    console.log(formData)
     // dispatch create account action
     const response = await dispatch(createAdmininfo(formData))
     if (response?.payload?.success) navigate('/')
@@ -76,7 +76,7 @@ const PopupmodelAdmin = () => {
     setSignupData({
       fullName: '',
       branch: '',
-      class: '',
+      subs: '',
       avatar: ''
     })
     setPreviewImage('')
@@ -99,7 +99,7 @@ const PopupmodelAdmin = () => {
               <div>
                 <form
                   noValidate
-                  onSubmit={createNewAccount}
+                  onSubmit={createAdminInfo}
                   className='flex ml-20 justify-center gap-3 rounded-lg p-4 text-black w-96 '
                 >
                   <div className='left flex flex-col justify-center gap-3'>
@@ -135,7 +135,7 @@ const PopupmodelAdmin = () => {
                         placeholder='Enter your name..'
                         className='bg-transparent px-2 py-1 border'
                         onChange={handleUserInput}
-                        value={signupData.username}
+                        value={infoData.fullName}
                       />
                     </div>
                     <div className='  flex flex-col gap-1'>
@@ -143,7 +143,7 @@ const PopupmodelAdmin = () => {
                         {' '}
                         branch{' '}
                       </label>
-                      <input  
+                      <input
                         type='text'
                         required
                         name='branch'
@@ -151,41 +151,24 @@ const PopupmodelAdmin = () => {
                         placeholder='Enter your branch..'
                         className='bg-transparent px-2 py-1 border'
                         onChange={handleUserInput}
-                        value={signupData.branch}
-                      />
-                    </div>
-
-                    <div className='  flex flex-col gap-1'>
-                      <label htmlFor='class' className='font-semibold'>
-                        {' '}
-                        class{' '}
-                      </label>
-                      <input
-                        type='text'
-                        required
-                        name='class'
-                        id='class'
-                        placeholder='Enter your class..'
-                        className='bg-transparent px-2 py-1 border'
-                        onChange={handleUserInput}
-                        value={signupData.class}
+                        value={infoData.branch}
                       />
                     </div>
 
                     <div className=' flex flex-col gap-1'>
-                      <label htmlFor='subject' className='font-semibold'>
+                      <label htmlFor='subs' className='font-semibold'>
                         {' '}
-                        subject{' '}
+                        subs{' '}
                       </label>
                       <input
                         type='text'
                         required
-                        name='subject'
-                        id='subject'
-                        placeholder='Enter your subject..'
+                        name='subs'
+                        id='subs'
+                        placeholder='Enter your subs..'
                         className='bg-transparent px-2 py-1 border'
                         onChange={handleUserInput}
-                        value={signupData.subject}
+                        value={infoData.subs}
                       />
                     </div>
                     <button

@@ -5,18 +5,18 @@ const initialState ={
 
 }
 
-export const createAdmininfo = createAsyncThunk('/admin/signup', async data => {
+export const createAdmininfo = createAsyncThunk('/notes ', async data => {
  try {
-   const config = {
-     headers: {
-       'content-Type': 'application/json'
-     }
-   }
-   
-   const res = axiosInstance.post('/admin/admin-detail', data, config)
+  const config = {
+    headers: {
+      'content-Type': 'application/json'
+    }  
+  } 
+
+   const res = axiosInstance.post('/me/details', data, config)
    toast.promise(res, {
      loading: 'Wait! creating your profile',
-     success: data => {
+     success: data => { 
        return data?.data?.message
      },
      error: 'Failed to create profile'

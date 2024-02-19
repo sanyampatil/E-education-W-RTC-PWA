@@ -58,7 +58,7 @@ function Signup () {
 
     // console.log('fromData from Signup', formData)
 
-    const response = await dispatch(createAdminAccount(formData))
+    const response =  dispatch(createAdminAccount(formData))
     console.log('one', response)
 
     // console.log("three",response.[[PromiseResult]])
