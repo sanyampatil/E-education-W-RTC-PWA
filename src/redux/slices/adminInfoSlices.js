@@ -5,7 +5,7 @@ const initialState ={
 
 }
 
-export const createAdmininfo = createAsyncThunk('/notes ', async data => {
+export const createAdmininfo = createAsyncThunk('/notes ', async (data) => {
  try {
   const config = {
     headers: {
@@ -13,7 +13,8 @@ export const createAdmininfo = createAsyncThunk('/notes ', async data => {
     }  
   } 
 
-   const res = axiosInstance.post('/me/details', data, config)
+   const res = axiosInstance.post('/me/details', data,config)
+
    toast.promise(res, {
      loading: 'Wait! creating your profile',
      success: data => { 
