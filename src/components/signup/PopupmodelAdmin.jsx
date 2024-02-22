@@ -55,9 +55,9 @@ const PopupmodelAdmin = () => {
       !infoData.subs ||
       !infoData.avatar
     ) {
-      alert('plz fill all details')
-      // toast.error('Please fill all the details')
-      // return
+      // alert('plz fill all details')
+      toast.error('Please fill all the details')
+      return
     }
 
     // checking name field length
@@ -70,8 +70,9 @@ const PopupmodelAdmin = () => {
 
         // dispatch create account action
         const response = await dispatch(createAdmininfo(formData));
+        console.log("res>>",response)
         if(response?.payload?.success)
-            navigate("/");
+            navigate("/admin/profile");
 
         setInfoData({
             fullName: "",

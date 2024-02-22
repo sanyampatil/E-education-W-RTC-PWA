@@ -58,7 +58,7 @@ function Signup () {
 
     // console.log('fromData from Signup', formData)
 
-    const response =  dispatch(createAdminAccount(formData))
+    const response = await dispatch(createAdminAccount(formData))
     console.log('one', response)
 
     // console.log("three",response.[[PromiseResult]])
@@ -67,7 +67,7 @@ function Signup () {
     
     // const Success = response?.payload?.success
     if (response?.payload?.success) {
-      // navigate('/my-info')
+      navigate('/admin/signup/admin-me')
       setSuccess(true)
 
     }

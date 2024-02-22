@@ -1,19 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../helpers/axiosinstance";
+import toast from "react-hot-toast";
 
 const initialState ={
 
 }
 
-export const createAdmininfo = createAsyncThunk('/notes ', async (data) => {
+export const createAdmininfo = createAsyncThunk('/admin-me', async (data) => {
  try {
-  const config = {
-    headers: {
-      'content-Type': 'application/json'
-    }  
-  } 
 
-   const res = axiosInstance.post('/me/details', data,config)
+   const res = axiosInstance.post('/me/details', data)
 
    toast.promise(res, {
      loading: 'Wait! creating your profile',

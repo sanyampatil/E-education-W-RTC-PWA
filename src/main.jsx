@@ -31,18 +31,21 @@ import LoginRo from './components/community/LoginRo.jsx'
 import Classroom from './components/classroom/Classroom.jsx'
 import MainRoom from './components/classroom/MainRoom.jsx'
 import PopupmodelAdmin from './components/signup/PopupmodelAdmin.jsx'
+import Profile from './components/Profile.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='*' element={<Error />} />
-      <Route path='/community' element={<LoginRo/>}/  >
-      <Route path='/notes' element={<PopupmodelAdmin />} />
+      <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
       <Route path='/room/:roomId' element={<MainRoom />} />
-      <Route path='/admin/login' element={<Login />} />
       <Route path='/admin/signup' element={<Signup />} />
+      <Route path='/admin/signup/admin-me' element={<PopupmodelAdmin />} />
+      <Route path='/admin/profile' element={<Profile />} />
+
+      <Route path='/admin/login' element={<Login />} />
 
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}
@@ -51,7 +54,10 @@ const router = createBrowserRouter(
         <Route path='/community/mychat/chat/:_id' element={<ChatArea />} />
         <Route path='/community/mychat/users' element={<Users />} />
         <Route path='/community/mychat/groups' element={<Groups />} />
-        <Route path='/community/mychat/create-groups' element={<CreateGroups />} />
+        <Route
+          path='/community/mychat/create-groups'
+          element={<CreateGroups />}
+        />
       </Route>
     </Route>
   )
