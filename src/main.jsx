@@ -42,10 +42,10 @@ const router = createBrowserRouter(
       <Route path='/classroom' element={<Classroom />} />
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/admin/signup' element={<Signup />} />
-      <Route path='/admin/signup/admin-me' element={<PopupmodelAdmin />} />
+      <Route path='/admin/login' element={<Login />} />
+      <Route path='/admin/login/admin-me' element={<PopupmodelAdmin />} />
       <Route path='/admin/profile' element={<Profile />} />
 
-      <Route path='/admin/login' element={<Login />} />
 
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}

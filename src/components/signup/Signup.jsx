@@ -67,7 +67,7 @@ function Signup () {
     
     // const Success = response?.payload?.success
     if (response?.payload?.success) {
-      navigate('/admin/signup/admin-me')
+      navigate('/admin/login')
       setSuccess(true)
 
     }

@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+// import { getAdmininfo } from '../redux/slices/adminInfoSlices'
 
 const Profile = () => {
+  const dispatch = useDispatch()
+
+ 
+  // useEffect(() => {  
+  //   getdata()
+  // }, [])
+
+  const data = useSelector((state)=>state.Admininfo.data)
+  console.log("adminDetail",data)
+
   return (
     <>
-      <main className='profile-paget '>
+      <main className='profile-paget '>x
         <section className='relative '>
-          <div className= 'absolute  w-full h-[100vh]  '>
+          <div className='absolute  w-full h-[100vh]  '>
             <img
-            className='w-full  h-[70vh]'
+              className='w-full  h-[70vh]'
               src='https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80'
-              alt='' 
+              alt=''
             />
           </div>
-           {/* <div className=''>
+          {/* <div className=''>
              <span
                id='blackOverlay'
                className='w-full h-full absolute opacity-50 bg-black'
@@ -94,11 +106,15 @@ const Profile = () => {
                 </div>
                 <div className='text-center mt-12'>
                   <h3 className='text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2'>
-                    sanyam patil
+                    {data.fullName}
                   </h3>
                   <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
                     <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
-                    kamthawada
+                    <p>branch:-</p>{data.branch}
+                  </div>
+                  <div className='mb-2 text-blueGray-600 mt-10'>
+                    <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400'></i>
+                   subject:-{data.subs}
                   </div>
                   <div className='mb-2 text-blueGray-600 mt-10'>
                     <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400'></i>

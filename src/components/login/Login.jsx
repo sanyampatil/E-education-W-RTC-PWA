@@ -47,12 +47,12 @@ function Login () {
     formData.append('email', loginData.email)
     formData.append('password', loginData.password)
 
-    const response =   dispatch(loginAdminAccount(formData))
+    const response =  await dispatch(loginAdminAccount(formData))
 
     if (response?.payload?.success) {
 
       console.log(response)
-      navigate('/profile')
+      navigate('/admin/login/admin-me')
       
     }
 
