@@ -100,7 +100,7 @@ function LoginRo () {
       >
         <CircularProgress color='secondary' />
       </Backdrop>
-      <div className='login-container '>
+      <div className='login-container  ml-10  '>
         {!showlogin && (
           <div className='image-container flex '>
             <img src={chatmsg} alt='Logo' className=' w-[70%]' />
@@ -157,7 +157,7 @@ function LoginRo () {
         )}
         {showlogin && (
           <div
-            className={'login-box ' + (lightTheme ? '' : 'text-white bg-black')}
+            className={'login-box  border-2 border-black' + (lightTheme ? '' : 'text-white bg-black')}
           >
             <p className='login-text text-black'>Login to your Account</p>
             <TextField
@@ -214,7 +214,7 @@ function LoginRo () {
           </div>
         )}
         {!showlogin && (
-          <div className={'login-box ' + (lightTheme ? '' : '')}>
+          <div className={'login-box border-2 border-black' + (lightTheme ? '' : '')}>
             <p className='login-text'>Create your Account</p>
             <TextField
               onChange={changeHandler}
