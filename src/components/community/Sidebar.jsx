@@ -135,8 +135,8 @@ function Sidebar () {
                 key={index}
                 onClick={() => {
                   console.log('Refresh fired from sidebar')
-                  // dispatch(refreshSidebarFun());
-                  setRefresh(!refresh)
+                  dispatch(refreshSidebarFun());
+                  // setRefresh(!refresh)
                 }}
               >
                 <div

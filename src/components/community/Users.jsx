@@ -8,14 +8,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-// import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from './MainContainer'
 import { refreshSidebarFun } from '../../redux/slices/refreshsidebar'
 import { CleaningServices } from '@mui/icons-material'
 
 function Users () {
-  // const [refresh, setRefresh] = useState(true);
-  const { refresh, setRefresh } = useContext(myContext)
+  const [refresh, setRefresh] = useState(true);
+  // const { refresh, setRefresh } = useContext(myContext)
 
   const lightTheme = useSelector(state => state.themeKey)
   const [users, setUsers] = useState([])

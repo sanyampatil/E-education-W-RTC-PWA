@@ -9,7 +9,7 @@ export const Layout = () => {
   const lightTheme = useSelector((state) => state.themeKey);
   return (
     <>
-    <div className={'bg-gradient-to-r from-sky-500 to-indigo-500 relative '  + (lightTheme ? "" : "dark-layout")}>
+    <div className={' relative '  + (lightTheme ? "" : "dark-layout")}>
 
       <Header />
       <Outlet/>

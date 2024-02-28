@@ -23,7 +23,7 @@ function ChatArea () {
   // const refresh = useSelector((state) => state.refreshKey);
   const { refresh, setRefresh } = useContext(myContext)
   const [loaded, setloaded] = useState(false)
-
+const ENDPOINT = ""
   const sendMessage = () => {
     console.log('chat Area ')
     // console.log("SendMessage Fired to", chat_id._id);
@@ -45,6 +45,8 @@ function ChatArea () {
         console.log('Message Fired')
       })
   }
+
+  
   // const scrollToBottom = () => {
   //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   // };

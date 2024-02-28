@@ -24,7 +24,7 @@ const Profile = () => {
               alt=''
             />
           </div>
-          {/* <div className=''>
+          <div className='bprder-2 border-green-800 ' >
              <span
                id='blackOverlay'
                className='w-full h-full absolute opacity-50 bg-black'
@@ -40,7 +40,7 @@ const Profile = () => {
                preserveAspectRatio='none'
                version='1.1'
                viewBox='0 0 2560 100'
-               x='0'
+               x='0'        
                y='0'
              >
                <polygon
@@ -48,7 +48,7 @@ const Profile = () => {
                  points='2560 0 2560 100 0 100'
                ></polygon>
              </svg>
-           </div> */}
+           </div>
         </section>
 
         <section className='relative bg-blueGray-200 border-2  border-red-900 '>

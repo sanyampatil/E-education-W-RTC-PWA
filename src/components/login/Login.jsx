@@ -25,7 +25,7 @@ function Login () {
     })
   }
 
-  async function AccountLogin (event) {
+      async function AccountLogin (event) {
     event.preventDefault()
     if (!loginData.email || !loginData.password) {
       toast.error('All required')
@@ -53,7 +53,7 @@ function Login () {
 
       console.log(response)
       navigate('/admin/login/admin-me')
-      
+        
     }
 
     setloginData({
@@ -63,15 +63,15 @@ function Login () {
   }
 
   return (
-    <section className={'h-full   flex justify-center items-center ' + (lightTheme ? '' : 'dark')}>
-      <div className='container h-full  p-16  '>
+    <section className='h-full  flex justify-center items-center'>
+      <div className='container h-full  p-16 '>
         <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
-          <div className=' mt-7 w-full'>
+          <div className='mt-7 w-full'>
             <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800 h-[80vh ] '>
               <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}
                 <div className='px-4 md:px-0 lg:w-6/12 '>
-                  <div className={'md:mx-6 md:p-12' + (lightTheme ? '' : 'text-white bg-black')}>
+                  <div className='md:mx-6 md:p-12'>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
                       

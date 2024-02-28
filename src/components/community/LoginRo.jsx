@@ -43,7 +43,8 @@ function LoginRo () {
       console.log('Login : ', response)
       setLogInStatus({ msg: 'Success', key: Math.random() })
       setLoading(false)
-      localStorage.setItem('userData', JSON.stringify(response))
+      const localData=localStorage.setItem('userData', JSON.stringify(response))
+      console.log(localData)
       navigate('/community/mychat/welcome')
     } catch (error) {
       setLogInStatus({
@@ -70,8 +71,8 @@ function LoginRo () {
       )
       console.log('signup', response)
       setSignInStatus({ msg: 'Success', key: Math.random() })
-      navigate('/community/mychat/welcome')
       localStorage.setItem('userData', JSON.stringify(response))
+      navigate('/community/mychat/welcome')
       setLoading(false)
     } catch (error) {
       console.log(error)

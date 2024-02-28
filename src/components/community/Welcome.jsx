@@ -23,7 +23,7 @@ function Welcome() {
         alt="Logo"
         className="welcome-logo"
       />
-      <b>Hi , {userData.data.username} 👋</b>
+      <b>Hi , {userData.data. username} 👋</b>
       <p>View and text directly to people present in the chat Rooms.</p>
     </div>
   );

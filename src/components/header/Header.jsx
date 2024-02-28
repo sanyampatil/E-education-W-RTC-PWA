@@ -17,18 +17,14 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import { IconButton } from '@mui/material'
 
 const Header = () => {
-  const lightTheme = useSelector(state => state.themeKey)
-
-  const AdminRegister = useSelector(state => state.register.admineRegister)
-  const StudentRegister = useSelector(state => state.register.studentRegister)
-
-  const [showSignup, setshowSignup] = useState(false)
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [showSignup, setshowSignup] = useState(false)
+  const lightTheme = useSelector(state => state.themeKey)
+  const adminIslogin = useSelector(state => state?.adminAuth?.adminIslogin)
+  const StudentRegister = useSelector(state => state.register.studentRegister)
+  const AdminRegister = useSelector(state => state.register.admineRegister)
 
-  const adminIslogin = useSelector(state => state?.auth?.adminIslogin)
-  console.log(useSelector(state => state?.auth?.adminIslogin))
   const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
 
   // for displaying the options acc to role
@@ -68,9 +64,9 @@ const Header = () => {
             />
             <span
               className={
-                'self-center text-2xl text-black font-semibold whitespace-nowrap dark:text-white' 
-                +
-                    (lightTheme ? '' : ' text-white')}
+                'self-center text-2xl text-black font-semibold whitespace-nowrap dark:text-white' +
+                (lightTheme ? '' : ' text-white')
+              }
             >
               EduCollab
             </span>
@@ -137,7 +133,8 @@ const Header = () => {
                 </button>
               </ul>
             )}
-            <IconButton className=' border-2 border-white'
+            <IconButton
+              className=' border-2 border-white'
               onClick={() => {
                 dispatch(toggleTheme())
               }}
@@ -196,31 +193,50 @@ const Header = () => {
                   Home
                 </Link>
               </li>
+              {!adminIslogin && (
               <li>
                 <Link
                   to='/community'
-                  className={'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                  +
-                    (lightTheme ? '' : ' text-white')}
+                  className={
+                    'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                    (lightTheme ? '' : ' text-white')
+                  }
                 >
                   community
                 </Link>
               </li>
+              )}
+              {adminIslogin && (
+                <li>
+                  <Link
+                    to='/community'
+                    className={
+                      'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    adminCommunity
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   to='/classroom'
-                  className={'block py-2 px-3 text-black md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'+
-                    (lightTheme ? '' : ' text-white')}
+                  className={
+                    'block py-2 px-3 text-black md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                    (lightTheme ? '' : ' text-white')
+                  }
                 >
                   classroom
-                </Link> 
+                </Link>
               </li>
               <li>
                 <Link
                   to='/notes'
-                  className={'block py-2 px-3 text-black  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700'
-                  +
-                    (lightTheme ? '' : ' text-white')}
+                  className={
+                    'block py-2 px-3 text-black  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                    (lightTheme ? '' : ' text-white')
+                  }
                 >
                   notes
                 </Link>

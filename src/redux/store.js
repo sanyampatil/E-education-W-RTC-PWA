@@ -8,7 +8,7 @@ import adminInfoSlices from "./slices/adminInfoSlices";
 const store = configureStore({
     reducer: {  
         themeKey: themeSliceReducer,    
-        auth: adminauthSlice,
+        adminAuth: adminauthSlice,
         stuAuth:studentauthSlice,
         register:registerSlices,
         refreshKey: refreshSidebar,
