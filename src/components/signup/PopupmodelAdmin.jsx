@@ -85,8 +85,8 @@ const PopupmodelAdmin = () => {
   return (
     <>
       <div className=' bg-opacity-30 inset-0 backdrop-blur-sm fixed flex justify-center items-center bg-black'>
-        <div className=' mt-20 flex flex-col gap-5 text-white relative'>
-          <div className=' bg-white h-[90vh] w-[80vw] rounded-xl  text-black'>
+        <div className='  flex flex-col gap-5 text-white relative'>
+          <div className='  mt-10 bg-white h-[80vh] w-[70vw] rounded-xl  text-black'>
             <h1 className='text-[25px]  text-center mt-10 font-bold text-black'>
               Select following option for Registration
             </h1>
@@ -94,9 +94,9 @@ const PopupmodelAdmin = () => {
             <form
               noValidate
               onSubmit={createAdminInfo}
-              className='flex ml-20 justify-center gap-3 rounded-lg p-4 text-black  w-[70vw] h-[50vh] '
+              className='flex ml-20 justify-center gap-3 rounded-lg p-4 text-black  h-[70vh] w-[60vw] '
             >
-              <div className='left flex  items-center  justify-evenly gap-3 w-[70vw] h-[70vh] border-2  border-red-700'>
+              <div className='left flex  items-center  justify-evenly gap-3 w-h-[70vh] w-[60vw] border-2  border-red-700'>
                 <div className='border-2  w-[20vw] h-[30vh]'>
                   <label htmlFor='image_uploads' className='cursor-pointer'>
                     {previewImage ? (

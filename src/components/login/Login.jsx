@@ -5,12 +5,17 @@ import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { loginAdminAccount } from '../../redux/slices/adminAuthSlices'
 import { LinkOff } from '@mui/icons-material'
+import PopupmodelAdmin from '../signup/PopupmodelAdmin'
 
 function Login () {
+  const [showModel, setshowModel] = useState(false)
   const lightTheme = useSelector(state => state.themeKey)
-  console.log("theam in login",lightTheme)
+  console.log('theam in login', lightTheme)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const AdminRegister = localStorage.getItem('adminIsRegister')
+  console.log('AdminRegister:::-', AdminRegister)
 
   const [loginData, setloginData] = useState({
     email: '',
@@ -25,7 +30,7 @@ function Login () {
     })
   }
 
-      async function AccountLogin (event) {
+  async function AccountLogin (event) {
     event.preventDefault()
     if (!loginData.email || !loginData.password) {
       toast.error('All required')
@@ -47,13 +52,17 @@ function Login () {
     formData.append('email', loginData.email)
     formData.append('password', loginData.password)
 
-    const response =  await dispatch(loginAdminAccount(formData))
+    const response = await dispatch(loginAdminAccount(formData))
 
     if (response?.payload?.success) {
-
       console.log(response)
-      navigate('/admin/login/admin-me')
-        
+
+      setshowModel(true)
+      if (!AdminRegister ) {
+        setshowModel(false)
+
+        navigate('/admin/profile')
+      }
     }
 
     setloginData({
@@ -61,6 +70,8 @@ function Login () {
       password: ''
     })
   }
+  console.log('showModel........', showModel)
+  console.log('admineRegister.....', AdminRegister)
 
   return (
     <section className='h-full  flex justify-center items-center'>
@@ -74,9 +85,8 @@ function Login () {
                   <div className='md:mx-6 md:p-12'>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
-                      
                       <h4 className=' text-5xl font-bold mb-12 mt-1 pb-1 text-indigo-500 '>
-                      EduCollab
+                        EduCollab
                       </h4>
                       <p>welcome</p>
                     </div>
@@ -132,7 +142,6 @@ function Login () {
                     </form>
                   </div>
                 </div>
-                
 
                 {/* <!-- Right column background and description--> */}
                 <div
@@ -159,6 +168,7 @@ function Login () {
           </div>
         </div>
       </div>
+      {showModel && AdminRegister && <PopupmodelAdmin />}
     </section>
   )
 }

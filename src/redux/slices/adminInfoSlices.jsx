@@ -11,7 +11,7 @@ const initialState = {
 }
 
 export const createAdmininfo = createAsyncThunk(    
-  '/admin/login/admin-me',
+  '/admin/login',
   async data => {
     try {
       

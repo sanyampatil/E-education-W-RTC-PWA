@@ -4,20 +4,26 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { isEmail, isValidPassword } from '../../helpers/regexmatcher'
 import { createAdminAccount } from '../../redux/slices/adminAuthSlices'
-import SignupPopUp from './Popup'
-import PopupmodelAdmin from './PopupmodelAdmin'
+// import SignupPopUp from '.  /Popup'
+// import PopupmodelAdmin from './PopupmodelAdmin'
+import { admineRegisterReducers } from '../../redux/slices/registerSlices'
 
 function Signup () {
   const dispatch = useDispatch()
+  const dispatchClick = useDispatch()
   const navigate = useNavigate()
-  const [Success, setSuccess] = useState(null)
 
+  // const AdminRegister = useSelector(state => state.register.admineRegister)
 
   const [signupData, setSignupData] = useState({
     username: '',
     email: '',
     password: ''
   })
+
+  // function handleRegisterOnClk () {
+
+  // }
 
   function handleUserInput (e) {
     const { name, value } = e.target
@@ -40,10 +46,12 @@ function Signup () {
       toast.error('Name should be atleast of 5 characters')
       return
     }
+
     if (!isEmail(signupData.email)) {
       toast.error('Invalid email id')
       return
     }
+
     if (!isValidPassword(signupData.password)) {
       toast.error(
         'Password should be 6 - 16 character long with atleast a number and special character'
@@ -64,13 +72,15 @@ function Signup () {
     // console.log("three",response.[[PromiseResult]])
     console.log('two', response.payload)
 
-    
-    // const Success = response?.payload?.success
+    // dispatchClick(admineRegisterReducers())
+    // console.log('handleRegisterOnClk AdminRegister ', AdminRegister)
+    // const Success = response?.payload?.success\
+    localStorage.setItem('adminIsRegister', true)
     if (response?.payload?.success) {
       navigate('/admin/login')
-      setSuccess(true)
-
     }
+
+    
 
     setSignupData({
       username: '',
@@ -163,6 +173,7 @@ function Signup () {
                       </div>
 
                       <button
+                        // onClick={handleRegisterOnClk}
                         type='submit'
                         className='mt-2 bg-gradient-to-r from-sky-500 to-indigo-500 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer'
                       >
@@ -172,7 +183,7 @@ function Signup () {
                       <p className='text-center'>
                         Already have an account ?{' '}
                         <Link
-                          to='/login'
+                          to='/admin/login'
                           className='link text-accent cursor-pointer'
                         >
                           {' '}
@@ -180,7 +191,6 @@ function Signup () {
                         </Link>
                       </p>
                     </form>
-                    
                   </div>
                 </div>
 
@@ -209,7 +219,6 @@ function Signup () {
           </div>
         </div>
       </div>
-      {Success &&( <PopupmodelAdmin  />)}
     </section>
   )
 }

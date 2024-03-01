@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { ImCross } from 'react-icons/im'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {
-  admineRegister,
-  studentRegister
-} from '../../redux/slices/registerSlices'
+// import {
+//   admineRegister,
+//   studentRegister
+// } from '../../redux/slices/registerSlices'
 
 const P2pPopup = ({ closeahes }) => {
   console.log(closeahes)
   const AdminRegister = useSelector(state => state.register.admineRegister)
   const StudentRegister = useSelector(state => state.register.admineRegister)
-  const dispatch = useDispatch(admineRegister())
+  // const dispatch = useDispatch(admineRegister())
 
   return (
     <div className='bg-opacity-30 inset-0 backdrop-blur-sm fixed flex justify-center items-center bg-black'>

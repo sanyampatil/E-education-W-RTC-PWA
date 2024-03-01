@@ -135,7 +135,7 @@ const Profile = () => {
                         warm, intimate feel with a solid groove structure. An
                         artist of considerable range.
                       </p>
-                      <a href='#pablo' className='font-normal text-pink-500'>
+                        <a href='#pablo' className='font-normal text-pink-500'>
                         Show more
                       </a>
                     </div>
