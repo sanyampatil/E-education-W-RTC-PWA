@@ -68,7 +68,7 @@ function LoginRo () {
         'http://localhost:7861/api/v1/student/register/',
         data,
         config
-      )
+        )
       console.log('signup', response)
       setSignInStatus({ msg: 'Success', key: Math.random() })
       localStorage.setItem('userData', JSON.stringify(response))

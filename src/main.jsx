@@ -32,6 +32,10 @@ import Classroom from './components/classroom/Classroom.jsx'
 import MainRoom from './components/classroom/MainRoom.jsx'
 import PopupmodelAdmin from './components/signup/PopupmodelAdmin.jsx'
 import Profile from './components/Profile.jsx'
+import Notes from './components/Notes/Notes.jsx'
+
+
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +43,8 @@ const router = createBrowserRouter(
       <Route path='' element={<Home />} />
       <Route path='*' element={<Error />} />
       <Route path='/community' element={<LoginRo />} />
+      <Route path='/notes' element={<Notes />} />
+
       <Route path='/classroom' element={<Classroom />} />
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/admin/signup' element={<Signup />} />

@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom'
 
 const P2pPopup = ({ closeahes }) => {
   console.log(closeahes)
-  const AdminRegister = useSelector(state => state.register.admineRegister)
-  const StudentRegister = useSelector(state => state.register.admineRegister)
+  // const AdminRegister = useSelector(state => state.register.admineRegister)
+  // const StudentRegister = useSelector(state => state.register.admineRegister)
   // const dispatch = useDispatch(admineRegister())
 
   return (

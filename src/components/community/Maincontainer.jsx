@@ -3,7 +3,7 @@ import './myStyles.css'
 import Sidebar from './Sidebar'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-
+import DownMenuBar from '../../DownMenuBar'
 export const myContext = createContext()
 function MainContainer () {
   const dispatch = useDispatch()
@@ -18,6 +18,9 @@ function MainContainer () {
         >
           <Sidebar />
           <Outlet />
+          <div className=' mt-[20%]'>
+            <DownMenuBar />
+          </div>
         </myContext.Provider>
         {/* <Welcome /> */}
         {/* <CreateGroups /> */}

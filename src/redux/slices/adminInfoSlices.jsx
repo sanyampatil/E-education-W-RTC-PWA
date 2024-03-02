@@ -10,28 +10,24 @@ const initialState = {
       : {}
 }
 
-export const createAdmininfo = createAsyncThunk(    
-  '/admin/login',
-  async data => {
-    try {
-      
-      const res = axiosInstance.post('/admin/me/details', data)
+export const createAdmininfo = createAsyncThunk('/admin/login', async data => {
+  try {
+    const res = axiosInstance.post('/admin/me/details', data)
 
-      toast.promise(res, {
-        loading: 'Wait! creating',
-        success: data => {
-          return data?.data?.message
-        },
-        error: 'Failed to create'
-      })
-      console.log('data:>', data)
+    toast.promise(res, {
+      loading: 'Wait! creating',
+      success: data => {
+        return data?.data?.message
+      },
+      error: 'Failed to create'
+    })
+    console.log('data:>', data)
 
-      return (await res).data
-    } catch (error) {
-      toast.error(error?.response?.data?.message)
-    }
+    return (await res).data
+  } catch (error) {
+    toast.error(error?.response?.data?.message)
   }
-)
+})
 
 const adminInfoSlice = createSlice({
   name: 'infoAdmin',
@@ -43,8 +39,11 @@ const adminInfoSlice = createSlice({
       console.log('action', action)
       state.data = action?.payload?.adminDetails
 
-      localStorage.setItem('Infodata', JSON.stringify(action?.payload?.adminDetails))
-      console.log('DATA__',state.data)
+      localStorage.setItem(
+        'Infodata',
+        JSON.stringify(action?.payload?.adminDetails)
+      )
+      console.log('DATA__', state.data)
 
       // localStorage.setItem('adminIslogin', true)
       // // localStorage.setItem('role', action?.payload?.admin?.role)

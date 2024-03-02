@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const registerSlices = createSlice({
   name: "registerSlice",
   initialState:{
-   admineRegister:false,
+   admineRegister:true,
    studentRegister:false
   },
   reducers: {

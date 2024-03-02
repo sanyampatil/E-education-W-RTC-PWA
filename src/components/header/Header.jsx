@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
 import { toggleTheme } from '../../redux/slices/themeSlice'
-import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
+import { logoutAdminAccount } from   '../../redux/slices/adminAuthSlices'
 
 import studentauthSlices, {
   logoutStudentAccount
@@ -211,14 +211,14 @@ const Header = () => {
               {adminIslogin && (
                 <li>
                   <Link
-                    to='/community'
+                    to='admin/community'
                     className={
                       'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
                       (lightTheme ? '' : ' text-white')
                     }
                   >
                     adminCommunity
-                  </Link>
+                  </Link>   
                 </li>
               )}
               <li>

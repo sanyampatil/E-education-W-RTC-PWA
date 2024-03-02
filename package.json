@@ -30,6 +30,7 @@
     "react-toastify": "^10.0.4",
     "reactjs-popup": "^2.0.6",
     "socket.io-client": "^4.7.4",
+    "tldraw": "^2.1.0-canary.4cc823e22eab",
     "tw-elements-react": "^1.0.0-alpha2",
     "typewriter-effect": "^2.21.0"
   },
