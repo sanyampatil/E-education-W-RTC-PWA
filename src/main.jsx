@@ -23,7 +23,7 @@ import Welcome from './components/community/Welcome.jsx'
 
 import ChatArea from './components/community/ChatArea.jsx'
 import Users from './components/community/Users.jsx'
-import { Groups, Room } from '@mui/icons-material'
+import { Groups, Room, Upload } from '@mui/icons-material'
 import CreateGroups from './components/community/Creategroups.jsx'
 // import StudentSignup from './components/signup/StudentSingup.jsx'
 // import LoginStudent from './components/login/LoginStudent.jsx'
@@ -35,7 +35,7 @@ import Profile from './components/Profile.jsx'
 import Notes from './components/Notes/Notes.jsx'
 import MainContainer from './components/community/Maincontainer.jsx'
 import CreateNotes from './components/Notes/CreateNotes.jsx'
-// import UploadNotes from './components/Notes/UploadNotes.jsx'
+import UploadNotes from './components/Notes/UploadNotes.jsx'
 import CheckNotes from './components/Notes/CheckNotes.jsx'
 
 const router = createBrowserRouter(
@@ -66,7 +66,7 @@ const router = createBrowserRouter(
 
       <Route path='/notes' element={<Notes />} />
       <Route path='/notes/create-notes' element={<CreateNotes />} />
-      {/* <Route path='/notes/create-upload' element={<UploaddNotes />} /> */}
+      <Route path='/notes/upload-notes' element={<UploadNotes />} />
       <Route path='/notes/create-checke' element={<CheckNotes />} />
     </Route>
   )

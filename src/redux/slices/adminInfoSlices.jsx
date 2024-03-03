@@ -3,12 +3,16 @@ import axiosInstance from '../../helpers/axiosinstance.js'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import toast from 'react-hot-toast'
 
+
+
 const initialState = {
   data:
     localStorage.getItem('Infodata') != undefined
       ? JSON.parse(localStorage.getItem('Infodata'))
       : {}
 }
+
+
 
 export const createAdmininfo = createAsyncThunk('/admin/login', async data => {
   try {

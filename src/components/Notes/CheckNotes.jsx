@@ -2,7 +2,8 @@ import React from 'react'
 
 const CheckNotes = () => {
   return (
-    <div>CheckNotes</div>
+   <div className='w-full h-[90vh]'>
+   </div>
   )
 }
 
