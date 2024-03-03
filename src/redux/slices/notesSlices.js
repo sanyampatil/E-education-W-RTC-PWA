@@ -21,6 +21,6 @@ export const notesSlice = createSlice({
   }
 })
 
-export const { addNotes, removeNotes } = notesSlice.actions
+export const {addNotes, removeNotes} = notesSlice.actions
 
 export default notesSlice.reducer

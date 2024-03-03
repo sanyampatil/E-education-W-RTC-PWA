@@ -17,25 +17,21 @@ import { myContext } from './MainContainer'
 import { ImClearFormatting } from 'react-icons/im'
 
 function Sidebar () {
-
-  const io = server()
+  // const io = server()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const lightTheme = useSelector(state => state.themeKey)
   // const refresh = useSelector((state) => state.refreshKey);
 
-
   const { refresh, setRefresh } = useContext(myContext)
   console.log('Context API : refresh : ', refresh)
-
 
   const [conversations, setConversations] = useState([])
   // console.log("Conversations of Sidebar : ", conversations);
 
-// get data from localStorage 
+  // get data from localStorage
   const userData = JSON.parse(localStorage.getItem('userData'))
   // console.log("Data from LocalStorage : ", userData);
-
 
   const nav = useNavigate()
   if (!userData) {
@@ -43,11 +39,8 @@ function Sidebar () {
     nav('/')
   }
 
-
   const user = userData.data
   // console.log('user from sliderbar', user)
-
-
 
   useEffect(() => {
     // console.log("Sidebar : ", user.token);
@@ -64,14 +57,7 @@ function Sidebar () {
     })
   }, [refresh])
 
-
-
-
-
   // console.log('conversation', conversations)
-
-
-
 
   return (
     <div className='sidebar-container'>

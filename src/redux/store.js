@@ -5,7 +5,7 @@ import studentauthSlice from './slices/studentauthSlices'
 import registerSlices from './slices/registerSlices'
 import refreshSidebar from './slices/refreshsidebar'
 import adminInfoSlices from './slices/adminInfoSlices'
-import { notesSlice } from './slices/NotesSlices'
+import notesSlice from './slices/NotesSlices'
 const store = configureStore({
   reducer: {
     themeKey: themeSliceReducer,
@@ -14,7 +14,7 @@ const store = configureStore({
     register: registerSlices,
     refreshKey: refreshSidebar,
     Admininfo: adminInfoSlices,
-    notes: notesSlice
+    notesSlice
   },
   devTools: true
 })

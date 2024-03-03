@@ -9,7 +9,8 @@ import { useParams } from 'react-router-dom'
 import Skeleton from '@mui/material/Skeleton'
 import axios from 'axios'
 import { myContext } from './MainContainer'
-
+import { Socket } from 'socket.io-client'
+var socket ,chat
 function ChatArea () {
   const lightTheme = useSelector(state => state.themeKey)
   const [messageContent, setMessageContent] = useState('')
@@ -19,19 +20,31 @@ function ChatArea () {
   // console.log(chat_id, chat_user);
   const userData = JSON.parse(localStorage.getItem('userData'))
   const [allMessages, setAllMessages] = useState([])
+  const [allMessageCopy, setallMessageCopy] = useState([])
   // console.log("Chat area id : ", chat_id._id);
   // const refresh = useSelector((state) => state.refreshKey);
   const { refresh, setRefresh } = useContext(myContext)
   const [loaded, setloaded] = useState(false)
-const ENDPOINT = ""
+  const [socketConnectionStatus, setsocketConnectionStatus] = useState(false)
+const ENDPOINT = "http://localhost:7861/api/v1"
+
+
+
   const sendMessage = () => {
+
+
+
     console.log('chat Area ')
     // console.log("SendMessage Fired to", chat_id._id);
+
+
+
+    var data = null
     const config = {
       headers: {
         Authorization: `Bearer ${userData.data.token}`
-      }
-    }
+      },
+    };
     axios
       .post(
         'http://localhost:7861/api/v1/message/',
@@ -41,15 +54,42 @@ const ENDPOINT = ""
         },
         config
       )
-      .then(({ data }) => {
+      .then(({ response }) => {
+        data = response
         console.log('Message Fired')
-      })
+      });
+      socket.emit("newMessage",data)
   }
 
   
   // const scrollToBottom = () => {
   //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   // };
+
+  // connetect to socket
+useEffect(()=>{
+  socket.io(ENDPOINT)
+  socket.emit("setup",userData)
+  socket.io("connection",()=>{
+  setsocketConnectionStatus(!socketConnectionStatus                             )
+
+  })
+},[])
+
+// new message recieved
+useEffect(()=>{
+  socket.on("message recieved ",(newMessage)=>{
+    if(!allMessageCopy || allMessageCopy.id !== newMessage._id)
+    {
+
+    }else{
+      setAllMessages([...allMessages],newMessage)
+    }
+  })
+})
+
+
+
 
   useEffect(() => {
     console.log('Users refreshed')
@@ -63,8 +103,11 @@ const ENDPOINT = ""
       .then(({ data }) => {
         setAllMessages(data)
         setloaded(true)
+
+        socket.emit("join chat",chat_id)
         console.log('Data from Acess Chat API ', data)
       })
+      setAllMessagesCopy(allMessages)
     // scrollToBottom();
   }, [refresh, chat_id, userData.data.token])
 
