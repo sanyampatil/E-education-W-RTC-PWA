@@ -18,9 +18,6 @@ function MainContainer () {
         >
           <Sidebar />
           <Outlet />
-          <div className=' mt-[20%]'>
-            <DownMenuBar />
-          </div>
         </myContext.Provider>
         {/* <Welcome /> */}
         {/* <CreateGroups /> */}

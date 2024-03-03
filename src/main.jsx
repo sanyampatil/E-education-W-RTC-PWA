@@ -19,8 +19,8 @@ import { Toaster } from 'react-hot-toast'
 import Error from './components/Error.jsx'
 import Signup from './components/signup/Signup.jsx'
 import ChatCommunity from './components/community/ChatCommunity.jsx'
-import MainContainer from './components/community/MainContainer.jsx'
 import Welcome from './components/community/Welcome.jsx'
+
 import ChatArea from './components/community/ChatArea.jsx'
 import Users from './components/community/Users.jsx'
 import { Groups, Room } from '@mui/icons-material'
@@ -33,9 +33,7 @@ import MainRoom from './components/classroom/MainRoom.jsx'
 import PopupmodelAdmin from './components/signup/PopupmodelAdmin.jsx'
 import Profile from './components/Profile.jsx'
 import Notes from './components/Notes/Notes.jsx'
-
-
-
+import MainContainer from './components/community/Maincontainer.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

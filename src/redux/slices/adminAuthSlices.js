@@ -4,11 +4,8 @@ import axiosInstance from '../../helpers/axiosinstance.js'
 
 const initialState = {
   adminIslogin: localStorage.getItem('adminIslogin') || false,
-  role: localStorage.getItem('role') || '',
-  data:
-    localStorage.getItem('data') != undefined
-      ? JSON.parse(localStorage.getItem('data'))
-      : {}
+  role: localStorage.getItem('role') || '', 
+  data:localStorage.getItem('data') != undefined? JSON.parse(localStorage.getItem('data')): {}
 }
 
 export const createAdminAccount = createAsyncThunk(

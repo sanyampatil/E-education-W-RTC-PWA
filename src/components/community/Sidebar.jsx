@@ -25,7 +25,7 @@ function Sidebar () {
   console.log('Context API : refresh : ', refresh)
   const [conversations, setConversations] = useState([])
   // console.log("Conversations of Sidebar : ", conversations);
-  
+
   const userData = JSON.parse(localStorage.getItem('userData'))
   // console.log("Data from LocalStorage : ", userData);
   const nav = useNavigate()
@@ -135,7 +135,7 @@ function Sidebar () {
                 key={index}
                 onClick={() => {
                   console.log('Refresh fired from sidebar')
-                  dispatch(refreshSidebarFun());
+                  dispatch(refreshSidebarFun())
                   // setRefresh(!refresh)
                 }}
               >
