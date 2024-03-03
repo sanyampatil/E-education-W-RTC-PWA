@@ -34,15 +34,17 @@ import PopupmodelAdmin from './components/signup/PopupmodelAdmin.jsx'
 import Profile from './components/Profile.jsx'
 import Notes from './components/Notes/Notes.jsx'
 import MainContainer from './components/community/Maincontainer.jsx'
+import CreateNotes from './components/Notes/CreateNotes.jsx'
+// import UploadNotes from './components/Notes/UploadNotes.jsx'
+import CheckNotes from './components/Notes/CheckNotes.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='*' element={<Error />} />
-      <Route path='/community' element={<LoginRo />} />
-      <Route path='/notes' element={<Notes />} />
 
+      <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/admin/signup' element={<Signup />} />
@@ -61,6 +63,11 @@ const router = createBrowserRouter(
           element={<CreateGroups />}
         />
       </Route>
+
+      <Route path='/notes' element={<Notes />} />
+      <Route path='/notes/create-notes' element={<CreateNotes />} />
+      {/* <Route path='/notes/create-upload' element={<UploaddNotes />} /> */}
+      <Route path='/notes/create-checke' element={<CheckNotes />} />
     </Route>
   )
 )
