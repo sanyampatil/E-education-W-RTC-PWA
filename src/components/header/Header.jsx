@@ -4,25 +4,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import SignupPopUp from '../signup/Popup'
 import Signup from '../signup/Signup'
 import { toggleTheme } from '../../redux/slices/themeSlice'
-import { logoutAdminAccount } from   '../../redux/slices/adminAuthSlices'
-
+import { logoutAdminAccount } from '../../redux/slices/adminAuthSlices'
+import Typewriter from 'typewriter-effect'
 import studentauthSlices, {
   logoutStudentAccount
 } from '../../redux/slices/studentauthSlices'
 import NightlightIcon from '@mui/icons-material/Nightlight'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { IconButton } from '@mui/material'
+import TypewriterComponent from 'typewriter-effect'
+import { BsPersonCircle } from 'react-icons/bs'
 
 const Header = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [showSignup, setshowSignup] = useState(false)
+  const [imgGet, setimgGet] = useState(false)
   const lightTheme = useSelector(state => state.themeKey)
   const adminIslogin = useSelector(state => state?.adminAuth?.adminIslogin)
   const StudentRegister = useSelector(state => state.register.studentRegister)
   const AdminRegister = useSelector(state => state.register.admineRegister)
 
   const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
+
+  const data = useSelector(state => state.Admininfo.data)
+  console.log('adminDetail', data)
+
+  // const imageGet = useSelector(state => state.Admininfo.data.data?.avatar?.secure_url)
+  // console.log('image',imageGet)
 
   // for displaying the options acc to role
   const role = useSelector(state => state?.auth?.role)
@@ -41,8 +50,7 @@ const Header = () => {
     if (res?.payload?.success) navigate('/')
   }
 
-  function handelLoginBtnClk()
-  {
+  function handelLoginBtnClk () {
     dispatch()
   }
 
@@ -91,7 +99,12 @@ const Header = () => {
                   type='button'
                   className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
-                  {AdminRegister && <Link to='/admin/login' onClick={handelLoginBtnClk}> A-login</Link>}
+                  {AdminRegister && (
+                    <Link to='/admin/login' onClick={handelLoginBtnClk}>
+                      {' '}
+                      A-login
+                    </Link>
+                  )}
                   {StudentRegister && (
                     <Link to='/student/login'> Ahh-login</Link>
                   )}
@@ -102,12 +115,26 @@ const Header = () => {
 
             {adminIslogin && (
               <ul className=' flex gap-5 '>
-                <button
-                  type='button'
-                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-                >
-                  <Link to='admin/profile'>admin Profile</Link>
-                </button>
+                <div className='text-white flex  items-center justify-center gap-2  cursor-pointer  '>
+                   {data?.avatar?.secure_url && (
+                    <img
+                      className='relative inline-block h-10 w-14   rounded-lg object-cover object-center'
+                      alt='Image placeholder'
+                      src={data?.avatar?.secure_url}
+                    />
+                  )}
+                  <div className=' w-[10vw] h-10 bg-slate-900  flex items-center rounded-lg '>
+                    <Typewriter
+                      options={{
+                        strings: ['hii!... Admin'],
+                        autoStart: true,
+                        loop: true,
+                        cursor: '',
+                        wrapperClassName: 'typewriterpara'
+                      }}
+                    />
+                  </div>
+                </div>
 
                 <button
                   type='button'
@@ -196,17 +223,17 @@ const Header = () => {
                 </Link>
               </li>
               {!adminIslogin && (
-              <li>
-                <Link
-                  to='/community'
-                  className={
-                    'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
-                    (lightTheme ? '' : ' text-white')
-                  }
-                >
-                  community
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to='/community'
+                    className={
+                      'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    community
+                  </Link>
+                </li>
               )}
               {adminIslogin && (
                 <li>
@@ -218,7 +245,7 @@ const Header = () => {
                     }
                   >
                     adminCommunity
-                  </Link>   
+                  </Link>
                 </li>
               )}
               <li>

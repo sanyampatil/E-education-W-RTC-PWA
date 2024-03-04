@@ -49,7 +49,7 @@ const Home = () => {
               <Typewriter
                 options={{
                   strings: [
-                    'The video chat',                                                       
+                    'The video chat',
                     'The group chat app',
                     'the notes creating '
                   ],

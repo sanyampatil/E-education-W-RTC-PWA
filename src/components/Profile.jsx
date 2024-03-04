@@ -4,18 +4,19 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Profile = () => {
   const dispatch = useDispatch()
-      
+
   // useEffect(() => {
   //   getdata()
   // }, [])
 
   const data = useSelector(state => state.Admininfo.data)
+
   console.log('adminDetail', data)
 
   return (
     <>
       <main className='profile-paget '>
-        x
+        
         <section className='relative '>
           <div className='absolute  w-full h-[100vh]  '>
             <img
@@ -30,7 +31,7 @@ const Profile = () => {
               className='w-full h-full absolute opacity-50 bg-black'
             ></span>
           </div>
-          <div
+          {/* <div
             className='top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px'
             // style='transform: translateZ(0px)'
           >
@@ -48,11 +49,21 @@ const Profile = () => {
                 points='2560 0 2560 100 0 100'
               ></polygon>
             </svg>
-          </div>
+          </div> */}
+
+          <div></div>
         </section>
-        <section className='relative bg-blueGray-200 border-2  border-red-900 '>
+        <section className='relative bg-blueGray-200 border-1  border-red-200 '>
           <div className='container  p-10 relative'>
             <div className='  flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-[40vh]'>
+              <div className='flex items-center justify-center'>
+                <h1 className='  absolute top-[10%] w-[25vw] h-[50vh]   border-red-200 rounded-[50%] '>
+                  <img
+                    src={data?.avatar?.secure_url}
+                    className='w-[25vw] h-[50vh] rounded-[50%]'
+                  />
+                </h1>
+              </div>
               <div className='px-6'>
                 <div className='flex flex-wrap justify-center'>
                   <div className='w-full lg:w-3/12 px-4 lg:order-2 flex justify-center'>
