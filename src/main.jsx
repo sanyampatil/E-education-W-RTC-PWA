@@ -37,6 +37,8 @@ import MainContainer from './components/community/Maincontainer.jsx'
 import CreateNotes from './components/Notes/CreateNotes.jsx'
 import UploadNotes from './components/Notes/UploadNotes.jsx'
 import CheckNotes from './components/Notes/CheckNotes.jsx'
+import ClassroomOption from './components/classroom/ClassroomOption.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,6 +48,8 @@ const router = createBrowserRouter(
 
       <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
+      <Route path='/classroom-Option' element={<ClassroomOption/>} />
+
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />

@@ -24,8 +24,15 @@ const Header = () => {
   const adminIslogin = useSelector(state => state?.adminAuth?.adminIslogin)
   const StudentRegister = useSelector(state => state.register.studentRegister)
   const AdminRegister = useSelector(state => state.register.admineRegister)
-
   const studentIslogged = useSelector(state => state?.stuAuth?.studentIslogged)
+
+  // accss local storage data
+
+  const stuIsLogin = localStorage.getItem('stuIsLogin')
+  console.log('student is login ', stuIsLogin)
+
+  const AdminIsLogin = localStorage.getItem('adminIslogin')
+  console.log('AdminLogin:::-', AdminIsLogin)
 
   const data = useSelector(state => state.Admininfo.data)
   console.log('adminDetail', data)
@@ -82,7 +89,7 @@ const Header = () => {
             </span>
           </a>
           <div className='flex gap-3 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-            {!adminIslogin && !studentIslogged && (
+            {!adminIslogin && !stuIsLogin && (
               <ul className=' flex gap-5'>
                 <button
                   type='button'
@@ -115,32 +122,71 @@ const Header = () => {
 
             {adminIslogin && (
               <ul className=' flex gap-5 '>
-                <div className='text-white flex  items-center justify-center gap-2  cursor-pointer  '>
-                   {data?.avatar?.secure_url && (
-                    <img
-                      className='relative inline-block h-10 w-14   rounded-lg object-cover object-center'
-                      alt='Image placeholder'
-                      src={data?.avatar?.secure_url}
-                    />
-                  )}
-                  <div className=' w-[10vw] h-10 bg-slate-900  flex items-center rounded-lg '>
-                    <Typewriter
-                      options={{
-                        strings: ['hii!... Admin'],
-                        autoStart: true,
-                        loop: true,
-                        cursor: '',
-                        wrapperClassName: 'typewriterpara'
-                      }}
-                    />
+                <div>
+                  <div className='text-white flex items-center justify-center gap-2 cursor-pointer border-2 border-gray-900  rounded-xl p-2 '>
+                    <Link to='/admin/profile'>
+                      {data?.avatar?.secure_url && (
+                        <img
+                          className='relative inline-block h-10 w-14   rounded-lg object-cover object-center'
+                          alt='Image placeholder'
+                          src={data?.avatar?.secure_url}
+                        />
+                      )}
+                    </Link>
+                    <div className=' w-[10vw] h-10 bg-slate-900   flex items-center pl-3   rounded-lg '>
+                      <Typewriter
+                        options={{
+                          strings: ['hii!... Admin'],
+                          autoStart: true,
+                          loop: true,
+                          cursor: '',
+                          wrapperClassName: 'typewriterpara'
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
-
                 <button
                   type='button'
                   className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
                   <Link onClick={adminHandleLogout}>admin Logout</Link>
+                </button>
+              </ul>
+            )}
+
+            {stuIsLogin && (
+              <ul className=' flex gap-5 '>
+                <div>
+                  <div className='text-white flex items-center justify-center gap-2 cursor-pointer border-2 border-gray-900  rounded-xl p-1 '>
+                    <Link to='/admin/profile'>
+                      <div
+                        className={
+                          'relative inline-block  w-14 text-black  rounded-lg object-cover object-center text-[40px]' +
+                          (lightTheme ? '' : ' text-gray-600')
+                        }
+                      >
+                        <BsPersonCircle className=' ' />
+                      </div>
+                    </Link>
+                    <div className=' w-[10vw] h-10 bg-slate-900   flex items-center pl-3   rounded-lg '>
+                      <Typewriter
+                        options={{
+                          strings: ['hii!... student'],
+                          autoStart: true,
+                          loop: true,
+                          cursor: '',
+                          wrapperClassName: 'typewriterpara'
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type='button'
+                  className='  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                >
+                  <Link onClick={adminHandleLogout}>Logout</Link>
                 </button>
               </ul>
             )}

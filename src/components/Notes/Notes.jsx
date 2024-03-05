@@ -42,18 +42,22 @@ const Notes = () => {
                 </button>
               </Link>
             )}
-            <Link to='/notes/upload-notes'>
-              <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
-                {' '}
-                upload notes
-              </button>
-            </Link>
 
-            <Link to='/notes/create-notes'>
-              <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
-                check notes
-              </button>
-            </Link>
+            {!StudentIsLogin && (
+              <Link to='/notes/upload-notes'>
+                <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+                  {' '}
+                  upload notes
+                </button>
+              </Link>
+            )}
+            {!StudentIsLogin && (
+              <Link to='/notes/create-notes'>
+                <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+                  check notes
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

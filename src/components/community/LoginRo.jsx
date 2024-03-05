@@ -8,7 +8,6 @@ import Toaster from './Toaster'
 import chatmsg from '../../images/chatmsg.png'
 import chatmsg2 from '../../images/chatmsg2.png'
 
-
 import { useSelector } from 'react-redux'
 
 function LoginRo () {
@@ -43,7 +42,12 @@ function LoginRo () {
       console.log('Login : ', response)
       setLogInStatus({ msg: 'Success', key: Math.random() })
       setLoading(false)
-      const localData=localStorage.setItem('userData', JSON.stringify(response))
+      const localData = localStorage.setItem(
+        'userData',
+        JSON.stringify(response)
+      )
+
+      localStorage.setItem('stuIsLogin', true)
       console.log(localData)
       navigate('/community/mychat/welcome')
     } catch (error) {
@@ -68,10 +72,11 @@ function LoginRo () {
         'http://localhost:7861/api/v1/student/register/',
         data,
         config
-        )
+      )
       console.log('signup', response)
       setSignInStatus({ msg: 'Success', key: Math.random() })
       localStorage.setItem('userData', JSON.stringify(response))
+      localStorage.setItem('stuIsLogin', true)
       navigate('/community/mychat/welcome')
       setLoading(false)
     } catch (error) {
@@ -91,7 +96,7 @@ function LoginRo () {
       setLoading(false)
     }
   }
-    
+
   return (
     <>
       <Backdrop
@@ -128,7 +133,7 @@ function LoginRo () {
             </div>
           </div>
         )}
-          {showlogin && (
+        {showlogin && (
           <div className='image-container flex '>
             <img src={chatmsg2} alt='Logo' className=' w-[70%]' />
 
@@ -157,7 +162,10 @@ function LoginRo () {
         )}
         {showlogin && (
           <div
-            className={'login-box  border-2 border-black' + (lightTheme ? '' : 'text-white bg-black')}
+            className={
+              'login-box  border-2 border-black' +
+              (lightTheme ? '' : 'text-white bg-black')
+            }
           >
             <p className='login-text text-black'>Login to your Account</p>
             <TextField
@@ -214,7 +222,11 @@ function LoginRo () {
           </div>
         )}
         {!showlogin && (
-          <div className={'login-box border-2 border-black' + (lightTheme ? '' : '')}>
+          <div
+            className={
+              'login-box border-2 border-black' + (lightTheme ? '' : '')
+            }
+          >
             <p className='login-text'>Create your Account</p>
             <TextField
               onChange={changeHandler}
