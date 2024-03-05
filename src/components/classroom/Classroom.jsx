@@ -1,13 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import webinarbro from '../../images/webinarbro.png'
+import webinar from '../../images/webinar.png'
+import TeaClass from '../../images/TeaClass.png'
 
+
+// import chatmsg2 from '../../images/chatmsg2.png'
 const Classroom = () => {
   const lightTheme = useSelector(state => state.themeKey)
 
   return (
     <div>
       <div className=' h-[90vh] flex items-center  justify-evenly  p-10 '>
+        <div className=' w-[50vw] h-[70vh]  mt-10 '>
+        {/* <img src={webinar} alt='Logo' className=' w-[70%]' /> */}
+        <img src={TeaClass} alt='Logo' className=' w-[70%]' />
+
+        {/* <img src={webinarbro} alt='Logo' className=' w-[70%]' /> */}
+        
+
+        </div>
         <div className='w-[40vw] h-[60vh] '>
           <div className='ml-5'>
             <h1
@@ -17,8 +30,7 @@ const Classroom = () => {
             >
               let's start with EduCollab{' '}
             </h1>
-            <p className={'' + (lightTheme ? '' : ' text-gray-800')
-              }>
+            <p className={'' + (lightTheme ? '' : ' text-gray-800')}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Accusantium doloremque architecto, doloribus adistinctio fugiat
               similique ipsa commodi reprehenderit est facere necessitatibus!
@@ -32,8 +44,6 @@ const Classroom = () => {
             </Link>
           </div>
         </div>
-
-        <div className=' w-[50vw] h-[70vh] border-2 mt-10 border-red-500'></div>
       </div>
     </div>
   )
