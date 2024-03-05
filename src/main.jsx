@@ -39,6 +39,7 @@ import UploadNotes from './components/Notes/UploadNotes.jsx'
 import CheckNotes from './components/Notes/CheckNotes.jsx'
 import ClassroomOption from './components/classroom/ClassroomOption.jsx'
 import DoutSlove from './components/classroom/DoutSlove.jsx'
+import DoutForm from './components/classroom/DoutForm.jsx'
 
 
 const router = createBrowserRouter(
@@ -53,6 +54,9 @@ const router = createBrowserRouter(
 
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/class/dout' element={<DoutSlove />} />
+      <Route path='/fill-dout' element={<DoutForm/>} />
+
+
 
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />

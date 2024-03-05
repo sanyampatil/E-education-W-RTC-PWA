@@ -1,5 +1,6 @@
 import React from 'react'
 import Think from '../../images/Think.png'
+import { Link } from 'react-router-dom'
 
 const DoutSlove = () => {
   return (
@@ -10,7 +11,7 @@ const DoutSlove = () => {
           <div className='bg-white w-[53vw] ml-3 mt-2 h-16  '>
             <ul className=' cursor-pointer flex items-center pt-2 justify-end gap-10 text-xl mr-2'>
               <li className='bg-blue-500 p-2 rounded-md '>
-                <a href=''>Fill Dout</a>
+             <Link to="/fill-dout"> Douts</Link>
               </li>
               <li className='bg-blue-500 p-2 rounded-md '>
                 <a href=''>view schedule</a>
