@@ -12,7 +12,7 @@ import studentauthSlices, {
 import NightlightIcon from '@mui/icons-material/Nightlight'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { IconButton } from '@mui/material'
-import TypewriterComponent from 'typewriter-effect'
+// import TypewriterComponent from 'typewriter-effect'
 import { BsPersonCircle } from 'react-icons/bs'
 
 const Header = () => {
@@ -136,7 +136,7 @@ const Header = () => {
                     <div className=' w-[10vw] h-10 bg-slate-900   flex items-center pl-3   rounded-lg '>
                       <Typewriter
                         options={{
-                          strings: ['hii!... Admin'],
+                          strings: [`HII...${data.fullName}`],
                           autoStart: true,
                           loop: true,
                           cursor: '',
@@ -295,15 +295,29 @@ const Header = () => {
                 </li>
               )}
               <li>
-                <Link
-                  to='/classroom'
-                  className={
-                    'block py-2 px-3 text-black md:p-0 md:dark:hover:text-blue-500 dark:t   ext-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
-                    (lightTheme ? '' : ' text-white')
-                  }
-                >
-                  classroom
-                </Link>
+                {stuIsLogin && (
+                  <Link
+                    to='/classroom'
+                    className={
+                      'block py-2 px-3 text-black md:p-0 md:dark:hover:text-blue-500 dark:t   ext-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    classroom
+                  </Link> 
+                )}
+
+                {adminIslogin && (
+                  <Link
+                    to='/admin-dashboard'
+                    className={
+                      'block py-2 px-3 text-black md:p-0 md:dark:hover:text-blue-500 dark:t   ext-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    dashborad
+                  </Link>
+                )}
               </li>
               <li>
                 <Link

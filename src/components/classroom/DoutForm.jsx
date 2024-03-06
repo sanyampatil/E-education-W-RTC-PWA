@@ -5,21 +5,27 @@ import { toast } from 'react-hot-toast'
 import { Backdrop, Button, CircularProgress, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
-import { TextareaAutosize } from '@mui/base/TextareaAutosize'
+// import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
 
+import { TextareaAutosize } from '@mui/base/TextareaAutosize'
 import { useState } from 'react'
 import Dout from '../../images/Dout.png'
+import { sendDout } from '../../redux/slices/classroomSlices'
+import { calcLength } from 'framer-motion'
 
 const DoutForm = () => {
+  const userData =JSON.parse( localStorage.getItem('userData'))
+  const userId = userData.data._id
+  // console.log('userData', userData)
+  // console.log("userId",userId)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const [infoData, setInfoData] = useState({
-
     studentName: '',
-    className: '',
-    doubt: '',
+    class_name: '',
+    doubt: ''
   })
 
   function handleUserInput (e) {
@@ -29,33 +35,30 @@ const DoutForm = () => {
       [name]: value
     })
   }
+  console.log('infoData', infoData)
 
-
-  async function createAdminInfo (event) {
+  async function submitDoutForm (event) {
     event.preventDefault()
-    if (
-      !infoData.studentName ||
-      !infoData.className ||
-      !infoData.doubt 
-    ) {
-      toast.error('Please fill all the details')
-      return
-    }
-
+    // if (!infoData.studentName || !infoData.class_name || !infoData.doubt) {
+    //   toast.error('Please fill all the details')
+    //   return
+    // }
 
     const formData = new FormData()
     formData.append('studentName', infoData.studentName)
-    formData.append('className', infoData.className)
+    formData.append('class_name', infoData.class_name)
     formData.append('doubt', infoData.doubt)
+    formData.append('_id',userId)
 
     // dispatch create account action
+
     const response = await dispatch(sendDout(formData))
     console.log('res>>', response)
     // if (response?.payload?.success) navigate('/admin/profile')
 
     setInfoData({
       studentName: '',
-      className: '',
+      class_name: '',
       doubt: ''
     })
   }
@@ -68,47 +71,50 @@ const DoutForm = () => {
         <div className=' form '>
           <form
             noValidate
-            // onSubmit={sendDout}
-            className='flex ml-20 justify-center  rounded-lg p-5 text-white  h-[70vh] w-[40vw] '
+            onSubmit={submitDoutForm}
+            className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[70vh] w-[40vw]  m-5 
+              bg-slate-700 '
           >
-            <div className='border-2  p-10 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-10'>
-              <TextField
-                onChange={handleUserInput}
-                id='standard-basic'
-                label='Enter student Name'
-                variant='outlined'
-                color=''
-                name='studentName'
-                helperText=''
-                value={infoData.username}
-              />
+            <div className='border-2  p-5  w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
+              <h1 className='text-[1.7rem]'>please fill all information</h1>
 
               <div className='  flex flex-col gap-1'>
-                <TextField
+                <input
+                  type='text'
+                  required
+                  name='studentName'
+                  id='studentName'
+                  placeholder='Enter your studentName..'
+                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  id='standard-basic'
-                  label='Enter User class'
-                  variant='outlined'
-                  color=''
-                  name='ClassName'
-                  helperText=''
-                  value={infoData.ClassName}
+                  value={infoData.studentName}
+                />{' '}
+              </div>
+              <div className=' flex flex-col gap-1'>
+                <input
+                  type='text'
+                  required
+                  name='class_name'
+                  id='class_name'
+                  placeholder='Enter your class_name..'
+                  className='bg-transparent px-2 py-1 border'
+                  onChange={handleUserInput}
+                  value={infoData.class_name}
                 />
               </div>
 
               <div className=' flex flex-col gap-1'>
-                <TextField
+                <input
+                  type='text'
+                  required
+                  name='doubt'
+                  id='doubt'
+                  placeholder='Enter your doubt..'
+                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-
-                  id='outlined-multiline-flexible'
-                  label='Enter you Dout '
-                  multiline
-                  maxRows={4}
-                  // value={infoData.doubt}
-
+                  value={infoData.doubt}
                 />
               </div>
-
               <button
                 type='submit'
                 className=' bg-blue-900  rounded-lg text-white  p-3  font-semibold text-lg cursor-pointer'

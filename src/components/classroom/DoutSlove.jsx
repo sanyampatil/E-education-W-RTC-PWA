@@ -20,7 +20,7 @@ const DoutSlove = () => {
             </ul>
 
             <div>
-             <p className=  'text-[4rem] font-semibold'>solve your     </p>
+             <p className=    'text-[4rem] font-semibold'>solve your     </p>
              <p className='text-[4rem] font-semibold'>problem with   </p>
              <p className=' font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, sunt?</p>
 

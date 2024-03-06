@@ -55,7 +55,7 @@ function ChatArea () {
         data = response
         console.log('Message Fired')
       })
-    socket.emit('newMessage', data)
+    sock.et.emit('newMessage', data)
   }
 
   // const scrollToBottom = () => {
