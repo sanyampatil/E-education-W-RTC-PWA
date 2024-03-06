@@ -11,15 +11,16 @@ const DoutSlove = () => {
           <div className='bg-white w-[53vw] ml-3 mt-2 h-16  '>
             <ul className=' cursor-pointer flex items-center pt-2 justify-end gap-10 text-xl mr-2'>
               <li className='bg-blue-500 p-2 rounded-md '>
-             <Link to="/fill-dout"> Douts</Link>
+             <Link to="/fill-doubt"> doubt</Link>
               </li>
+
               <li className='bg-blue-500 p-2 rounded-md '>
-                <a href=''>view schedule</a>
+              <Link to="/view-sche">view schedule</Link>
               </li>
             </ul>
 
             <div>
-             <p className='text-[4rem] font-semibold'>solve your     </p>
+             <p className=  'text-[4rem] font-semibold'>solve your     </p>
              <p className='text-[4rem] font-semibold'>problem with   </p>
              <p className=' font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, sunt?</p>
 

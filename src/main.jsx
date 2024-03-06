@@ -23,7 +23,7 @@ import Welcome from './components/community/Welcome.jsx'
 
 import ChatArea from './components/community/ChatArea.jsx'
 import Users from './components/community/Users.jsx'
-import { Groups, Room, Upload } from '@mui/icons-material'
+import { Groups, Room, Schedule, Upload } from '@mui/icons-material'
 import CreateGroups from './components/community/Creategroups.jsx'
 // import StudentSignup from './components/signup/StudentSingup.jsx'
 // import LoginStudent from './components/login/LoginStudent.jsx'
@@ -40,6 +40,7 @@ import CheckNotes from './components/Notes/CheckNotes.jsx'
 import ClassroomOption from './components/classroom/ClassroomOption.jsx'
 import DoutSlove from './components/classroom/DoutSlove.jsx'
 import DoutForm from './components/classroom/DoutForm.jsx'
+import ViewSchedule from './components/classroom/ViewSchedule.jsx'
 
 
 const router = createBrowserRouter(
@@ -53,8 +54,10 @@ const router = createBrowserRouter(
       <Route path='/classroom-Option' element={<ClassroomOption/>} />
 
       <Route path='/room/:roomId' element={<MainRoom />} />
-      <Route path='/class/dout' element={<DoutSlove />} />
-      <Route path='/fill-dout' element={<DoutForm/>} />
+      <Route path='/class/doubt' element={<DoutSlove />} />
+      <Route path='/fill-doubt' element={<DoutForm/>} />
+      <Route path='/view-sche' element={<ViewSchedule/>} />
+
 
 
 

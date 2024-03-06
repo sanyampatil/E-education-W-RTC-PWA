@@ -21,7 +21,7 @@ const ClassroomOption = () => {
           className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col items-center  cursor-pointer '
           onClick={() => setshowP2PPopUp(true)}
         >
-          <Link to="/class/dout">
+          <Link to="/class/doubt">
             {/* {showP2PPopUp && <P2pPopup closeahes={closeahes} />} */}
             <p className='text-4xl'> Dout solving class</p>
 

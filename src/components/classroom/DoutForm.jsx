@@ -19,7 +19,7 @@ const DoutForm = () => {
 
     studentName: '',
     className: '',
-    doutes: '',
+    doubt: '',
   })
 
   function handleUserInput (e) {
@@ -36,7 +36,7 @@ const DoutForm = () => {
     if (
       !infoData.studentName ||
       !infoData.className ||
-      !infoData.doutes 
+      !infoData.doubt 
     ) {
       toast.error('Please fill all the details')
       return
@@ -46,7 +46,7 @@ const DoutForm = () => {
     const formData = new FormData()
     formData.append('studentName', infoData.studentName)
     formData.append('className', infoData.className)
-    formData.append('doutes', infoData.doutes)
+    formData.append('doubt', infoData.doubt)
 
     // dispatch create account action
     const response = await dispatch(sendDout(formData))
@@ -56,7 +56,7 @@ const DoutForm = () => {
     setInfoData({
       studentName: '',
       className: '',
-      doutes: ''
+      doubt: ''
     })
   }
 
@@ -68,7 +68,7 @@ const DoutForm = () => {
         <div className=' form '>
           <form
             noValidate
-            onSubmit={sendDout}
+            // onSubmit={sendDout}
             className='flex ml-20 justify-center  rounded-lg p-5 text-white  h-[70vh] w-[40vw] '
           >
             <div className='border-2  p-10 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-10'>
@@ -104,7 +104,7 @@ const DoutForm = () => {
                   label='Enter you Dout '
                   multiline
                   maxRows={4}
-                  value={infoData.doutes}
+                  // value={infoData.doubt}
 
                 />
               </div>
