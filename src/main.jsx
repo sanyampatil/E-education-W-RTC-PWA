@@ -10,6 +10,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom'
+
 import Layout from './components/layout/HomeLayout.jsx'
 import Home from './components/home/Home.jsx'
 import Login from './components/login/Login.jsx'
@@ -20,10 +21,9 @@ import Error from './components/Error.jsx'
 import Signup from './components/signup/Signup.jsx'
 import ChatCommunity from './components/community/ChatCommunity.jsx'
 import Welcome from './components/community/Welcome.jsx'
-
 import ChatArea from './components/community/ChatArea.jsx'
 import Users from './components/community/Users.jsx'
-import { Groups, Room, Schedule, Upload } from '@mui/icons-material'
+import { Dashboard, Groups, Room, Schedule, Upload } from '@mui/icons-material'
 import CreateGroups from './components/community/Creategroups.jsx'
 // import StudentSignup from './components/signup/StudentSingup.jsx'
 // import LoginStudent from './components/login/LoginStudent.jsx'
@@ -41,7 +41,8 @@ import ClassroomOption from './components/classroom/ClassroomOption.jsx'
 import DoutSlove from './components/classroom/DoutSlove.jsx'
 import DoutForm from './components/classroom/DoutForm.jsx'
 import ViewSchedule from './components/classroom/ViewSchedule.jsx'
-
+import MyDoubts from './components/classroom/MyDoubts.jsx'
+import DashboardOne from './components/dashboard/DashboardOne.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,15 +52,15 @@ const router = createBrowserRouter(
 
       <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
-      <Route path='/classroom-Option' element={<ClassroomOption/>} />
+      <Route path='/classroom-Option' element={<ClassroomOption />} />
 
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/class/doubt' element={<DoutSlove />} />
-      <Route path='/fill-doubt' element={<DoutForm/>} />
-      <Route path='/view-sche' element={<ViewSchedule/>} />
+      <Route path='/fill-doubt' element={<DoutForm />} />
+      <Route path='/view-sche' element={<ViewSchedule />} />
+      <Route path='/my-doubts' element={<MyDoubts />} />
 
-
-
+      <Route path='/admin-dashboard' element={<DashboardOne />} />
 
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />

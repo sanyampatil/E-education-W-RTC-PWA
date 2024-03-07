@@ -11,7 +11,11 @@ const DoutSlove = () => {
           <div className='bg-white w-[53vw] ml-3 mt-2 h-16  '>
             <ul className=' cursor-pointer flex items-center pt-2 justify-end gap-10 text-xl mr-2'>
               <li className='bg-blue-500 p-2 rounded-md '>
-             <Link to="/fill-doubt"> doubt</Link>
+             <Link to="/fill-doubt"> send doubt</Link>
+              </li>
+
+              <li className='bg-blue-500 p-2 rounded-md '>
+             <Link to="/my-doubts"> mydoubts</Link>
               </li>
 
               <li className='bg-blue-500 p-2 rounded-md '>
@@ -20,7 +24,7 @@ const DoutSlove = () => {
             </ul>
 
             <div>
-             <p className=    'text-[4rem] font-semibold'>solve your     </p>
+             <p className='text-[4rem] font-semibold'>solve your     </p>
              <p className='text-[4rem] font-semibold'>problem with   </p>
              <p className=' font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, sunt?</p>
 
