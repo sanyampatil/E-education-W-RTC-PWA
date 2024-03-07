@@ -6,9 +6,13 @@ const MyDoubts = () => {
   const dispatch = useDispatch()
   const userData = JSON.parse(localStorage.getItem('userData'))
   const userId = userData.data._id
+  async function LoadData () {
+    const data = await dispatch(fetaAllDoubts(userId))
+    console.log('hey', data)
+  }
+
   useEffect(() => {
-    const data =  dispatch(fetaAllDoubts(userId))
-    console.log("hey",data)
+    LoadData()
   }, [])
   return <div>MyDoubts</div>
 }

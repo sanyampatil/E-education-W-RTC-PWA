@@ -4,7 +4,8 @@ import axiosInstance from '../../helpers/axiosinstance'
 import { BsCloudFog } from 'react-icons/bs'
 
 const initialState = {
-  DoutData: '',
+  Doubt: [],
+  AdminAllDout: [],
   data: ''
 }
 
@@ -35,7 +36,7 @@ export const sendDout = createAsyncThunk('/fill-doubt', async data => {
 export const fetaAllDoubts = createAsyncThunk('/my-doubts', async data => {
   console.log('daga', data)
   try {
-    const res = await axiosInstance.get(`/student/Doubt/fetch-AllDout/${data}`)
+    const res = axiosInstance.get(`/student/Doubt/fetch-AllDout/${data}`)
 
     console.log('aalo')
     toast.promise(res, {
@@ -46,6 +47,9 @@ export const fetaAllDoubts = createAsyncThunk('/my-doubts', async data => {
       },
       error: 'Failed to load your doubts'
     })
+
+    console.log('response fetaAllDoubts', res)
+
     return (await res).data
   } catch (error) {
     toast.error(error?.response?.data?.message)
@@ -80,7 +84,22 @@ const classroomSlices = createSlice({
   name: 'Doubt',
 
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(sendDout.fulfilled, (state, action) => {
+        localStorage.setItem('Doubt', JSON.stringify(action?.payload?.Student))
+        state.Doubt = action?.payload?.student
+      })
+
+      .addCase(AdminfetaAllDoubts.fulfilled, (state, action) => {
+        localStorage.setItem(
+          'AdminAllDout',
+          JSON.stringify(action?.payload?.allDoubts)
+        )
+        state.AdminAllDout = action?.payload?.allDoubts
+      })
+  }
 })
 
 export default classroomSlices.reducer

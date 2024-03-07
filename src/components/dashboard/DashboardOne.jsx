@@ -4,10 +4,16 @@ import { useDispatch } from 'react-redux'
 
 const DashboardOne = () => {
   const dispatch = useDispatch()
+
   console.log('hiii')
+
+  async function LoadData () {
+    const data = await dispatch(AdminfetaAllDoubts())
+    console.log('data --> AdminfetaAllDoubts', data)
+  }
+
   useEffect(() => {
-    const data = dispatch(AdminfetaAllDoubts())
-    console.log('data', data)
+    LoadData()
   }, [])
 
   return (

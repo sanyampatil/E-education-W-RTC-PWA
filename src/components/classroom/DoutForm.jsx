@@ -14,7 +14,7 @@ import { sendDout } from '../../redux/slices/classroomSlices'
 import { calcLength } from 'framer-motion'
 
 const DoutForm = () => {
-  const userData =JSON.parse( localStorage.getItem('userData'))
+  const userData = JSON.parse(localStorage.getItem('userData'))
   const userId = userData.data._id
   // console.log('userData', userData)
   // console.log("userId",userId)
@@ -48,13 +48,17 @@ const DoutForm = () => {
     formData.append('studentName', infoData.studentName)
     formData.append('class_name', infoData.class_name)
     formData.append('doubt', infoData.doubt)
-    formData.append('_id',userId)
+    formData.append('_id', userId)
 
     // dispatch create account action
 
     const response = await dispatch(sendDout(formData))
     console.log('res>>', response)
     // if (response?.payload?.success) navigate('/admin/profile')
+
+    if (response?.payload?.success) {
+      navigate('/my-doubts')
+    }
 
     setInfoData({
       studentName: '',
