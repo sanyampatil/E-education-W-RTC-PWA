@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { AdminfetaAllDoubts } from '../../redux/slices/classroomSlices'
 import { useDispatch } from 'react-redux'
+import { Outlet } from 'react-router-dom'
+import Manubar from './Menubar'
 
 const DashboardOne = () => {
   const dispatch = useDispatch()
@@ -18,7 +20,10 @@ const DashboardOne = () => {
 
   return (
     <>
-      <div className='w-full h-[90vh] bg-red-500'></div>
+      <div className='w-full h-[140vh] bg-red-500 flex items-center  justify-between'>
+        <Manubar />
+        <Outlet />
+      </div>
     </>
   )
 }

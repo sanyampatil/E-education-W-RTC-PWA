@@ -43,6 +43,7 @@ import DoutForm from './components/classroom/DoutForm.jsx'
 import ViewSchedule from './components/classroom/ViewSchedule.jsx'
 import MyDoubts from './components/classroom/MyDoubts.jsx'
 import DashboardOne from './components/dashboard/DashboardOne.jsx'
+import ViewStudent from './components/dashboard/ViewStudent.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,7 +61,12 @@ const router = createBrowserRouter(
       <Route path='/view-sche' element={<ViewSchedule />} />
       <Route path='/my-doubts' element={<MyDoubts />} />
 
-      <Route path='/admin-dashboard' element={<DashboardOne />} />
+      <Route path='/admin-dashboard' element={<DashboardOne />}>
+        <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />
+        <Route path='/admin-dashboard/view-Alldoubts' element={<MyDoubts />} />
+
+
+      </Route>
 
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />
