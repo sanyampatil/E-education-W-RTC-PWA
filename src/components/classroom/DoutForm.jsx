@@ -23,9 +23,9 @@ const DoutForm = () => {
   const navigate = useNavigate()
 
   const [infoData, setInfoData] = useState({
-    studentName: '',
+    subName: '',
     class_name: '',
-    doubt: ''
+    topicName: ''
   })
 
   function handleUserInput (e) {
@@ -39,15 +39,15 @@ const DoutForm = () => {
 
   async function submitDoutForm (event) {
     event.preventDefault()
-    // if (!infoData.studentName || !infoData.class_name || !infoData.doubt) {
+    // if (!infoData.subName || !infoData.class_name || !infoData.topicName) {
     //   toast.error('Please fill all the details')
     //   return
     // }
 
     const formData = new FormData()
-    formData.append('studentName', infoData.studentName)
+    formData.append('subName', infoData.subName)
     formData.append('class_name', infoData.class_name)
-    formData.append('doubt', infoData.doubt)
+    formData.append('topicName', infoData.topicName)
     formData.append('_id', userId)
 
     // dispatch create account action
@@ -61,9 +61,9 @@ const DoutForm = () => {
     }
 
     setInfoData({
-      studentName: '',
+      subName: '',
       class_name: '',
-      doubt: ''
+      topicName: ''
     })
   }
 
@@ -86,12 +86,12 @@ const DoutForm = () => {
                 <input
                   type='text'
                   required
-                  name='studentName'
-                  id='studentName'
-                  placeholder='Enter your studentName..'
+                  name='subName'
+                  id='subName'
+                  placeholder='Enter your subName..'
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  value={infoData.studentName}
+                  value={infoData.subName}
                 />{' '}
               </div>
               <div className=' flex flex-col gap-1'>
@@ -111,12 +111,12 @@ const DoutForm = () => {
                 <input
                   type='text'
                   required
-                  name='doubt'
-                  id='doubt'
-                  placeholder='Enter your doubt..'
+                  name='topicName'
+                  id='topicName'
+                  placeholder='Enter your topicName..'
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  value={infoData.doubt}
+                  value={infoData.topicName}
                 />
               </div>
               <button

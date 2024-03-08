@@ -53,27 +53,33 @@ const router = createBrowserRouter(
 
       <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
-      <Route path='/classroom-Option' element={<ClassroomOption />} />
 
+      {/* .....................................................>>>>>> */}
+      <Route path='/classroom-Option' element={<ClassroomOption />} />
       <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/class/doubt' element={<DoutSlove />} />
       <Route path='/fill-doubt' element={<DoutForm />} />
+      {/* ////----> student view sche   */}
       <Route path='/view-sche' element={<ViewSchedule />} />
+
       <Route path='/my-doubts' element={<MyDoubts />} />
 
+      {/* ___________________________________________________>>>> dashboard */}
       <Route path='/admin-dashboard' element={<DashboardOne />}>
         <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />
         <Route path='/admin-dashboard/view-Alldoubts' element={<MyDoubts />} />
-
-
       </Route>
 
+      {/* ___________________________________________________________>>>> authAdmin */}
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />
       <Route path='/admin/profile' element={<Profile />} />
 
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}
+
+      {/*____ ________________________________________________________>>>>comminuty */}
+
       <Route path='/community/mychat' element={<ChatCommunity />}>
         <Route path='/community/mychat/welcome' element={<Welcome />} />
         <Route path='/community/mychat/chat/:_id' element={<ChatArea />} />
@@ -85,10 +91,18 @@ const router = createBrowserRouter(
         />
       </Route>
 
+      {/* _____________________________________________________________________>>> Note? */}
+
       <Route path='/notes' element={<Notes />} />
       <Route path='/notes/create-notes' element={<CreateNotes />} />
-      <Route path='/notes/upload-notes' element={<UploadNotes />} />
+
+      {/* for Admin dashboard */}
+      {/* .................... */}
+      <Route path='/admin/notes/upload-notes' element={<UploadNotes />} />
       <Route path='/notes/create-checke' element={<CheckNotes />} />
+      {/* ............................... */}
+
+
     </Route>
   )
 )

@@ -40,9 +40,9 @@ const dashboardSlice = createSlice({
     builder.addCase(AdminfetchAllStudent.fulfilled, (state, action) => {
       localStorage.setItem(
         'studentData',
-        JSON.stringify(action?.payload?.allDoubts)
+        JSON.stringify(action?.payload?.student)
       )
-      state.studentData = action?.payload?.allDoubts
+      state.studentData = action?.payload?.student
     })
   }
 })

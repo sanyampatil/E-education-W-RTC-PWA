@@ -13,7 +13,9 @@ const ViewStudent = () => {
   useEffect(() => {
     LoadData()
   }, [])
-  return <div className='w-[50vw] h-[50vh] bg-white'></div>
+  return <div className='w-[50vw] h-[50vh] bg-white'>
+    
+  </div>
 }
 
 export default ViewStudent
