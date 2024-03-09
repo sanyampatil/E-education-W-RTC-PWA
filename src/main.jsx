@@ -44,6 +44,7 @@ import ViewSchedule from './components/classroom/ViewSchedule.jsx'
 import MyDoubts from './components/classroom/MyDoubts.jsx'
 import DashboardOne from './components/dashboard/DashboardOne.jsx'
 import ViewStudent from './components/dashboard/ViewStudent.jsx'
+import ViewNotes from './components/Notes/createNotes/ViewNotes.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -91,10 +92,12 @@ const router = createBrowserRouter(
         />
       </Route>
 
-      {/* _____________________________________________________________________>>> Note? */}
+      {/* __________________________________________________________ /student/notes/view-notes___________>>> Note? */}
 
       <Route path='/notes' element={<Notes />} />
       <Route path='/notes/create-notes' element={<CreateNotes />} />
+      <Route path='/student/notes/view-notes' element={<ViewNotes />} />
+
 
       {/* for Admin dashboard */}
       {/* .................... */}

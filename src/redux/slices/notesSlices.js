@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 const initialState = {
   // notes: [{ id: 1, text: 'Hello world' }]
 
-  upload: []
+  // uploadNotes: localStorage.getItem('uploadNotes') != undefined? JSON.parse(localStorage.getItem('uploadNotes')): {}
 }
 
 export const AdminNotesUpload = createAsyncThunk(
@@ -61,6 +61,43 @@ export const fetchNotes = createAsyncThunk(
   }
 )
 
+
+
+
+
+// /student/fetch-Notes/
+
+
+export const studentfetchNotes = createAsyncThunk(
+  '/student/notes/view-notes',
+  async () =>  {
+
+    // console.log('daga', data)
+    try {
+      const res = axiosInstance.get(`/admin-notes/student/fetch-Notes`)
+
+      console.log('aalo')
+      toast.promise(res, {
+        loading: 'Wait! to load your notes',
+
+        success: data => {
+          return data?.data?.message
+        },
+        error: 'Failed to load your notes'
+      })
+
+      console.log('response fetchNotes', res)
+
+      return (await res).data
+    } catch (error) {
+      toast.error(error?.response?.data?.message)
+    }
+  }
+)
+
+
+
+
 export const notesSlice = createSlice({
   name: 'note',
   initialState,
@@ -77,15 +114,25 @@ export const notesSlice = createSlice({
     // }
   },
 
+  
+
   extraReducers: builder => {
     builder.addCase(fetchNotes.fulfilled, (state, action) => {
       localStorage.setItem(
-        'upload',
-        JSON.stringify(action?.payload?.noteupload)
+        'uploadNotes',
+        JSON.stringify(action?.payload?.getnts)
       )
-        state.upload = action?.payload?.noteupload
+        state.uploadNotes = action?.payload?.getnts
     })
-  }
+
+    builder.addCase(studentfetchNotes.fulfilled, (state, action) => {
+      localStorage.setItem(
+        'uploadNotes',
+        JSON.stringify(action?.payload?.studentNotes)
+      )
+        state.uploadNotes = action?.payload?.studentNotes
+    })
+  } 
 })
 
 // export const { addNotes, removeNotes } = notesSlice.actions

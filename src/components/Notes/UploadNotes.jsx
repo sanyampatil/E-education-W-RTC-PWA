@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { toast } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { AdminNotesUpload, fetchNotes } from '../../redux/slices/notesSlices'
-
-// import notesImg from '../../images/notesImg.png'
+import { CleaningServices } from '@mui/icons-material'
+import NotesCard from './createNotes/NotesCard'
+import notesImg from '../../images/notesImg.png'
 
 const uploadNotes = () => {
   const AdminId = useSelector(state => state?.adminAuth?.data._id)
@@ -14,16 +15,29 @@ const uploadNotes = () => {
   const dispatchGet = useDispatch()
   const navigate = useNavigate()
   const [File, setFile] = useState(null)
+  const [notes, setnotes] = useState()
 
-  async function getNotes () {
-    console.log('fdjkhwjbf')
+  const NotesCardItems = useSelector(state => state?.notes?.uploadNotes)
+
+  // setnotes(NotesCardItems)
+
+  console.log('NotesCardItems', NotesCardItems)
+
+  async function LoadNotesData () {
     const data = await dispatchGet(fetchNotes(AdminId))
-    console.log('fetch -Notes', data)
+    console.log(' fetch notes data ', data)
   }
 
+  // console.log('NotesData', NotesData)
+  // setnotes(NotesData)
+
   useEffect(() => {
-    getNotes()
-  }, [dispatch])
+    console.log(' aalo useEffect ')
+    LoadNotesData()
+  }, [])
+
+  // console.log('HIIII')
+  //  setnotes(NotesCardItems)
 
   const [infoData, setInfoData] = useState({
     subName: '',
@@ -83,10 +97,13 @@ const uploadNotes = () => {
       createBy: ''
     })
   }
+  function handleClick (){
+    console.log("hiiii")
+  }
 
   return (
-    <div className='w-full h-screen bg-red-200'>
-      <div className='w-[full] h-[90vh] flex items-center justify-center'>
+    <div className='w-full h-full '>
+      <div className=' h-[90vh] flex items-center justify-center'>
         <div className='w-[80vw] h-[70vh]  mt-10 bg-slate-800 rounded-lg flex  '>
           {/* from -> */}
 
@@ -165,6 +182,7 @@ const uploadNotes = () => {
                 </div>
 
                 <button
+                onClick={handleClick}
                   type='submit'
                   className=' bg-blue-900  rounded-lg text-white  p-3  font-semibold text-lg cursor-pointer'
                 >
@@ -178,11 +196,25 @@ const uploadNotes = () => {
 
           <div className=' w-[100%] h-[50vh] '>
             <img
-              // src={notesImg}
+              src={notesImg}
               alt='Logo'
               className='  w-[100vw] h-[70vh] brightness-50   '
             />
           </div>
+        </div>
+      </div>
+
+      <div className='w-full h-[90vh] bg-amber-500'>
+        <div className='m-10 flex  justify-between items-center'>
+          {console.log(notes)}
+          {!NotesCardItems
+            ? ''
+            : NotesCardItems.map(note => {
+                {
+                  console.log(note)
+                }   
+                return <NotesCard data={note} key={note._id} />
+              })}
         </div>
       </div>
     </div>
