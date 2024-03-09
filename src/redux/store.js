@@ -15,8 +15,8 @@ const store = configureStore({
     register: registerSlices,
     refreshKey: refreshSidebar,
     Admininfo: adminInfoSlices,
-    notesSlice,
-    classroom: classroomSlices
+    classroom: classroomSlices,
+    notes:notesSlice
   },
   devTools: true
 })

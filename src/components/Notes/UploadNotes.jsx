@@ -1,20 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { AdminNotesUpload } from '../../redux/slices/notesSlices'
+import { AdminNotesUpload, fetchNotes } from '../../redux/slices/notesSlices'
 
 // import notesImg from '../../images/notesImg.png'
 
 const uploadNotes = () => {
+  const AdminId = useSelector(state => state?.adminAuth?.data._id)
+
   const dispatch = useDispatch()
+  const dispatchGet = useDispatch()
   const navigate = useNavigate()
   const [File, setFile] = useState(null)
 
+  async function getNotes () {
+    console.log('fdjkhwjbf')
+    const data = await dispatchGet(fetchNotes(AdminId))
+    console.log('fetch -Notes', data)
+  }
+
+  useEffect(() => {
+    getNotes()
+  }, [dispatch])
+
   const [infoData, setInfoData] = useState({
     subName: '',
-    class_name: '',
+    class_Name: '',
     topicName: '',
     createBy: ''
   })
@@ -40,17 +53,18 @@ const uploadNotes = () => {
     }
   }
 
-  async function submitDoutForm (event) {
+  async function submitNotesUploadForm (event) {
     event.preventDefault()
 
     const formData = new FormData()
     formData.append('subName', infoData.subName)
-    formData.append('class_name', infoData.class_name)
+    formData.append('class_Name', infoData.class_Name)
     formData.append('topicName', infoData.topicName)
     formData.append('createBy', infoData.createBy)
-    formData.append('File', File)
+    formData.append('noteFile', File)
+    formData.append('id', AdminId)
 
-    const response =  dispatch(AdminNotesUpload(formData))
+    const response = await dispatch(AdminNotesUpload(formData))
     console.log(' note upload res>>', response)
     // if (response?.payload?.success) navigate('/admin/profile')
 
@@ -64,7 +78,7 @@ const uploadNotes = () => {
 
     setInfoData({
       subName: '',
-      class_name: '',
+      class_Name: '',
       topicName: '',
       createBy: ''
     })
@@ -79,7 +93,7 @@ const uploadNotes = () => {
           <div className=' form '>
             <form
               noValidate
-              onSubmit={submitDoutForm}
+              onSubmit={submitNotesUploadForm}
               className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[70vh] w-[40vw]  m-5 
               bg-slate-700 '
             >
@@ -102,12 +116,12 @@ const uploadNotes = () => {
                   <input
                     type='text'
                     required
-                    name='class_name'
-                    id='class_name'
-                    placeholder='Enter your class_name..'
+                    name='class_Name'
+                    id='class_Name'
+                    placeholder='Enter your class_Name..'
                     className='bg-transparent px-2 py-1 border'
                     onChange={handleUserInput}
-                    value={infoData.class_name}
+                    value={infoData.class_Name}
                   />
                 </div>
 
@@ -140,7 +154,7 @@ const uploadNotes = () => {
                   <input
                     type='File'
                     required
-                    name='File'
+                    name='noteFile'
                     id='File'
                     placeholder='Enter your File..'
                     className='bg-transparent px-2 py-1 border'
