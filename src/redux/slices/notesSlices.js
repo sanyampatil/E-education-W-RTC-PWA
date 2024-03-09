@@ -1,8 +1,38 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import axiosInstance from '../../helpers/axiosinstance.js'
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import toast from 'react-hot-toast'
 
 const initialState = {
-  notes: [{ id: 1, text: 'Hello world' }]
+  // notes: [{ id: 1, text: 'Hello world' }]
+
+  upload: []
 }
+
+export const AdminNotesUpload = createAsyncThunk(
+  'admin/notes/upload-notes',
+
+  async data => {
+    console.log('hiiiii li aalo')
+
+    try {
+      const res =  await  axiosInstance.post('admin-notes/notes-upload', data)
+      console.log('sanyam patil')
+      toast.promise(res, {
+        loading: 'Wait! creating',
+        success: data => {
+          return data?.data?.message
+        },
+        error: 'Failed to create'
+      })
+      console.log('data:>', data)
+
+      return (await res).data
+    } catch (error) {
+      toast.error("nahi ")
+    }
+  }
+)
 
 export const notesSlice = createSlice({
   name: 'note',
@@ -21,6 +51,6 @@ export const notesSlice = createSlice({
   }
 })
 
-export const {addNotes, removeNotes} = notesSlice.actions
+export const { addNotes, removeNotes } = notesSlice.actions
 
 export default notesSlice.reducer
