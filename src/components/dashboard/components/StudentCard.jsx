@@ -47,7 +47,7 @@ export function StudentCard( {data }) {
        />
        <div className="flex w-full flex-col gap-0.5">
          <div className="flex items-center justify-between">
-           <Typography variant="h5" color="blue-gray">
+           <Typography variant="h5" color="blue-gray"> 
              {data.username }
            </Typography>
            <div className="5 flex items-center gap-0">

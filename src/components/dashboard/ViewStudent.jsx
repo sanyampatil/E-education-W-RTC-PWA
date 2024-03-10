@@ -17,7 +17,7 @@ const ViewStudent = () => {
   }
 
   useEffect(() => {
-    LoadData()
+    LoadData()  
   }, [])
   return (
     <div className='w-[80vw] h-[90vh] bg-indigo-950 overflow-auto flex'>
@@ -31,9 +31,9 @@ const ViewStudent = () => {
               return <StudentCard data={note} key={note._id} />
             })}
       </div>
-      <div className='w-[60vw] h-[50vh]  text-white bg-cyan-950 pt-5 rounded-lg  fixed right-[30px]  flex '>
-        <h1 className='text-[5rem] font-semibold '> total student</h1>
-        <div className='text-[7rem]'>{StudentCardItems.length}</div>
+      <div className='w-[60vw] h-[70vh]  text-white bg-cyan-950 pt-5 rounded-lg  fixed right-[30px]  flex '>
+        <h1 className='text-[3rem] font-semibold '> total student</h1>
+        <div className='text-[7rem] bg-slate-600  inline '>{StudentCardItems.length}</div>
       </div>
     </div>
   )
