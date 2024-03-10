@@ -1,17 +1,45 @@
-// import React from 'react'
-// import DoubtCard from './DoubtCard'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllSchedule } from '../../redux/slices/dashboardSlice'
+import ScheduleCard from '../dashboard/components/scheduleCard'
 
-// const ViewSchedule = () => {
-//   return (
-//     <div className=' w-full h-[90vh]'>
-//       <div className='   text-blue-500 text-xl flex items-center justify-center '>
-//         <h1 className=' text-lg'>my Boubt</h1>
-//       </div>
-//       <div className='flex w-full h-[90vh] items-center '>
-//         <DoubtCard />
-//       </div>
-//     </div>
-//   )
-// }
+const StudentViewSchedule = () => {
+  const dispatch = useDispatch()
 
-// export default ViewSchedule
+  const ScheduleCardItems = useSelector(state => state?.dashboard?.ScheduleData)
+
+  console.log('fetchallSchdule', ScheduleCardItems)
+  async function LoadData () {
+    const data = await dispatch(fetchAllSchedule())
+    console.log('data --> fetchallSchdule', data)
+  }
+
+  useEffect(() => {
+    LoadData()
+  }, [])
+  return (
+    <div className='w-[100vw] h-full relative  flex items-center justify-center pt-28 '>
+      <div className='w-[80vw] h-full  bg-slate-950    '>
+        <div className=' border-1 border-white  flex items-center justify-center flex-col flex-wrap gap-10 p-20  top-10 '>
+        <h1 className=' text-yellow-400 text-[3rem] bg-slate-900 p-5 rounded-lg font-bold'>checke Schedule</h1>
+          {ScheduleCardItems?.slice(0)
+            .reverse()
+            .map((schedule, index) => {
+              {
+                console.log('schedule', schedule)
+              }
+              return (
+                <ScheduleCard
+                  data={schedule}
+                  key={schedule._id}
+                  index={index}
+                />
+              )
+            })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default StudentViewSchedule

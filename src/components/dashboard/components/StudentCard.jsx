@@ -1,4 +1,4 @@
-
+import { AnimatePresence,motion } from "framer-motion";
 
 import {
  Card,
@@ -28,7 +28,14 @@ export function StudentCard( {data }) {
  
  console.log("data card student",data)
  return (
-  <div className="p-2">
+  <AnimatePresence>
+  <motion.div
+    initial={{ opacity: 0, scale: 0 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0 }}
+    transition={{
+      duration: '0.3'
+    }} className="p-2">
 
 
  
@@ -68,7 +75,8 @@ export function StudentCard( {data }) {
        </Typography>
      </CardBody>
    </Card>
-  </div>
+  </motion.div>
+  </AnimatePresence>
 
  );
 }

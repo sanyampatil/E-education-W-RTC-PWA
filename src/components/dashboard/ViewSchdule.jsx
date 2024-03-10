@@ -17,14 +17,17 @@ const ViewSchdule = () => {
   useEffect(() => {
     LoadData()
   }, [])
-  return (
-    <div className='w-full h-full  bg-black flex flex-row space-x-4 items-center justify-center '>
-      <div className=' border-1 border-white  flex flex-row flex-wrap gap-5 p-20 mt-20 '>
-        {ScheduleCardItems?.map(schedule => {
+  return (  
+    <div className='w-full h-full relative  bg-black flex flex-row space-x-4 items-center overflow-auto justify-center '>
+      <div className=' border-1 border-white  flex items-center justify-center   flex-wrap gap-10 p-20  absolute top-10 overflow-auto'>
+        {ScheduleCardItems?.slice(0)
+                .reverse().map((schedule, index) => {
           {
-            console.log(schedule)
+            console.log('schedule', schedule)
           }
-          return <ScheduleCard data={schedule} key={schedule._id} />
+          return (
+            <ScheduleCard data={schedule} key={schedule._id} index={index} />
+          )
         })}
       </div>
     </div>
