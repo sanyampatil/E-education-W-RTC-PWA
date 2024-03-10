@@ -46,6 +46,7 @@ import DashboardOne from './components/dashboard/DashboardOne.jsx'
 import ViewStudent from './components/dashboard/ViewStudent.jsx'
 import ViewNotes from './components/Notes/createNotes/ViewNotes.jsx'
 import Alldoubts from './components/dashboard/Alldoubts.jsx'
+import CreateSchedule from './components/classroom/CreateSchedule.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -70,6 +71,9 @@ const router = createBrowserRouter(
       <Route path='/admin-dashboard' element={<DashboardOne />}>
         <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />
         <Route path='/admin-dashboard/view-Alldoubts' element={<Alldoubts />} />
+        <Route path='/admin-dashboard/create-schedule' element={<CreateSchedule/>} />
+
+
       </Route>
 
       {/* ___________________________________________________________>>>> authAdmin */}

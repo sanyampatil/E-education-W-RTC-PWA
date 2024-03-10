@@ -34,6 +34,37 @@ export const AdminfetchAllStudent = createAsyncThunk(
   }
 )
 
+
+// AdminCreateSchedule
+
+
+
+export const AdminCreateSchedule = createAsyncThunk('/admin-dashboard/create-schedule', async data => {
+  console.log("jbffbj")
+  try {   
+    const config = {
+      headers: {
+        'content-Type': 'application/json'
+      }
+    }
+
+    const res = axiosInstance.post('/admin-dashboard/create-schedule', data, config)
+    toast.promise(res, {
+      loading: 'Wait! create schedule',
+
+      success: data => {
+        return data?.data?.message
+      },
+      error: 'Failed to send Doubt'
+    })
+    console.log('|classrommm', data)
+    return (await res).data
+  } catch (error) {
+    toast.error(error?.response?.data?.message)
+  }
+})
+
+
 const dashboardSlice = createSlice({
   name: 'Doubt',
 

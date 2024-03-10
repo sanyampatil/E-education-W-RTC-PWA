@@ -6,8 +6,8 @@ const Manubar = () => {
   const data = useSelector(state => state.Admininfo.data)
 
   return (
-    <div className='w-[20vw] h-[90vh] bg-slate-700  flex flex-col items-center gap-5 '>
-      <div className=' profile w-[20vw] h-[45vh]  rounded-lg bg-orange-400 flex flex-col items-center p-1'>
+     <div className='w-[20vw] h-[90vh] bg-slate-700  flex flex-col items-center gap-5 '>
+      <div className=' profile w-[20vw] h-[45vh]  rounded-lg bg-orange-400 flex flex-col items-center p-1 '>
         <div className='w-[12vw] h-[25vh] bg-black rounded-[50%] overflow-hidden'>
           <img
             src={data?.avatar?.secure_url}
@@ -24,7 +24,10 @@ const Manubar = () => {
            
 
             <br />
+            <Link to="/admin-dashboard/create-schedule">
+
             <button className='bg-blue-900 p-2 rounded-md text-white'>create Schedule</button>
+            </Link>
           </div>
       </div>
       <div>

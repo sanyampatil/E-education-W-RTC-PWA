@@ -6,16 +6,23 @@ import { Backdrop, Button, CircularProgress, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 // import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
-
+    
 import { TextareaAutosize } from '@mui/base/TextareaAutosize'
 import { useState } from 'react'
-import Dout from '../../images/Dout.png'
+import schedule from '../../images/schedule.png'
 import { sendDout } from '../../redux/slices/classroomSlices'
 import { calcLength } from 'framer-motion'
+import { AdminCreateSchedule } from '../../redux/slices/dashboardSlice'
 
-const DoutForm = () => {
-  const userData = JSON.parse(localStorage.getItem('userData'))
-  const userId = userData.data._id
+// TitleOfClass,
+//   Topic_heading,
+//   create_Date,
+//   Time,
+//   Createby,
+//   adminId,
+const CreateSchedule = () => {
+  // const userData = JSON.parse(localStorage.getItem('userData'))
+  // const userId = userData.data._id
   // console.log('userData', userData)
   // console.log("userId",userId)
 
@@ -23,9 +30,11 @@ const DoutForm = () => {
   const navigate = useNavigate()
 
   const [infoData, setInfoData] = useState({
-    studentName: '',
-    class_name: '',
-    doubt: ''
+    TitleOfClass: '',
+    Topic_heading: '',
+    create_Date: '',
+    Time: '',
+    Createby: ''
   })
 
   function handleUserInput (e) {
@@ -37,22 +46,25 @@ const DoutForm = () => {
   }
   console.log('infoData', infoData)
 
-  async function submitDoutForm (event) {
+  async function submitscheduleForm (event) {
     event.preventDefault()
-    // if (!infoData.studentName || !infoData.class_name || !infoData.doubt) {
+    // if (!infoData.TitleOfClass || !infoData.Topic_heading || !infoData.create_Date) {
     //   toast.error('Please fill all the details')
     //   return
     // }
 
     const formData = new FormData()
-    formData.append('studentName', infoData.studentName)
-    formData.append('class_name', infoData.class_name)
-    formData.append('doubt', infoData.doubt)
-    formData.append('_id', userId)
+    formData.append('TitleOfClass', infoData.TitleOfClass)
+    formData.append('Topic_heading', infoData.Topic_heading)
+    formData.append('create_Date', infoData.create_Date)
+    formData.append('Time', infoData.create_Date)
+    formData.append('Createby', infoData.create_Date)
+
+    // formData.append('_id', userId)
 
     // dispatch create account action
 
-    const response = await dispatch(sendDout(formData))
+    const response = await dispatch(AdminCreateSchedule(formData))
     console.log('res>>', response)
     // if (response?.payload?.success) navigate('/admin/profile')
 
@@ -61,21 +73,23 @@ const DoutForm = () => {
     }
 
     setInfoData({
-      studentName: '',
-      class_name: '',
-      doubt: ''
+      TitleOfClass: '',
+      Topic_heading: '',
+      create_Date: '',
+      Time: '',
+      Createby: ''
     })
   }
 
   return (
-    <div className='w-[full] h-[90vh] flex items-center justify-center'>
-      <div className='w-[80vw] h-[70vh]  mt-10 bg-slate-800 rounded-lg flex  '>
+    <div className='w-[full] h-[100vh] flex'>
+      <div className='w-[79vw] h-[90vh]  bg-slate-900 rounded-lg flex  '>
         {/* from -> */}
 
         <div className=' form '>
           <form
             noValidate
-            onSubmit={submitDoutForm}
+            onSubmit={submitscheduleForm}
             className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[70vh] w-[40vw]  m-5 
               bg-slate-700 '
           >
@@ -86,44 +100,69 @@ const DoutForm = () => {
                 <input
                   type='text'
                   required
-                  name='studentName'
-                  id='studentName'
-                  placeholder='Enter your studentName..'
+                  name='TitleOfClass'
+                  id='TitleOfClass'
+                  placeholder='Enter your TitleOfClass..'
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  value={infoData.studentName}
+                  value={infoData.TitleOfClass}
                 />{' '}
               </div>
               <div className=' flex flex-col gap-1'>
                 <input
                   type='text'
                   required
-                  name='class_name'
-                  id='class_name'
-                  placeholder='Enter your class_name..'
+                  name='Topic_heading'
+                  id='Topic_heading'
+                  placeholder='Enter your Topic_heading..'
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  value={infoData.class_name}
+                  value={infoData.Topic_heading}
                 />
               </div>
 
               <div className=' flex flex-col gap-1'>
                 <input
-                  type='text'
+                  type='Date'
                   required
-                  name='doubt'
-                  id='doubt'
-                  placeholder='Enter your doubt..'
+                  name='create_Date'
+                  id='create_Date'
+                  placeholder='Enter your create_Date..'
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
-                  value={infoData.doubt}
+                  value={infoData.create_Date}
+                />
+              </div>
+
+              <div className=' flex flex-col gap-1'>
+                <input
+                  type='time'
+                  required
+                  name='Time'
+                  id='Time'
+                  placeholder='Enter your Time..'
+                  className='bg-transparent px-2 py-1 border'
+                  onChange={handleUserInput}
+                  value={infoData.Time}
+                />
+              </div>
+              <div className=' flex flex-col gap-1'>
+                <input
+                  type='text'
+                  required
+                  name='Createby'
+                  id='Createby'
+                  placeholder='Enter your Createby..'
+                  className='bg-transparent px-2 py-1 border'
+                  onChange={handleUserInput}
+                  value={infoData.Createby}
                 />
               </div>
               <button
                 type='submit'
                 className=' bg-blue-900  rounded-lg text-white  p-3  font-semibold text-lg cursor-pointer'
               >
-                submit
+                create Schedule
               </button>
             </div>
           </form>
@@ -133,7 +172,7 @@ const DoutForm = () => {
 
         <div className=' w-[100%] h-[50vh] '>
           <img
-            src={Dout}
+            src={schedule}
             alt='Logo'
             className='  w-[100vw] h-[70vh] brightness-50   '
           />
@@ -143,4 +182,4 @@ const DoutForm = () => {
   )
 }
 
-export default DoutForm
+export default CreateSchedule

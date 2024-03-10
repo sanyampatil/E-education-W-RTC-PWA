@@ -33,7 +33,7 @@ export const sendDout = createAsyncThunk('/fill-doubt', async data => {
   }
 })
 
-export const fetaAllDoubts = createAsyncThunk('/my-doubts', async data => {
+export const fetchAllDoubt = createAsyncThunk('/my-doubts', async data => {
   console.log('daga', data)
   try {
     const res = axiosInstance.get(`/student/Doubt/fetch-AllDout/${data}`)
@@ -48,7 +48,7 @@ export const fetaAllDoubts = createAsyncThunk('/my-doubts', async data => {
       error: 'Failed to load your doubts'
     })
 
-    console.log('response fetaAllDoubts', res)
+    console.log('response fetchAllDoubt', res)
 
     return (await res).data
   } catch (error) {
@@ -98,6 +98,15 @@ const classroomSlices = createSlice({
           JSON.stringify(action?.payload?.allDoubts)
         )
         state.AdminAllDout = action?.payload?.allDoubts
+      })
+
+
+      .addCase(fetchAllDoubt.fulfilled, (state, action) => {
+        localStorage.setItem(
+          ' Doubt',
+          JSON.stringify(action?.payload?.student)
+        )
+        state.Doubt = action?.payload?.student
       })
   }
 })
