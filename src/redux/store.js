@@ -7,6 +7,9 @@ import refreshSidebar from './slices/refreshsidebar'
 import adminInfoSlices from './slices/adminInfoSlices'
 import notesSlice from './slices/NotesSlices'
 import classroomSlices from './slices/classroomSlices'
+import dashboardSlice from './slices/dashboardSlice'
+
+
 const store = configureStore({
   reducer: {
     themeKey: themeSliceReducer,
@@ -16,7 +19,8 @@ const store = configureStore({
     refreshKey: refreshSidebar,
     Admininfo: adminInfoSlices,
     classroom: classroomSlices,
-    notes:notesSlice
+    notes:notesSlice,
+    dashboard:dashboardSlice,
   },
   devTools: true
 })

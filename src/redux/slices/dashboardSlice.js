@@ -4,13 +4,16 @@ import axiosInstance from '../../helpers/axiosinstance'
 import { BsCloudFog } from 'react-icons/bs'
 
 const initialState = {
-  studentData: []
+  AllStudentData:
+    localStorage.getItem('AllStudentData') != undefined
+      ? JSON.parse(localStorage.getItem('AllStudentData'))
+      : {}
   // AdminAllDout: [],
   // data: ''
 }
 
 export const AdminfetchAllStudent = createAsyncThunk(
-  '/admin-dashboard',
+  '/admin-dashboard/view-Student',
   async () => {
     try {
       const res = axiosInstance.get('/admin-dashboard/all-student')
@@ -24,7 +27,7 @@ export const AdminfetchAllStudent = createAsyncThunk(
         },
         error: 'Failed to load your doubts'
       })
-      return (await res).data 
+      return (await res).data
     } catch (error) {
       toast.error(error?.response?.data?.message)
     }
@@ -37,13 +40,16 @@ const dashboardSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(AdminfetchAllStudent.fulfilled, (state, action) => {
-      localStorage.setItem(
-        'studentData',
-        JSON.stringify(action?.payload?.student)
-      )
-      state.studentData = action?.payload?.student
-    })
+    builder
+
+      .addCase(AdminfetchAllStudent.fulfilled, (state, action) => {
+        localStorage.setItem('AllStudentData', JSON.stringify(action?.payload?.student))
+        
+        state.AllStudentData = action?.payload?.student
+        console.log("adadaa",state.AllStudentData)
+      })
+
+      
   }
 })
 
