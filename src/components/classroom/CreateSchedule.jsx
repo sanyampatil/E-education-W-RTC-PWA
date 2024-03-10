@@ -57,8 +57,8 @@ const CreateSchedule = () => {
     formData.append('TitleOfClass', infoData.TitleOfClass)
     formData.append('Topic_heading', infoData.Topic_heading)
     formData.append('create_Date', infoData.create_Date)
-    formData.append('Time', infoData.create_Date)
-    formData.append('Createby', infoData.create_Date)
+    formData.append('Time', infoData.Time)
+    formData.append('Createby', infoData.Createby)
 
     // formData.append('_id', userId)
 

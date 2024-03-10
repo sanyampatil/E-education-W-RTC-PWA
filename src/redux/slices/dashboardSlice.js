@@ -7,9 +7,13 @@ const initialState = {
   AllStudentData:
     localStorage.getItem('AllStudentData') != undefined
       ? JSON.parse(localStorage.getItem('AllStudentData'))
-      : {}
+      : {},
   // AdminAllDout: [],
   // data: ''
+  ScheduleData:
+    localStorage.getItem('ScheduleData') != undefined
+      ? JSON.parse(localStorage.getItem('ScheduleData'))
+      : {}
 }
 
 export const AdminfetchAllStudent = createAsyncThunk(
@@ -34,36 +38,63 @@ export const AdminfetchAllStudent = createAsyncThunk(
   }
 )
 
-
 // AdminCreateSchedule
 
-
-
-export const AdminCreateSchedule = createAsyncThunk('/admin-dashboard/create-schedule', async data => {
-  console.log("jbffbj")
-  try {   
-    const config = {
-      headers: {
-        'content-Type': 'application/json'
+export const AdminCreateSchedule = createAsyncThunk(
+  '/admin-dashboard/create-schedule',
+  async data => {
+    console.log('jbffbj')
+    try {
+      const config = {
+        headers: {
+          'content-Type': 'application/json'
+        }
       }
+
+      const res = axiosInstance.post(
+        '/admin-dashboard/create-schedule',
+        data,
+        config
+      )
+      toast.promise(res, {
+        loading: 'Wait! create schedule',
+
+        success: data => {
+          return data?.data?.message
+        },
+        error: 'Failed to send Doubt'
+      })
+      console.log('|classrommm', data)
+      return (await res).data
+    } catch (error) {
+      toast.error(error?.response?.data?.message)
     }
-
-    const res = axiosInstance.post('/admin-dashboard/create-schedule', data, config)
-    toast.promise(res, {
-      loading: 'Wait! create schedule',
-
-      success: data => {
-        return data?.data?.message
-      },
-      error: 'Failed to send Doubt'
-    })
-    console.log('|classrommm', data)
-    return (await res).data
-  } catch (error) {
-    toast.error(error?.response?.data?.message)
   }
-})
+)
 
+// /all-schedule
+
+export const fetchAllSchedule = createAsyncThunk(
+  '/admin-dashboard/all-schedule',
+  async () => {
+    try {
+      const res = axiosInstance.get('/admin-dashboard/all-schedule')
+
+      console.log('aalo')
+      toast.promise(res, {
+        loading: 'Wait! to load schedule',
+
+        success: data => {
+          return data?.data?.message
+        },
+        error: 'Failed to load your doubts'
+      })
+      return (await res).data
+    } catch (error) {
+      toast.error(error?.response?.data?.message)
+    }
+  }
+)
 
 const dashboardSlice = createSlice({
   name: 'Doubt',
@@ -74,13 +105,25 @@ const dashboardSlice = createSlice({
     builder
 
       .addCase(AdminfetchAllStudent.fulfilled, (state, action) => {
-        localStorage.setItem('AllStudentData', JSON.stringify(action?.payload?.student))
-        
+        localStorage.setItem(
+          'AllStudentData',
+          JSON.stringify(action?.payload?.student)
+        )
+
         state.AllStudentData = action?.payload?.student
-        console.log("adadaa",state.AllStudentData)
+        console.log('adadaa', state.AllStudentData)
       })
 
-      
+      .addCase(fetchAllSchedule.fulfilled, (state, action) => {
+        localStorage.setItem(
+          'ScheduleData',
+          JSON.stringify(action?.payload?.allschedule)
+        )
+
+        state.ScheduleData = action?.payload?.allschedule
+
+        console.log('adadaa', state.ScheduleData)
+      })
   }
 })
 

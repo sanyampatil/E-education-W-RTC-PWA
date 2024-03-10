@@ -40,13 +40,14 @@ import CheckNotes from './components/Notes/CheckNotes.jsx'
 import ClassroomOption from './components/classroom/ClassroomOption.jsx'
 import DoutSlove from './components/classroom/DoutSlove.jsx'
 import DoutForm from './components/classroom/DoutForm.jsx'
-import ViewSchedule from './components/classroom/ViewSchedule.jsx'
+// import ViewSchedule from './components/classroom/ViewSchedule.jsx'
 import MyDoubts from './components/classroom/MyDoubts.jsx'
 import DashboardOne from './components/dashboard/DashboardOne.jsx'
 import ViewStudent from './components/dashboard/ViewStudent.jsx'
 import ViewNotes from './components/Notes/createNotes/ViewNotes.jsx'
 import Alldoubts from './components/dashboard/Alldoubts.jsx'
 import CreateSchedule from './components/classroom/CreateSchedule.jsx'
+import ViewSchedule from './components/dashboard/ViewSchdule.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -63,7 +64,7 @@ const router = createBrowserRouter(
       <Route path='/class/doubt' element={<DoutSlove />} />
       <Route path='/fill-doubt' element={<DoutForm />} />
       {/* ////----> student view sche   */}
-      <Route path='/view-sche' element={<ViewSchedule />} />
+      {/* <Route path='/view-sche' element={<ViewSchedule />} /> */}
 
       <Route path='/my-doubts' element={<MyDoubts />} />
 
@@ -72,6 +73,8 @@ const router = createBrowserRouter(
         <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />
         <Route path='/admin-dashboard/view-Alldoubts' element={<Alldoubts />} />
         <Route path='/admin-dashboard/create-schedule' element={<CreateSchedule/>} />
+        <Route path='/admin-dashboard/view-schedule' element={<ViewSchedule/>} />
+
 
 
       </Route>
