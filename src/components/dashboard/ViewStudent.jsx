@@ -19,7 +19,7 @@ const ViewStudent = () => {
   console.log('StudentCardItems', StudentCardItems)
 
   return (
-    <div className='w-[80vw] h-[90vh] bg-indigo-950 overflow-auto flex  flex-row '>
+    <div className='  bg-indigo-950 overflow-auto flex  flex-row '>
       <div className='w-full h-[90vh]'>
         {!StudentCardItems
           ? ''

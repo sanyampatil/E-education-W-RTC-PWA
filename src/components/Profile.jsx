@@ -1,23 +1,33 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { getAdmininfo } from '../redux/slices/adminInfoSlices'
+import { GetAdminInfoData } from '../redux/slices/adminInfoSlices'
 
 const Profile = () => {
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   getdata()
-  // }, [])
+  
+  /////fetch adminInfo data from adminDeatail Model
+  
+  const AdminId = useSelector(state => state.adminAuth.data._id)
+  console.log('Admin Id', AdminId)
+  
+  async function LoadData () {
+    const data = await dispatch(GetAdminInfoData(AdminId))
+    console.log('data', data)
+  }
+  
+  // const  Admindata = localStorage.get("infoData")
+  const Admindata = useSelector(state => state.Admininfo.AdminInfoData)
+  console.log('adminDetail', Admindata)
 
-  const data = useSelector(state => state.Admininfo.data)
-
-  console.log('adminDetail', data)
+  useEffect(() => {
+    LoadData()
+  },[])
 
   return (
     <>
       <main className='profile-paget '>
-        
         <section className='relative '>
           <div className='absolute  w-full h-[100vh]  '>
             <img
@@ -60,7 +70,7 @@ const Profile = () => {
               <div className='flex items-center justify-center'>
                 <h1 className='  absolute top-[10%] w-[25vw] h-[50vh]   border-red-200 rounded-[50%] '>
                   <img
-                    src={data?.avatar?.secure_url}
+                    // src={Admindata?.avatar?.secure_url}
                     className='w-[25vw] h-[50vh] rounded-[50%]'
                   />
                 </h1>
@@ -78,20 +88,20 @@ const Profile = () => {
                   </div>
                   <div className='w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center '>
                     <div className='py-6 px-3 mt-32 sm:mt-0'>
-                    <div className="flex items-center justify-between gap-2">
-                        <Link 
-                            to="/changepassword" 
-                            className="w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-xl font-semibold py-2 cursor-pointer text-center">
-                                <button>Change password</button>
-
+                      <div className='flex items-center justify-between gap-2'>
+                        <Link
+                          to='/changepassword'
+                          className='w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-xl font-semibold py-2 cursor-pointer text-center'
+                        >
+                          <button>Change password</button>
                         </Link>
-                        <Link 
-                            to="/user/editprofile" 
-                            className="w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-xl font-semibold py-2 cursor-pointer text-center">
-                                <button>Edit profile</button>
-
+                        <Link
+                          to='/user/editprofile'
+                          className='w-1/2 bg-blue-600 hover:bg-blue-500 transition-all ease-in-out duration-300 rounded-xl font-semibold py-2 cursor-pointer text-center'
+                        >
+                          <button>Edit profile</button>
                         </Link>
-                    </div>
+                      </div>
                     </div>
                   </div>
                   <div className='w-full lg:w-4/12 px-4 lg:order-1 '>
@@ -125,16 +135,16 @@ const Profile = () => {
                 </div>
                 <div className='text-center mt-12'>
                   <h3 className='text-4xl font-semibold leading-normal mb-2 text-blueGray-700 '>
-                    {data.fullName}
+                    {Admindata.fullName}
                   </h3>
                   <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
                     <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
                     <p>branch:-</p>
-                    {data.branch}
+                    {Admindata.branch}
                   </div>
                   <div className='mb-2 text-blueGray-600 mt-10 '>
                     <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400'></i>
-                    subject:-{data.subs}
+                    subject:-{Admindata.subs}
                   </div>
                   <div className='mb-2 text-blueGray-600 mt-10'>
                     <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400'></i>

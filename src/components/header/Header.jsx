@@ -34,7 +34,7 @@ const Header = () => {
   const AdminIsLogin = localStorage.getItem('adminIslogin')
   console.log('AdminLogin:::-', AdminIsLogin)
 
-  const data = useSelector(state => state.Admininfo.data)
+  const data = useSelector(state => state.Admininfo.AdminInfoData)
   console.log('adminDetail', data)
 
   // const imageGet = useSelector(state => state.Admininfo.data.data?.avatar?.secure_url)
@@ -129,7 +129,7 @@ const Header = () => {
                         <img
                           className='relative inline-block h-10 w-14   rounded-lg object-cover object-center'
                           alt='Image placeholder'
-                          src={data?.avatar?.secure_url}
+                          // src={data?.avatar?.secure_url}
                         />
                       )}
                     </Link>

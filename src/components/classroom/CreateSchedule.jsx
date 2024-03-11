@@ -103,18 +103,18 @@ const CreateSchedule = () => {
   }
 
   return (
-    <div className='w-[full] h-full flex items-center  justify-center  p-10  shadow-lg rounded-lg m-2'>
-      <div className='w-[79vw] h-[100vh]   bg-slate-900 rounded-lg flex  '>
+    <div className='w-[80vw] h-[90vh]   flex   p-10  shadow-lg rounded-lg '>
+      <div className='  bg-slate-900 rounded-lg flex w-full h-[80vh] '>
         {/* from -> */}
 
         <div className=' form '>
           <form
             noValidate
             onSubmit={submitscheduleForm}
-            className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[80vh] w-[42  vw]  m-5 
+            className='flex ml-20 justify-center  rounded-lg p-2 text-white  h-[83vh] w-[37vw]  m-5 
               bg-slate-700 '
           >
-            <div className='border-2  p-3 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
+            <div className='p-2 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
               <h1 className='text-[1.7rem]'>please fill all information</h1>
 
               <div className='  flex flex-col gap-1'>
@@ -235,6 +235,7 @@ const CreateSchedule = () => {
             className='  w-[100vw] h-[70vh] brightness-50   '
           />
         </div>
+
       </div>
     </div>
   )
