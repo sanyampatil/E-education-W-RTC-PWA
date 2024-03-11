@@ -2,11 +2,16 @@ import React from 'react'
 import { ImCross } from 'react-icons/im'
 import { BsPersonCircle } from 'react-icons/bs'
 import { toast } from 'react-hot-toast'
-import { Backdrop, Button, CircularProgress, TextField } from '@mui/material'
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  TextField,
+  makeStyles
+} from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 // import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
-    
 import { TextareaAutosize } from '@mui/base/TextareaAutosize'
 import { useState } from 'react'
 import schedule from '../../images/schedule.png'
@@ -20,12 +25,28 @@ import { AdminCreateSchedule } from '../../redux/slices/dashboardSlice'
 //   Time,
 //   Createby,
 //   adminId,
+
 const CreateSchedule = () => {
   // const userData = JSON.parse(localStorage.getItem('userData'))
   // const userId = userData.data._id
   // console.log('userData', userData)
   // console.log("userId",userId)
 
+  // const useStyles = makeStyles({
+  //   root: {
+  //     '& .MuiInputBase-input': {
+  //       color: 'white', // Text color
+  //     },
+  //     '& .MuiInput-underline:before, & .MuiInput-underline:after': {
+  //       borderBottomColor: 'white', // Border color when idle and focused
+  //     },
+  //     '& .MuiFormLabel-root': {
+  //       color: 'white', // Label color
+  //     },
+  //   },
+  // });
+
+  // const classes = useStyles();
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -82,22 +103,22 @@ const CreateSchedule = () => {
   }
 
   return (
-    <div className='w-[full] h-[100vh] flex'>
-      <div className='w-[79vw] h-[90vh]  bg-slate-900 rounded-lg flex  '>
+    <div className='w-[full] h-full flex items-center  justify-center  p-10  shadow-lg rounded-lg m-2'>
+      <div className='w-[79vw] h-[100vh]   bg-slate-900 rounded-lg flex  '>
         {/* from -> */}
 
         <div className=' form '>
           <form
             noValidate
             onSubmit={submitscheduleForm}
-            className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[70vh] w-[40vw]  m-5 
+            className='flex ml-20 justify-center  rounded-lg p-10 text-white  h-[80vh] w-[42  vw]  m-5 
               bg-slate-700 '
           >
-            <div className='border-2  p-5  w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
+            <div className='border-2  p-3 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
               <h1 className='text-[1.7rem]'>please fill all information</h1>
 
               <div className='  flex flex-col gap-1'>
-                <input
+                {/* <input
                   type='text'
                   required
                   name='TitleOfClass'
@@ -106,54 +127,91 @@ const CreateSchedule = () => {
                   className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
                   value={infoData.TitleOfClass}
-                />{' '}
-              </div>
-              <div className=' flex flex-col gap-1'>
-                <input
+                />{' '} */}
+
+                <TextField
                   type='text'
                   required
+                  id='standard-basic'
+                  label='Enter your TitleOfClass..'
+                  variant='outlined'
+                  // color='primary'
+                  // className={classes.root}
+                  InputProps={{
+                    style: { color: 'white' }
+                  }}
+                  name='TitleOfClass'
+                  onChange={handleUserInput}
+                  value={infoData.TitleOfClass}
+                />
+              </div>
+              <div className=' flex flex-col gap-1'>
+                <TextField
+                  type='text'
+                  required
+                  id='standard-basic'
+                  label='Enter your Topic Heading..'
+                  variant='outlined'
+                  // color='primary'
+                  // className={classes.root}
+                  InputProps={{
+                    style: { color: 'white' }
+                  }}
                   name='Topic_heading'
-                  id='Topic_heading'
-                  placeholder='Enter your Topic_heading..'
-                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
                   value={infoData.Topic_heading}
                 />
               </div>
 
               <div className=' flex flex-col gap-1'>
-                <input
-                  type='Date'
+                <TextField
+                  type='date'
                   required
+                  id='standard-basic'
+                  label='Enter Date..'
+                  variant='outlined'
+                  // color='primary'
+                  // className={classes.root}
+                  InputProps={{
+                    style: { color: 'white' }
+                  }}
                   name='create_Date'
-                  id='create_Date'
-                  placeholder='Enter your create_Date..'
-                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
                   value={infoData.create_Date}
                 />
               </div>
 
               <div className=' flex flex-col gap-1'>
-                <input
+                <TextField
                   type='time'
                   required
+                  id='standard-basic'
+                  label='Enter your TitleOfClass..'
+                  variant='outlined'
+                  // color='primary'
+                  // className={classes.root}
+                  InputProps={{
+                    style: { color: 'white' }
+                  }}
                   name='Time'
-                  id='Time'
                   placeholder='Enter your Time..'
-                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
                   value={infoData.Time}
                 />
               </div>
               <div className=' flex flex-col gap-1'>
-                <input
+                <TextField
                   type='text'
                   required
+                  id='standard-basic'
+                  label='Enter your intructor name..'
+                  variant='outlined'
+                  // color='primary'
+                  // className={classes.root}
+                  InputProps={{
+                    style: { color: 'white' }
+                  }}
                   name='Createby'
-                  id='Createby'
-                  placeholder='Enter your Createby..'
-                  className='bg-transparent px-2 py-1 border'
                   onChange={handleUserInput}
                   value={infoData.Createby}
                 />

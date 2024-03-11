@@ -1,13 +1,26 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import '../../App.css'
+import { GrSchedule } from 'react-icons/gr'
+import { AiOutlineSchedule } from "react-icons/ai";
 
-const Manubar = () => {
+import {
+  BsCart3,
+  BsGrid1X2Fill,
+  BsFillArchiveFill,
+  BsFillGrid3X3GapFill,
+  BsPeopleFill,
+  BsListCheck,
+  BsMenuButtonWideFill,
+  BsFillGearFill
+} from 'react-icons/bs'
+const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
   const data = useSelector(state => state.Admininfo.data)
 
   return (
-    <div className='w-[20vw] h-[90vh] bg-slate-700  flex flex-col items-center gap-5 '>
-      <div className=' profile w-[20vw] h-[45vh]  rounded-lg bg-orange-400 flex flex-col items-center p-1 '>
+    <div className='w-[20vw] h-[90vh] bg-slate-700  '>
+      {/* <div className=' profile w-[20vw] h-[45vh]  rounded-lg bg-orange-400 flex flex-col items-center p-1 '>
         <div className='w-[12vw] h-[25vh] bg-black rounded-[50%] overflow-hidden'>
           <img
             src={data?.avatar?.secure_url}
@@ -38,7 +51,51 @@ const Manubar = () => {
       </div>
       <button className='bg-green-500 rounded-lg ml-2 p-5'>
         <Link to='/admin-dashboard/view-schedule'>ViewSchedule </Link>{' '}
-      </button>
+      </button> */}
+      <aside
+        id='sidebar'
+        className={openSidebarToggle ? 'sidebar-responsive' : ''}
+      >
+        <div className='sidebar-title'>
+          <span className='icon close_icon' onClick={OpenSidebar}>
+            X
+          </span>
+        </div>
+
+        <ul className='sidebar-list'>
+            {/* <li className='sidebar-list-item'>
+              <a href='' className='flex'>
+                <BsGrid1X2Fill className='icon' /> Dashboard
+              </a>
+            </li> */}
+
+          <li className='sidebar-list-item'>
+            <Link to='/admin-dashboard/create-schedule'  className='flex'>
+              <GrSchedule className='icon' /> Crate Schedule
+            </Link>
+          </li>
+          <li className='sidebar-list-item'>
+            <Link to='/admin-dashboard/view-Student' className='flex'>
+              <BsPeopleFill className='icon' /> students
+            </Link>
+          </li>
+          <li className='sidebar-list-item'>
+          <Link to='/admin-dashboard/view-schedule' className='flex'>
+            <AiOutlineSchedule className='icon' /> check Studeule
+            </Link>
+          </li>
+          <li className='sidebar-list-item'>
+            <Link to='/admin-dashboard/view-Alldoubts' className='flex'>
+              <BsMenuButtonWideFill className='icon' /> Student doubts
+            </Link>
+          </li>
+          <li className='sidebar-list-item'>
+            <a href='' className='flex'>
+              <BsFillGearFill className='icon' /> Setting
+            </a>
+          </li>
+        </ul>
+      </aside>
     </div>
   )
 }

@@ -21,21 +21,25 @@ const StudentViewSchedule = () => {
     <div className='w-[100vw] h-full relative  flex items-center justify-center pt-28 '>
       <div className='w-[80vw] h-full  bg-slate-950    '>
         <div className=' border-1 border-white  flex items-center justify-center flex-col flex-wrap gap-10 p-20  top-10 '>
-        <h1 className=' text-yellow-400 text-[3rem] bg-slate-900 p-5 rounded-lg font-bold'>checke Schedule</h1>
-          {ScheduleCardItems?.slice(0)
-            .reverse()
-            .map((schedule, index) => {
-              {
-                console.log('schedule', schedule)
-              }
-              return (
-                <ScheduleCard
-                  data={schedule}
-                  key={schedule._id}
-                  index={index}
-                />
-              )
-            })}
+          <h1 className=' text-yellow-400 text-[3rem] bg-slate-900 p-5 rounded-lg font-bold'>
+            checke Schedule
+          </h1>
+          {!ScheduleCardItems
+            ? ''
+            : SchedSuleCardItems?.slice(0)
+                .reverse()
+                .map((schedule, index) => {
+                  {
+                    console.log('schedule', schedule)
+                  }
+                  return (
+                    <ScheduleCard
+                      data={schedule}
+                      key={schedule._id}
+                      index={index}
+                    />
+                  )
+                })}
         </div>
       </div>
     </div>

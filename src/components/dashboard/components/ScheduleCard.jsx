@@ -6,7 +6,7 @@ const ScheduleCard = ({ data, index }) => {
       <div className=' h-[70vh]  w-[50vw] rotate-6 space-y-6 rounded-2xl bg-gray-100 p-6 transition duration-300 hover:rotate-0'>
         <div className='flex justify-end'>
           <div className='h-4 w-4 rounded-full bg-gray-900'></div>
-        </div>
+        </div>    
         <div className=' flex items-center justify-center'>
           <header className='text-center text-xl font-extrabold text-gray-600 bg-gray-200  p-3  rounded-lg inline'>
             {data.create_Date}

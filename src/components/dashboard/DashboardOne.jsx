@@ -20,7 +20,7 @@ const DashboardOne = () => {
 
   return (
     <>
-      <div className='w-full h-[100vh] bg-red-500 flex pt-20 '>
+      <div className='w-full h-[100vh] flex pt-20 '>
         <Manubar />
         <Outlet />
       </div>

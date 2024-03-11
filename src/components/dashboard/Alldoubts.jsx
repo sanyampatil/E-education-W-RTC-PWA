@@ -7,8 +7,12 @@ import { AnimatePresence } from 'framer-motion'
 const Alldoubts = () => {
   console.log('under the student')
   const dispatch = useDispatch()
+
+  
   const DoubtCardItems = useSelector(state => state?.classroom?.AdminAllDout)
   console.log('DoubtCardItems', DoubtCardItems)
+
+
   async function LoadDataAdmin () {
     const data = await dispatch(AdminfetaAllDoubts())
     console.log('hey', data)

@@ -39,7 +39,7 @@ export function StudentCard( {data }) {
 
 
  
-   <Card color="white" shadow={false} className="w-full max-w-[26rem]">
+   <Card color="white" shadow={false} className="w-[100vw] max-w-[26rem]">
      <CardHeader
        color="transparent"
        floated={false}

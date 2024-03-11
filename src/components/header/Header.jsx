@@ -123,7 +123,7 @@ const Header = () => {
             {adminIslogin && (
               <ul className=' flex gap-5 '>
                 <div>
-                  <div className='text-white flex items-center justify-center gap-2 cursor-pointer border-2 border-gray-900  rounded-xl p-2 '>
+                  <div className='text-white flex items-center justify-center gap-2 cursor-pointer border-2 border-gray-900  rounded-xl p-1'>
                     <Link to='/admin/profile'>
                       {data?.avatar?.secure_url && (
                         <img
@@ -136,11 +136,11 @@ const Header = () => {
                     <div className=' w-[10vw] h-10 bg-slate-900   flex items-center pl-3   rounded-lg '>
                       <Typewriter
                         options={{
-                          strings: [`HII...${data.fullName}`],
+                          strings: [`Hii.! ${data.fullName}`],
                           autoStart: true,
                           loop: true,
                           cursor: '',
-                          wrapperClassName: 'typewriterpara'
+                          wrapperClassName: 'ty   pewriterpara'
                         }}
                       />
                     </div>

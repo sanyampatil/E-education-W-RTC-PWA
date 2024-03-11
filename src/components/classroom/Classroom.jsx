@@ -30,7 +30,7 @@ const Classroom = () => {
             >
               let's start with EduCollab{' '}
             </h1>
-            <p className={'' + (lightTheme ? '' : ' text-gray-800')}>
+            <p className={'' + (lightTheme ? '' : ' text-gray-500')}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Accusantium doloremque architecto, doloribus adistinctio fugiat
               similique ipsa commodi reprehenderit est facere necessitatibus!

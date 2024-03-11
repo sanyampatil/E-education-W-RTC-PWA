@@ -16,27 +16,38 @@ const ClassroomOption = () => {
 
   return (
     <div className='w-full h-[90vh]'>
-      <div className=' w-full h-[80vh] flex justify-center items-center  gap-10'>
-        <div
-          className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col items-center  cursor-pointer '
-          onClick={() => setshowP2PPopUp(true)}
-        >
-          <Link to="/class/doubt">
+      <div className=' w-full h-[80vh] flex justify-center items-center pt-20  gap-10'>
+        <Link to='/class/doubt'>
+          <div
+            className=' w-[40vw] h-[40vh] bg-white shadow-xl rounded flex justify-center flex-col items-center  cursor-pointer '
+            onClick={() => setshowP2PPopUp(true)}
+          >
+            <div className='flex absolute top-1 right-2 '>
+              <div className='h-4 w-4 rounded-full bg-gray-900'></div>
+            </div>
             {/* {showP2PPopUp && <P2pPopup closeahes={closeahes} />} */}
-            <p className='text-4xl'> Dout solving class</p>
+            <p className='text-[3rem] font-bold'> Dout solving class</p>
 
             <p className='text-2xl'>one-to-one</p>
-          </Link>
-        </div>
+          </div>
+        </Link> 
         <div
-          className=' w-[30%] h-[30%] bg-white shadow-xl rounded flex justify-center flex-col  items-center  cursor-pointer '
+          className='w-[40vw] h-[40vh] bg-white shadow-xl rounded flex justify-center flex-col  items-center  cursor-pointer  relative'
           onClick={() => setshowPopUp(true)}
         >
-          {/* {showPopUp && <VideoConfPopup onClose={closeahes} />} */}
+          <div className='flex absolute top-1 right-2 '>
+            <div className='h-4 w-4 rounded-full bg-gray-900'></div>
+          </div>
+          {showPopUp && <VideoConfPopup onClose={closeahes} />}
 
-          <p className='text-4xl'>video cnf class</p>
+          <p className='text-[3rem] font-bold'>video cnf class</p>
 
-          <p className='text-2xl'>many -to-many </p>
+          <p className='text-2xl text-left'>many -to-many </p>
+          <div className='flex '>
+            {/* <button className=' bg-blue-600 px-5 py-2 text-white rounded-md '>
+              start
+            </button> */}
+          </div>
         </div>
       </div>
     </div>
