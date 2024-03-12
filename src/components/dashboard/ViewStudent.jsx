@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { AdminfetchAllStudent } from '../../redux/slices/dashboardSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { StudentCard } from './components/studentCard'
+
+import '../../App.css'  
 const ViewStudent = () => {
   const dispatch = useDispatch()
 
@@ -19,7 +21,7 @@ const ViewStudent = () => {
   console.log('StudentCardItems', StudentCardItems)
 
   return (
-    <div className='  bg-indigo-950 overflow-auto flex  flex-row '>
+    <div className='  bg-indigo-950  overflow-auto   custom-scrollbar flex  flex-row '>
       <div className='w-full h-[90vh]'>
         {!StudentCardItems
           ? ''

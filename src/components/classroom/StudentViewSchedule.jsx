@@ -26,7 +26,7 @@ const StudentViewSchedule = () => {
           </h1>
           {!ScheduleCardItems
             ? ''
-            : SchedSuleCardItems?.slice(0)
+            : ScheduleCardItems?.slice(0)
                 .reverse()
                 .map((schedule, index) => {
                   {

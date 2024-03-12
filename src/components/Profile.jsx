@@ -6,24 +6,26 @@ import { GetAdminInfoData } from '../redux/slices/adminInfoSlices'
 const Profile = () => {
   const dispatch = useDispatch()
 
-  
+  const lightTheme = useSelector(state => state.themeKey)
+
+  console.log("light",lightTheme)
   /////fetch adminInfo data from adminDeatail Model
-  
+
   const AdminId = useSelector(state => state.adminAuth.data._id)
   console.log('Admin Id', AdminId)
-  
+
   async function LoadData () {
     const data = await dispatch(GetAdminInfoData(AdminId))
     console.log('data', data)
   }
-  
+
   // const  Admindata = localStorage.get("infoData")
   const Admindata = useSelector(state => state.Admininfo.AdminInfoData)
   console.log('adminDetail', Admindata)
 
   useEffect(() => {
     LoadData()
-  },[])
+  }, [])
 
   return (
     <>
@@ -42,35 +44,21 @@ const Profile = () => {
               className='w-full h-full absolute opacity-50 bg-black'
             ></span>
           </div>
-          {/* <div
-            className='top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px'
-            // style='transform: translateZ(0px)'
-          >
-            <svg
-              className='absolute bottom-0 overflow-hidden'
-              xmlns='http://www.w3.org/2000/svg'
-              preserveAspectRatio='none'
-              version='1.1'
-              viewBox='0 0 2560 100'
-              x='0'
-              y='0'
-            >
-              <polygon
-                className='text-blueGray-200 fill-current'
-                points='2560 0 2560 100 0 100'
-              ></polygon>
-            </svg>
-          </div> */}
 
           <div></div>
         </section>
         <section className='relative bg-blueGray-200 border-1  border-red-200 '>
           <div className='container  p-10 relative'>
-            <div className='  flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-[40vh]'>
+            <div
+              className={
+                '  flex flex-col min-w-0 break-words ml-10 bg-white w-full mb-6 shadow-xl rounded-lg mt-[40vh]' +
+                (lightTheme ? '' : ' bg-slate-800')
+              }
+            >
               <div className='flex items-center justify-center'>
                 <h1 className='  absolute top-[10%] w-[25vw] h-[50vh]   border-red-200 rounded-[50%] '>
                   <img
-                    // src={Admindata?.avatar?.secure_url}
+                    src={Admindata?.avatar?.secure_url}
                     className='w-[25vw] h-[50vh] rounded-[50%]'
                   />
                 </h1>
@@ -105,14 +93,14 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className='w-full lg:w-4/12 px-4 lg:order-1 '>
-                    <div className='flex justify-center py-4 lg:pt-4 pt-8'>
+                    {/* <div className='flex justify-center py-4 lg:pt-4 pt-8'>
                       <div className='mr-4 p-3 text-center'>
                         <span className='text-xl font-bold block uppercase tracking-wide text-blueGray-600'>
                           22
                         </span>
                         <span className='text-xl text-blueGray-400'>
                           Friends
-                        </span>
+                        </span>z
                       </div>
                       <div className='mr-4 p-3 text-center'>
                         <span className='text-xl font-bold block uppercase tracking-wide text-blueGray-600'>
@@ -130,20 +118,21 @@ const Profile = () => {
                           Comments
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className='text-center mt-12'>
-                  <h3 className='text-4xl font-semibold leading-normal mb-2 text-blueGray-700 '>
+                  <h3 className='text-[7rem] font-bold leading-normal mb-2 text-blueGray-700 '>
                     {Admindata.fullName}
                   </h3>
-                  <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase'>
-                    <i className='fas fa-map-marker-alt mr-2 text-lg text-blueGray-400'></i>
-                    <p>branch:-</p>
-                    {Admindata.branch}
+                  <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold '>
+                    {/* <i className='fas fa-map-marker-alt  text-[3rem] mr-2 text-lg text-blueGray-400'></i> */}
+                    <p className='text-[3rem]'>
+                      branch:-
+                      {Admindata.branch}
+                    </p>
                   </div>
-                  <div className='mb-2 text-blueGray-600 mt-10 '>
-                    <i className='fas fa-briefcase mr-2 text-lg text-blueGray-400'></i>
+                  <div className='mb-2 text-blueGray-600 mt-10'>
                     subject:-{Admindata.subs}
                   </div>
                   <div className='mb-2 text-blueGray-600 mt-10'>
@@ -159,11 +148,7 @@ const Profile = () => {
                   <div className='flex flex-wrap justify-center'>
                     <div className='w-full lg:w-9/12 px-4'>
                       <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
-                        An artist of considerable range, Jenna the name taken by
-                        Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                        performs and records all of his own music, giving it a
-                        warm, intimate feel with a solid groove structure. An
-                        artist of considerable range.
+                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus illum commodi possimus dolorem iure ex voluptates voluptas aspernatur quae animi!
                       </p>
                       <a href='#pablo' className='font-normal text-pink-500'>
                         Show more

@@ -15,12 +15,12 @@ export const createAdmininfo = createAsyncThunk('/admin/login', async data => {
 
 
   try {
-    const config = {
-      headers: {
-        'content-Type': 'application/json'
-      }
-    }
-    const res = axiosInstance.post('/admin/me/details', data,config)
+    // const config = {
+    //   headers: {
+    //     'content-Type': 'application/json'
+    //   }
+    // }
+    const res = axiosInstance.post('/admin/me/details', data)
 
     toast.promise(res, {
       loading: 'Wait! creating',

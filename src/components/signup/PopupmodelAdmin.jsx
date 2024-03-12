@@ -6,12 +6,13 @@ import { Backdrop, Button, CircularProgress, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
+import { motion } from 'framer-motion'
 
 // import { TransitionProps } from '@mui/material/transitions';
 const PopupmodelAdmin = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
+  const lightTheme = useSelector(state => state.themeKey)
   const [previewImage, setPreviewImage] = useState('')
   const adminId = useSelector(state => state.adminAuth.data._id)
 
@@ -84,45 +85,73 @@ const PopupmodelAdmin = () => {
     setPreviewImage('')
   }
 
+  const animations = {
+    whileInView: {
+      x: 0,
+      y: 0,
+      opacity: 1
+    },
+    one: {
+      opacity: 0,
+      x: '-100%'
+    },
+    twoAndThree: {
+      opacity: 0,
+      y: '-90%'
+    },
+
+    four: {
+      opacity: 0,
+      x: '100%'
+    }
+  }
+
   return (
-    <>
-      <div className=' bg-opacity-30 inset-0 backdrop-blur-sm fixed flex justify-center items-center bg-black'>
-        <div className='  flex flex-col gap-5 text-white relative'>
-          <div className='  mt-10 bg-white h-[80vh] w-[70vw] rounded-xl  text-black'>
-            <h1 className='text-[25px]  text-center mt-2 font-bold text-black'>
-              Select following option for Registration
-            </h1>
+    <div className=' bg-opacity-30 inset-0 backdrop-blur-sm fixed flex justify-center items-center bg-black'>
+      <motion.div
+        whileInView={animations.whileInView}
+        initial={animations.twoAndThree}
+        className='  flex flex-col gap-5 text-white relative'
+      >
+        <div className={'mt-7  bg-white h-[80vh] w-[70vw] rounded-xl   text-black'+
+          (lightTheme ? '' : ' darkforPop')
+        }>
+          <h1 className={'text-[2.1rem]  text-center   font-bold text-black'+
+          (lightTheme ? '' : ' text-white')
+        }>
+            Select following option for Registration
+          </h1>
 
-            <form
-              noValidate
-              onSubmit={createAdminInfo}
-              className='flex ml-20  items-center justify-center flex-col gap-3 rounded-lg p-4 text-black  h-[70vh] w-[60vw] '
-            >
-              <div className=' flex  bg-slate-200 rounded-lg items-center  justify-evenly gap-3 h-[55vh] w-[60vw] border-2  shadow-lg'>
-                <div className='border-2  w-[22vw] h-[32vh]  shadow-2xl  p-20 flex flex-col justify-center items-center' >
-                  <label htmlFor='image_uploads' className='cursor-pointer'>
-                    {previewImage ? (
-                      <img
-                        className='w-40 h-40 rounded-full m-auto'
-                        src={previewImage}
-                      />
-                    ) : (
-                      <BsPersonCircle className=' w-40 h-40 rounded-full m-auto' />
-                    )}
-                  </label>
+          <form
+            noValidate
+            onSubmit={createAdminInfo}
+            className='flex ml-20  items-center justify-center flex-col gap-3 rounded-lg p-2 text-black  h-[70vh] w-[60vw] '
+          >
+            <div className=' flex  bg-slate-200 rounded-lg items-center  justify-evenly gap-3 h-[55vh] w-[60vw] border-2  shadow-lg'>
+              <div className='border-2  w-[22vw] h-[32vh]  shadow-2xl  p-20 flex flex-col justify-center items-center'>
+                <label htmlFor='image_uploads' className='cursor-pointer'>
+                  {previewImage ? (
+                    <img
+                      className='w-40 h-40 rounded-full m-auto'
+                      src={previewImage}
+                    />
+                  ) : (
+                    <BsPersonCircle className=' w-40 h-40 rounded-full m-auto' />
+                  )}
+                </label>
 
-                  <input
-                    onChange={getImage}
-                    className='hidden'
-                    type='file'
-                    name='image_uploads'
-                    id='image_uploads'
-                    accept='.jpg, .jpeg, .png, .svg'
-                  />
-                </div>
+                <input
+                  onChange={getImage}
+                  className='hidden'
+                  type='file'
+                  name='image_uploads'
+                  id='image_uploads'
+                  accept='.jpg, .jpeg, .png, .svg'
+                />
+              </div>
 
-                <div className='border-2  w-[20vw] h-[30vh] flex flex-col gap-5'>
-                  {/* <div className='flex flex-col gap-1'>
+              <div className='border-2  w-[20vw] h-[30vh] flex flex-col gap-5'>
+                {/* <div className='flex flex-col gap-1'>
                     <label htmlFor='fullName' className='font-semibold'>
                       {' '}
                       Name{' '}
@@ -139,69 +168,67 @@ const PopupmodelAdmin = () => {
                     />
                   </div> */}
 
+                <TextField
+                  id='standard-basic'
+                  variant='outlined'
+                  color='secondary'
+                  name='fullName'
+                  helperText=''
+                  label='Enter your Name'
+                  onChange={handleUserInput}
+                  value={infoData.fullName}
+                />
+
+                <div className='  flex flex-col gap-1'>
                   <TextField
                     id='standard-basic'
                     variant='outlined'
                     color='secondary'
-                    name='fullName'
                     helperText=''
-                    label='Enter User Name'
+                    name='branch'
+                    label='Enter your branch..'
                     onChange={handleUserInput}
-                    value={infoData.fullName}
+                    value={infoData.branch}
                   />
+                </div>
 
-                  <div className='  flex flex-col gap-1'>
-                    
-                    <TextField
-                      id='standard-basic'
-                      variant='outlined'
-                      color='secondary'
-                      helperText=''
-                      name='branch'
-                      label='Enter your branch..'
-                      onChange={handleUserInput}
-                      value={infoData.branch}
-                    />
-                  </div>
-
-                  <div className=' flex flex-col gap-1'>
-                    {/* <label htmlFor='subs' className='font-semibold'>
+                <div className=' flex flex-col gap-1'>
+                  {/* <label htmlFor='subs' className='font-semibold'>
                       {' '}
                       subs{' '}
                     </label> */}
-                    <TextField
-                      id='standard-basic'
-                      variant='outlined'
-                      color='secondary'
-                      helperText=''
-                      name='subs'
-                      label='Enter your subject Name'
-                      onChange={handleUserInput}
-                      value={infoData.subs}
-                    />
-                  </div>
+                  <TextField
+                    id='standard-basic'
+                    variant='outlined'
+                    color='secondary'
+                    helperText=''
+                    name='subs'
+                    label='Enter your subject Name'
+                    onChange={handleUserInput}
+                    value={infoData.subs}
+                  />
                 </div>
               </div>
+            </div>
 
-              <div
-                className=' relative flex  border-2 border-black
+            <div
+              className=' relative flex  border-2 border-black
               '
+            >
+              <button
+                type='submit'
+                className=' bg-blue-700  absolute  left-72 rounded-lg text-white  px-10  py-4 font-semibold text-lg cursor-pointer'
               >
-                <button
-                  type='submit'
-                  className=' bg-blue-900  absolute  left-72 rounded-lg text-white  px-10  py-4 font-semibold text-lg cursor-pointer'
-                >
-                  save
-                </button>
-              </div>
-              {/* <div className='right'>
+                save
+              </button>
+            </div>
+            {/* <div className='right'>
                     <label htmlFor='image-upload'></label>
                   </div> */}
-            </form>
-          </div>
+          </form>
         </div>
-      </div>
-    </>
+      </motion.div>
+    </div>
   )
 }
 

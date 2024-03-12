@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllDoubt } from '../../redux/slices/classroomSlices'
 import DoubtCard from './DoubtCard'
-
+import '../../App.css'  
 const MyDoubts = () => {
   const dispatch = useDispatch()
 
@@ -35,7 +35,7 @@ const MyDoubts = () => {
       <div className='w-[100vw] h-[100vh]'>
         <div className='flex items-center  justify-center  relative'>
           <h1 className='text-[5rem]'>My Doubts</h1>
-          <div className='w-[80vw] h-[80vh]  bg-indigo-950 flex overflow-auto p-10 absolute  top-28  rounded-lg'>
+          <div className='w-[80vw] h-[80vh]  bg-indigo-950 flex overflow-auto custom-scrollbar p-10 absolute  top-28  rounded-lg'>
             <div className='flex flex-wrap  items-center gap-5'>
               {!DoubtCardItems
                 ? ''

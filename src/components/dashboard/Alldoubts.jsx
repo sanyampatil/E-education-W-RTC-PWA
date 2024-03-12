@@ -3,7 +3,7 @@ import { AdminfetaAllDoubts } from '../../redux/slices/classroomSlices'
 import { useDispatch, useSelector } from 'react-redux'
 import DoubtCard from '../classroom/DoubtCard'
 import { AnimatePresence } from 'framer-motion'
-
+import '../../App.css'  
 const Alldoubts = () => {
   console.log('under the student')
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const Alldoubts = () => {
   // console.log(date.getMonth() + 1)
 
   return (
-    <div className='w-[80vw] h-[90vh] bg-indigo-950 flex overflow-auto p-10'>
+    <div className='w-[80vw] h-[90vh] bg-indigo-950 flex overflow-auto p-10  custom-scrollbar'>
       <div className='flex flex-wrap  items-center justify-center gap-5'>
         {!DoubtCardItems
           ? ''
