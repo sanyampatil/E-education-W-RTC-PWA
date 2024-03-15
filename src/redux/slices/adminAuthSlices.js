@@ -51,7 +51,9 @@ export const loginAdminAccount = createAsyncThunk(
           return data?.data?.message
         },
         error: 'Failed to login'
-      })
+      })  
+
+      
       console.log(data)
       return (await res).data
     } catch (error) {

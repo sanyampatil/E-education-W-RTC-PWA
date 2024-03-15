@@ -2,13 +2,8 @@ import React from 'react'
 import { ImCross } from 'react-icons/im'
 import { BsPersonCircle } from 'react-icons/bs'
 import { toast } from 'react-hot-toast'
-import {
-  Backdrop,
-  Button,
-  CircularProgress,
-  TextField,
-  makeStyles
-} from '@mui/material'
+// import { makeStyles } from '@material-ui/core/styles'
+import { Backdrop, Button, CircularProgress, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 // import { createAdmininfo } from '../../redux/slices/adminInfoSlices'
@@ -40,13 +35,14 @@ const CreateSchedule = () => {
   //     '& .MuiInput-underline:before, & .MuiInput-underline:after': {
   //       borderBottomColor: 'white', // Border color when idle and focused
   //     },
+
   //     '& .MuiFormLabel-root': {
   //       color: 'white', // Label color
   //     },
   //   },
   // });
 
-  // const classes = useStyles();
+  // const classes = useStyles()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -65,7 +61,18 @@ const CreateSchedule = () => {
       [name]: value
     })
   }
-  console.log('infoData', infoData)
+  // console.log('infoData', infoData)
+
+  if (
+    !infoData.TitleOfClass ||
+    !infoData.Topic_heading ||
+    !infoData.create_Date ||
+    !infoData.Time ||
+    !infoData.Createby
+  ) {
+    toast.error('All required')
+    return
+  }
 
   async function submitscheduleForm (event) {
     event.preventDefault()
@@ -133,10 +140,9 @@ const CreateSchedule = () => {
                   type='text'
                   required
                   id='standard-basic'
-                  label='Enter your TitleOfClass..'
+                  label='Enter Title Of Class..'
                   variant='outlined'
-                  // color='primary'
-                  // className={classes.root}
+                  color='primary'
                   InputProps={{
                     style: { color: 'white' }
                   }}
@@ -235,7 +241,6 @@ const CreateSchedule = () => {
             className='  w-[100vw] h-[70vh] brightness-50   '
           />
         </div>
-
       </div>
     </div>
   )

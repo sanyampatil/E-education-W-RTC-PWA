@@ -11,7 +11,7 @@ import axios from 'axios'
 import { myContext } from './MainContainer'
 import { Socket } from 'socket.io-client'
 var socket, chat
-
+import { io } from 'socket.io-client'
 function ChatArea () {
   const lightTheme = useSelector(state => state.themeKey)
   const [messageContent, setMessageContent] = useState('')
@@ -28,7 +28,7 @@ function ChatArea () {
   const [loaded, setloaded] = useState(false)
   const [socketConnectionStatus, setsocketConnectionStatus] = useState(false)
 
-   const ENDPOINT = 'http://localhost:7861/api/v1'
+  const ENDPOINT = 'http://localhost:7861/api/v1'
 
   const sendMessage = () => {
     console.log('chat Area ')
@@ -36,7 +36,6 @@ function ChatArea () {
 
     var data = null
 
-    
     const config = {
       headers: {
         Authorization: `Bearer ${userData.data.token}`
@@ -55,7 +54,7 @@ function ChatArea () {
         data = response
         console.log('Message Fired')
       })
-    sock.et.emit('newMessage', data)
+    socket.emit('newMessage', data)
   }
 
   // const scrollToBottom = () => {

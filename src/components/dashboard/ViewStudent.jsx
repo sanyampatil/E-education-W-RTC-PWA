@@ -8,13 +8,14 @@ const ViewStudent = () => {
   const dispatch = useDispatch()
 
   async function LoadData () {
-    const data = await dispatch(AdminfetchAllStudent())
+    const data = await dispatch(AdminfetchAllStudent()) 
     console.log('data --> AdminfetaAllStudent', data)
   }
 
   useEffect(() => {
     LoadData()
   }, [])
+
   const StudentCardItems = useSelector(
     state => state?.dashboard?.AllStudentData
   )

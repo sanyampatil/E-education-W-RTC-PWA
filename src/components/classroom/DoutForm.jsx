@@ -16,9 +16,6 @@ import { calcLength } from 'framer-motion'
 const DoutForm = () => {
   const userData = JSON.parse(localStorage.getItem('userData'))
   const userId = userData.data._id
-  // console.log('userData', userData)
-  // console.log("userId",userId)
-
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -39,10 +36,10 @@ const DoutForm = () => {
 
   async function submitDoutForm (event) {
     event.preventDefault()
-    // if (!infoData.studentName || !infoData.class_name || !infoData.doubt) {
-    //   toast.error('Please fill all the details')
-    //   return
-    // }
+    if (!infoData.studentName || !infoData.class_name || !infoData.doubt) {
+      toast.error('Please fill all the details')
+      return
+    }
 
     const formData = new FormData()
     formData.append('studentName', infoData.studentName)

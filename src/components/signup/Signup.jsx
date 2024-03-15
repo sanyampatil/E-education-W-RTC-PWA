@@ -12,7 +12,7 @@ function Signup () {
   const dispatch = useDispatch()
   const dispatchClick = useDispatch()
   const navigate = useNavigate()
-
+  const lightTheme = useSelector(state => state.themeKey)
   // const AdminRegister = useSelector(state => state.register.admineRegister)
 
   const [signupData, setSignupData] = useState({
@@ -80,8 +80,6 @@ function Signup () {
       navigate('/admin/login')
     }
 
-    
-
     setSignupData({
       username: '',
       email: '',
@@ -89,15 +87,20 @@ function Signup () {
     })
   }
   return (
-    <section className='h-full bg-neutral-200 dark:bg-neutral-700 flex justify-center items-center '>
+    <section className='h-full flex      justify-center items-center '>
       <div className='container h-full p-10 '>
-        <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
+        <div className='g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 '>
           <div className=' mt-10 '>
-            <div className='block rounded-lg bg-white shadow-lg dark:bg-neutral-800'>
+            <div
+              className={
+                'block rounded-lg bg-white  shadow-lg ' +
+                (lightTheme ? '' : 'darkforform')
+              }
+            >
               <div className='g-0 lg:flex lg:flex-wrap'>
                 {/* <!-- Left column container--> */}
                 <div className='px-4 md:px-0 lg:w-6/12'>
-                  <div className='md:mx-6 md:p-12'>
+                  <div className='md:mx-6 md:p-12 flex  items-center  justify-centers flex-col'>
                     {/* <!--Logo--> */}
                     <div className='text-center'>
                       {/* <img  
@@ -117,15 +120,24 @@ function Signup () {
                     <form
                       noValidate
                       onSubmit={createNewAccount}
-                      className='flex flex-col ml-20 justify-center gap-3 rounded-lg p-4 text-black w-96 '
+                      className='flex flex-col  justify-center gap-3 rounded-lg p-4 text-black w-96 '
                     >
-                      <h1 className='text-center text-2xl font-bold'>
+                      <h1
+                        className={
+                          'text-center text-2xl font-bold text-black' +
+                          (lightTheme ? '' : ' text-white')
+                        }
+                      >
                         Registration Page
                       </h1>
 
                       <div className='flex flex-col gap-1'>
-                        <label htmlFor='username' className='font-semibold'>
-                          {' '}
+                        <label
+                          htmlFor='username'
+                          className={
+                            'font-semibold' + (lightTheme ? '' : ' text-white')
+                          }
+                        >
                           Name{' '}
                         </label>
                         <input
@@ -140,7 +152,12 @@ function Signup () {
                         />
                       </div>
                       <div className='  flex flex-col gap-1'>
-                        <label htmlFor='email' className='font-semibold'>
+                        <label
+                          htmlFor='email'
+                          className={
+                            'font-semibold' + (lightTheme ? '' : ' text-white')
+                          }
+                        >
                           {' '}
                           Email{' '}
                         </label>
@@ -156,7 +173,12 @@ function Signup () {
                         />
                       </div>
                       <div className='flex flex-col gap-1'>
-                        <label htmlFor='password' className='font-semibold'>
+                        <label
+                          htmlFor='password'
+                          className={
+                            'font-semibold' + (lightTheme ? '' : ' text-white')
+                          }
+                        >
                           {' '}
                           Password{' '}
                         </label>
@@ -195,13 +217,7 @@ function Signup () {
                 </div>
 
                 {/* <!-- Right column background and description--> */}
-                <div
-                  className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-sky-500 to-indigo-500 '
-                  // style={{
-                  //   background:
-                  //     'bg-gradient-to-r from-sky-500 to-indigo-500'
-                  // }}
-                >
+                <div className='flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r from-sky-500 to-indigo-500'>
                   <div className='px-4 py-6 text-white md:mx-6 md:p-12'>
                     <h4 className='mb-6 text-xl font-semibold'>
                       We are more than just a company
