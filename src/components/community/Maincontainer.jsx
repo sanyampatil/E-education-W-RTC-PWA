@@ -19,11 +19,6 @@ function MainContainer () {
           <Sidebar />
           <Outlet />
         </myContext.Provider>
-        {/* <Welcome /> */}
-        {/* <CreateGroups /> */}
-        {/* <ChatArea props={conversations[0]} /> */}
-        {/* <Users /> */}
-        {/* <Groups /> */}
       </div>
     </div>
   )

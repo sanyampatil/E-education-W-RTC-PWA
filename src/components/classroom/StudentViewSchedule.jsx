@@ -24,22 +24,22 @@ const StudentViewSchedule = () => {
           <h1 className=' text-yellow-400 text-[3rem] bg-slate-900 p-5 rounded-lg font-bold'>
             checke Schedule
           </h1>
-          {!ScheduleCardItems
-            ? ''
-            : ScheduleCardItems?.slice(0)
-                .reverse()
-                .map((schedule, index) => {
-                  {
-                    console.log('schedule', schedule)
-                  }
-                  return (
-                    <ScheduleCard
-                      data={schedule}
-                      key={schedule._id}
-                      index={index}
-                    />
-                  )
-                })}
+              {!ScheduleCardItems
+                ? ''
+                : ScheduleCardItems?.slice(0)
+                    .reverse()
+                    .map((schedule, index) => {
+                      {
+                        console.log('schedule', schedule)
+                      }
+                      return (
+                        <ScheduleCard
+                          data={schedule}
+                          key={schedule._id}
+                          index={index}
+                        />
+                      )
+                    })}
         </div>
       </div>
     </div>

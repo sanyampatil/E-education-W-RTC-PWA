@@ -18,11 +18,10 @@ const ViewSchdule = () => {
     LoadData()
   }, [])
 
-  
   return (
     <div className='w-[80vw] h-[90vh]  relative  bg-black flex flex-row space-x-4 items-center overflow-auto   custom-scrollbar  justify-center '>
       <div className=' border-1 border-white  flex items-center justify-center   flex-wrap gap-10 p-20  absolute top-10 overflow-auto'>
-        {!ScheduleCardItems
+        {/* {!ScheduleCardItems
           ? ''
           : ScheduleCardItems.slice(0)
               .reverse()
@@ -37,7 +36,7 @@ const ViewSchdule = () => {
                     index={index}
                   />
                 )
-              })}
+              })} */}
       </div>
     </div>
   )

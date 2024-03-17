@@ -17,9 +17,11 @@ import { myContext } from './MainContainer'
 import { ImClearFormatting } from 'react-icons/im'
 
 function Sidebar () {
-  // const io = server()
+  1 // const io = server()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  // theme
   const lightTheme = useSelector(state => state.themeKey)
   // const refresh = useSelector((state) => state.refreshKey);
 
@@ -34,6 +36,7 @@ function Sidebar () {
   // console.log("Data from LocalStorage : ", userData);
 
   const nav = useNavigate()
+
   if (!userData) {
     console.log('User not Authenticated')
     nav('/')
@@ -53,7 +56,7 @@ function Sidebar () {
     axios.get('http://localhost:7861/api/v1/chat/', config).then(response => {
       console.log('Data refresh in sidebar ', response.data)
       setConversations(response.data)
-      // setRefresh(!refresh);
+      // setRefresh(!refresh)
     })
   }, [refresh])
 

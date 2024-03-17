@@ -113,12 +113,18 @@ const PopupmodelAdmin = () => {
         initial={animations.twoAndThree}
         className='  flex flex-col gap-5 text-white relative'
       >
-        <div className={'mt-7  bg-white h-[80vh] w-[70vw] rounded-xl   text-black'+
-          (lightTheme ? '' : ' darkforPop')
-        }>
-          <h1 className={'text-[2.1rem]  text-center   font-bold text-black'+
-          (lightTheme ? '' : ' text-white')
-        }>
+        <div
+          className={
+            'mt-7  bg-white h-[80vh] w-[70vw] rounded-xl   text-black' +
+            (lightTheme ? '' : ' darkforPop')
+          }
+        >
+          <h1
+            className={
+              'text-[2.1rem]  text-center   font-bold text-black' +
+              (lightTheme ? '' : ' text-white')
+            }
+          >
             Select following option for Registration
           </h1>
 
@@ -165,13 +171,14 @@ const PopupmodelAdmin = () => {
                       className='bg-transparent px-2 py-1 border'
                       onChange={handleUserInput}
                       value={infoData.fullName}
-                    />
+                    />  
                   </div> */}
 
                 <TextField
                   id='standard-basic'
                   variant='outlined'
-                  color='secondary'
+                  // color='secondary'
+                  //style={{ color: 'white' }}
                   name='fullName'
                   helperText=''
                   label='Enter your Name'

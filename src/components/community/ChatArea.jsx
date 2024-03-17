@@ -10,8 +10,9 @@ import Skeleton from '@mui/material/Skeleton'
 import axios from 'axios'
 import { myContext } from './MainContainer'
 import { Socket } from 'socket.io-client'
+import io from 'socket.io-client'
 var socket, chat
-import { io } from 'socket.io-client'
+
 function ChatArea () {
   const lightTheme = useSelector(state => state.themeKey)
   const [messageContent, setMessageContent] = useState('')
@@ -21,14 +22,14 @@ function ChatArea () {
   // console.log(chat_id, chat_user);
   const userData = JSON.parse(localStorage.getItem('userData'))
   const [allMessages, setAllMessages] = useState([])
-  const [allMessageCopy, setallMessageCopy] = useState([])
+  const [AllMessageCopy, setAllMessageCopy] = useState([])
   // console.log("Chat area id : ", chat_id._id);
   // const refresh = useSelector((state) => state.refreshKey);
   const { refresh, setRefresh } = useContext(myContext)
   const [loaded, setloaded] = useState(false)
   const [socketConnectionStatus, setsocketConnectionStatus] = useState(false)
 
-  const ENDPOINT = 'http://localhost:7861/api/v1'
+  const ENDPOINT = 'http://localhost:7861'
 
   const sendMessage = () => {
     console.log('chat Area ')
@@ -52,6 +53,7 @@ function ChatArea () {
       )
       .then(({ response }) => {
         data = response
+        console.log('data djbbhb ', data) 
         console.log('Message Fired')
       })
     socket.emit('newMessage', data)
@@ -63,17 +65,19 @@ function ChatArea () {
 
   // connetect to socket
   useEffect(() => {
-    socket.io(ENDPOINT)
-    socket.emit('setup', userData)
-    socket.io('connection', () => {
+    console.log('fdvhvbdfbmdbd')
+    // console.log()
+    socket = io(ENDPOINT)
+    socket.emit(' ', userData)
+    socket.on('connection', () => {
       setsocketConnectionStatus(!socketConnectionStatus)
     })
   }, [])
 
   // new message recieved
   useEffect(() => {
-    socket.on('message recieved ', newMessage => {
-      if (!allMessageCopy || allMessageCopy.id !== newMessage._id) {
+    socket.on('message recieved', newMessage => {
+      if (!AllMessageCopy || AllMessageCopy.id !== newMessage._id) {
       } else {
         setAllMessages([...allMessages], newMessage)
       }
@@ -96,7 +100,7 @@ function ChatArea () {
         socket.emit('join chat', chat_id)
         console.log('Data from Acess Chat API ', data)
       })
-    setAllMessagesCopy(allMessages)
+    setAllMessageCopy(allMessages)
     // scrollToBottom();
   }, [refresh, chat_id, userData.data.token])
 

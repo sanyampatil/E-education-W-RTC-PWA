@@ -5,14 +5,15 @@ import { useParams } from 'react-router-dom'
 const MainRoom = () => {
   const { roomId } = useParams()
   const MyMeeting = async element => {
-    const appID = 2082587824
-    const serverSecret = "780a293a84f45f842627da8b047a033d"
+    const appID = 862721783
+
+    const serverSecret = '0c2c6e48f6a791a4e5ebc79077b0b564'
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
       roomId,
       Date.now().toString(),
-      "sanyam"
+      'sanyam'
     )
     const zp = ZegoUIKitPrebuilt.create(kitToken)
     zp.joinRoom({
@@ -25,11 +26,12 @@ const MainRoom = () => {
 
   return (
     <div>
-      <div ref={MyMeeting}></div>
+      <div
+        ref={MyMeeting}
+        className=' pt-20 flex items-center justify-center w-[100vw] h-[100vh] '
+      ></div>
     </div>
   )
 }
 
 export default MainRoom
-
-

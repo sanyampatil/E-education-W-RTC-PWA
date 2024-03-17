@@ -159,7 +159,7 @@ const Header = () => {
               <ul className=' flex gap-5 '>
                 <div>
                   <div className='text-white flex items-center justify-center gap-2 cursor-pointer border-2 border-gray-900  rounded-xl p-1 '>
-                    <Link to='/admin/profile'>
+                    <Link>
                       <div
                         className={
                           'relative inline-block  w-14 text-black  rounded-lg object-cover object-center text-[40px]' +
