@@ -63,23 +63,19 @@ const CreateSchedule = () => {
   }
   // console.log('infoData', infoData)
 
-  if (
-    !infoData.TitleOfClass ||
-    !infoData.Topic_heading ||
-    !infoData.create_Date ||
-    !infoData.Time ||
-    !infoData.Createby
-  ) {
-    toast.error('All required')
-    return
-  }
+  // if (
+  //   !infoData.TitleOfClass ||
+  //   !infoData.Topic_heading ||
+  //   !infoData.create_Date ||
+  //   !infoData.Time ||
+  //   !infoData.Createby
+  // ) {
+  //   toast.error('All required')
+  //   return
+  // }
 
   async function submitscheduleForm (event) {
     event.preventDefault()
-    // if (!infoData.TitleOfClass || !infoData.Topic_heading || !infoData.create_Date) {
-    //   toast.error('Please fill all the details')
-    //   return
-    // }
 
     const formData = new FormData()
     formData.append('TitleOfClass', infoData.TitleOfClass)
@@ -87,10 +83,6 @@ const CreateSchedule = () => {
     formData.append('create_Date', infoData.create_Date)
     formData.append('Time', infoData.Time)
     formData.append('Createby', infoData.Createby)
-
-    // formData.append('_id', userId)
-
-    // dispatch create account action
 
     const response = await dispatch(AdminCreateSchedule(formData))
     console.log('res>>', response)
@@ -118,26 +110,16 @@ const CreateSchedule = () => {
           <form
             noValidate
             onSubmit={submitscheduleForm}
-            className='flex ml-20 justify-center  rounded-lg p-2 text-white  h-[83vh] w-[37vw]  m-5 
+            className='flex ml-20 justify-center  rounded-lg p-2 text-white  h-[73vh] w-[35vw]  m-5 
               bg-slate-700 '
           >
             <div className='p-2 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
               <h1 className='text-[1.7rem]'>please fill all information</h1>
 
               <div className='  flex flex-col gap-1'>
-                {/* <input
-                  type='text'
-                  required
-                  name='TitleOfClass'
-                  id='TitleOfClass'
-                  placeholder='Enter your TitleOfClass..'
-                  className='bg-transparent px-2 py-1 border'
-                  onChange={handleUserInput}
-                  value={infoData.TitleOfClass}
-                />{' '} */}
-
                 <TextField
                   type='text'
+                  // sx={{ borderColor: 'error.main' }}
                   required
                   id='standard-basic'
                   label='Enter Title Of Class..'
@@ -238,7 +220,7 @@ const CreateSchedule = () => {
           <img
             src={schedule}
             alt='Logo'
-            className='  w-[100vw] h-[70vh] brightness-50   '
+            className='  w-[100vw] h-[85vh] brightness-50   '
           />
         </div>
       </div>

@@ -17,7 +17,7 @@ const ViewStudent = () => {
   }, [])
 
   const StudentCardItems = useSelector(
-    state => state?.dashboard?.AllStudentData
+    state => state?.dashboard?.AllStudentData || []
   )
   console.log('StudentCardItems', StudentCardItems)
 

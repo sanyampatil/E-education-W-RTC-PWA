@@ -67,7 +67,7 @@ function Users () {
           <IconButton
             className={'icon' + (lightTheme ? '' : ' dark')}
             onClick={() => {
-              // setRefresh(!refresh)
+              setRefresh(!refresh)
             }}
           >
             <RefreshIcon />
@@ -98,6 +98,7 @@ function Users () {
                       Authorization: `Bearer ${userData.data.token}`
                     }
                   }
+                  
 
                   axios.post(
                     'http://localhost:7861/api/v1/chat/',

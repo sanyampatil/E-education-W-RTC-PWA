@@ -15,9 +15,18 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
-  p: 4
+  alignItems: 'center',
+  borderRadius: 1,
+  
+  // display: 'flex',
+  // justifyContent: 'center',
+  // flexDirection: 'column',
+  // spacing: { xs: 1, sm: 2 },
+
+  p: 5
+  // ml: 5
 }
 
 const DoutSlove = () => {
@@ -69,27 +78,31 @@ const DoutSlove = () => {
                   aria-labelledby='modal-modal-title'
                   aria-describedby='modal-modal-description'
                 >
-                  <div className=' pl-28'>
+                  <div className=''>
                     <Box sx={style}>
                       <TextField
-                        helperText='Please enter your Email'
+                        // helperText='Please enter your Email'
                         id='demo-helper-text-aligned'
                         label='Email'
                         type='mail'
                       />
-
                       <TextField
-                        helperText='Please enter your room ID'
+                        sx={{ mt: 3 }}
+                        // helperText='Please enter your room ID'
                         id='demo-helper-text-aligned'
                         label='Room ID'
                       />
-
-                      <Button onClick={handleOpen} variant='contained'>
-                        Enter Romm
-                      </Button>
+                      <Link to=''>
+                        <Button
+                          onClick={handleOpen}
+                          variant='contained'
+                          sx={{ mt: 3 }}
+                        >
+                          Enter Room
+                        </Button>
+                      </Link>
                       <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Reiciendis, nostrum.
+                        Lorem ipsum do hvdvd vdg gvd dgv strum.
                       </Typography>
                     </Box>
                   </div>

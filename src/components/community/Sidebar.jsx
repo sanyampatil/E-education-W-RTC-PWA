@@ -122,6 +122,7 @@ function Sidebar () {
           </IconButton>
         </div>
       </div>
+
       <div className={'sb-search' + (lightTheme ? '' : ' dark')}>
         <IconButton className={'icon' + (lightTheme ? '' : ' dark')}>
           <SearchIcon />
@@ -131,7 +132,13 @@ function Sidebar () {
           className={'search-box' + (lightTheme ? '' : ' dark')}
         />
       </div>
-      <div className={'sb-conversations' + (lightTheme ? '' : ' dark')}>
+
+      <div
+        className={
+          'sb-conversations overflow-auto  custom-scrollbar ' +
+          (lightTheme ? '' : ' dark')
+        }
+      >
         {conversations.map((conversation, index) => {
           // console.log("current convo : ", conversation);
           if (conversation.students.length === 1) {
@@ -145,12 +152,12 @@ function Sidebar () {
                 onClick={() => {
                   console.log('Refresh fired from sidebar')
                   dispatch(refreshSidebarFun())
-                  // setRefresh(!refresh)
+                  setRefresh(!refresh)
                 }}
               >
                 <div
                   key={index}
-                  className='conversation-container'
+                  className='conversation-container  border-2 border-gray '
                   onClick={() => {
                     navigate(
                       'chat/' +
@@ -172,9 +179,9 @@ function Sidebar () {
                   <p className='con-lastMessage'>
                     No previous Messages, click here to start a new chat
                   </p>
-                  {/* <p className={"con-timeStamp" + (lightTheme ? "" : " dark")}>
-                {conversation.timeStamp}  
-              </p> */}
+                  <p className={'con-timeStamp' + (lightTheme ? '' : ' dark')}>
+                    {conversation.timeStamp}
+                  </p>
                 </div>
               </div>
             )
@@ -195,16 +202,16 @@ function Sidebar () {
                 <p className={'con-icon' + (lightTheme ? '' : ' dark')}>
                   {conversation.students[1].username[0]}
                 </p>
-                <p className={'con-title' + (lightTheme ? '' : ' dark')}>
+                <p className={'con-title' + (lightTheme ? '' : 'dark')}>
                   {conversation.students[1].username}
                 </p>
 
                 <p className='con-lastMessage'>
                   {conversation.latestMessage.content}
                 </p>
-                {/* <p className={"con-timeStamp" + (lightTheme ? "" : " dark")}>
-                {conversation.timeStamp}
-              </p> */}
+                <p className={'con-timeStamp' + (lightTheme ? '' : ' dark')}>
+                  {conversation.timeStamp}
+                </p>
               </div>
             )
           }
