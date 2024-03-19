@@ -21,7 +21,7 @@ const Home = () => {
         Edu+Collab
       </div>
 
-      <div className='w-[100%] h-[91vh] flex justify-evenly items-center gap-4'>
+      <div className='w-[100%] h-[90vh] flex justify-evenly items-center gap-4'>
         {/* left box */}
         <div className=' relative w-[42vw] h-[70vh] shadow-lg shadow-indigo-500/40   border-1 border-white  ml-7 mt-[70px]'>
           {adminIslogin && <DownMenuBar />}

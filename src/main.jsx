@@ -49,47 +49,45 @@ import Alldoubts from './components/dashboard/Alldoubts.jsx'
 import CreateSchedule from './components/classroom/CreateSchedule.jsx'
 import ViewSchdule from './components/dashboard/ViewSchdule.jsx'
 import StudentViewSchedule from './components/classroom/StudentViewSchedule.jsx'
+import { SocketProvider } from './components/context/Socket.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='*' element={<Error />} />
-
       <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
-
       {/* .....................................................>>>>>> */}
       <Route path='/classroom-Option' element={<ClassroomOption />} />
-      <Route path='/room/:roomId' element={<MainRoom />} />
-      <Route path='/class/doubt' element={<DoutSlove />} />
+      <Route path='/room/:roomId' element={<MainRoom />} />;
       <Route path='/fill-doubt' element={<DoutForm />} />
+      {/* <SocketProvider> */}
+      <Route path='/class/doubt' element={<DoutSlove />} />
+      {/* </SocketProvider> */}
       {/* ////----> student view sche   */}
       <Route path='/view-sche' element={<StudentViewSchedule />} />
-
       <Route path='/my-doubts' element={<MyDoubts />} />
-
       {/* ___________________________________________________>>>> dashboard */}
       <Route path='/admin-dashboard' element={<DashboardOne />}>
         <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />
         <Route path='/admin-dashboard/view-Alldoubts' element={<Alldoubts />} />
-        <Route path='/admin-dashboard/create-schedule' element={<CreateSchedule/>} />
-        <Route path='/admin-dashboard/view-schedule' element={<ViewSchdule/>} />
-
-
-
+        <Route
+          path='/admin-dashboard/create-schedule'
+          element={<CreateSchedule />}
+        />
+        <Route
+          path='/admin-dashboard/view-schedule'
+          element={<ViewSchdule />}
+        />
       </Route>
-
       {/* ___________________________________________________________>>>> authAdmin */}
       <Route path='/admin/signup' element={<Signup />} />
       <Route path='/admin/login' element={<Login />} />
       <Route path='/admin/profile' element={<Profile />} />
-
       {/* <Route path='/student/signup' element={< StudentSignup/>} /> */}
       {/* <Route path='/student/login' element={<LoginStudent/>} /> */}
-
       {/*____ ________________________________________________________>>>>comminuty */}
-
       <Route path='/community/mychat' element={<ChatCommunity />}>
         <Route path='/community/mychat/welcome' element={<Welcome />} />
         <Route path='/community/mychat/chat/:_id' element={<ChatArea />} />
@@ -100,13 +98,10 @@ const router = createBrowserRouter(
           element={<CreateGroups />}
         />
       </Route>
-
       {/* __________________________________________________________ /student/notes/view-notes___________>>> Note? */}
-
       <Route path='/notes' element={<Notes />} />
       <Route path='/notes/create-notes' element={<CreateNotes />} />
       <Route path='/student/notes/view-notes' element={<ViewNotes />} />
-
       {/* for Admin dashboard */}
       {/* .................... */}
       <Route path='/admin/notes/upload-notes' element={<UploadNotes />} />
@@ -118,7 +113,9 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
-    <Toaster />
+    <SocketProvider>
+      <RouterProvider router={router} />
+      <Toaster />
+    </SocketProvider>
   </Provider>
 )

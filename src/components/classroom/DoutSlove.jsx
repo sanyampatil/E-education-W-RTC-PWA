@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Think from '../../images/Think.png'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { TextField } from '@mui/material'
+import { SocketProvider, useSocket } from '../context/Socket'
 
 const style = {
   position: 'absolute',
@@ -19,20 +20,67 @@ const style = {
   boxShadow: 24,
   alignItems: 'center',
   borderRadius: 1,
-  
-  // display: 'flex',
-  // justifyContent: 'center',
-  // flexDirection: 'column',
-  // spacing: { xs: 1, sm: 2 },
-
   p: 5
-  // ml: 5
 }
 
 const DoutSlove = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const [infoData, setInfoData] = useState({
+    email: '',
+    roomId: ''
+  })
+
+  function handleUserInput (e) {
+    const { name, value } = e.target
+    setInfoData({
+      ...infoData,
+      [name]: value
+    })
+  }
+  console.log('infoData', infoData)
+
+  async function submitRoomForm (event) {
+    event.preventDefault()
+    if (!infoData.email || !infoData.roomId) {
+      toast.error('Please fill all the details')
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('email', infoData.email)
+    formData.append('roomId', infoData.roomId)
+
+    // dispatch create account action
+
+    const response = await dispatch(sendDout(formData))
+    console.log('res>>', response)
+    // if (response?.payload?.success) navigate('/admin/profile')
+
+    if (response?.payload?.success) {
+      navigate('/my-doubts')
+    }
+
+    setInfoData({
+      email: '',
+      roomId: ''
+    })
+  }
+
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const { socket } = useSocket()
+
+  function ButtonOnClick () {
+    console.log('hvdgcdy socekt')
+    socket.emit('join-room', {
+      emailId: infoData.email,
+      roomId: infoData.roomId
+    })
+    console.log('zal j1')
+  }
 
   const lightTheme = useSelector(state => state.themeKey)
   return (
@@ -79,32 +127,45 @@ const DoutSlove = () => {
                   aria-describedby='modal-modal-description'
                 >
                   <div className=''>
-                    <Box sx={style}>
-                      <TextField
-                        // helperText='Please enter your Email'
-                        id='demo-helper-text-aligned'
-                        label='Email'
-                        type='mail'
-                      />
-                      <TextField
-                        sx={{ mt: 3 }}
-                        // helperText='Please enter your room ID'
-                        id='demo-helper-text-aligned'
-                        label='Room ID'
-                      />
-                      <Link to=''>
-                        <Button
-                          onClick={handleOpen}
-                          variant='contained'
+                    <form
+                      noValidate
+                      onSubmit={submitRoomForm}
+                      className='flex ml-20  items-center justify-center flex-col gap-3 rounded-lg p-2 text-black  h-[70vh] w-[60vw] '
+                    >
+                      <Box sx={style}>
+                        <TextField
+                          // helperText='Please enter your Email'
+                          id='demo-helper-text-aligned'
+                          label='Email'
+                          type='email'
+                          name='email'
+                          onChange={handleUserInput}
+                          value={infoData.email}
+                        />
+                        <TextField
                           sx={{ mt: 3 }}
-                        >
-                          Enter Room
-                        </Button>
-                      </Link>
-                      <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-                        Lorem ipsum do hvdvd vdg gvd dgv strum.
-                      </Typography>
-                    </Box>
+                          // helperText='Please enter your room ID'
+                          id='demo-helper-text-aligned'
+                          label='Room ID'
+                          name='roomId'
+                          onChange={handleUserInput}
+                          value={infoData.roomId}
+                        />
+                        <Link to=''>
+                          <Button
+                            type='submit'
+                            onClick={ButtonOnClick}
+                            variant='contained'
+                            sx={{ mt: 3 }}
+                          >
+                            Enter Room
+                          </Button>
+                        </Link>
+                        <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+                          Lorem ipsum do hvdvd vdg gvd dgv strum.
+                        </Typography>
+                      </Box>
+                    </form>
                   </div>
                 </Modal>
               </div>

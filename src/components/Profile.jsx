@@ -8,7 +8,7 @@ const Profile = () => {
 
   const lightTheme = useSelector(state => state.themeKey)
 
-  console.log("light",lightTheme)
+  console.log('light', lightTheme)
   /////fetch adminInfo data from adminDeatail Model
 
   const AdminId = useSelector(state => state.adminAuth.data._id)
@@ -33,7 +33,7 @@ const Profile = () => {
         <section className='relative '>
           <div className='absolute  w-full h-[100vh]  '>
             <img
-              className='w-full  h-[70vh]'
+              className='w-full  h-[55vh]'
               src='https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80'
               alt=''
             />
@@ -51,20 +51,20 @@ const Profile = () => {
           <div className='container  p-10 relative'>
             <div
               className={
-                '  flex flex-col min-w-0 break-words ml-10 bg-white w-full mb-6 shadow-xl rounded-lg mt-[40vh]' +
+                '  flex   min-w-0 break-words      w-full mb-6 shadow-xl rounded-lg mt-[30vh]' +
                 (lightTheme ? '' : ' bg-slate-800')
               }
             >
               <div className='flex items-center justify-center'>
-                <h1 className='  absolute top-[10%] w-[25vw] h-[50vh]   border-red-200 rounded-[50%] '>
+                <h1 className='absolute left-7 top-[17%] w-[26vw] h-[53vh]   border-red-200 rounded-[50%]  bg-white '>
                   <img
                     src={Admindata?.avatar?.secure_url}
-                    className='w-[25vw] h-[50vh] rounded-[50%]'
+                    className='w-[25vw] h-[50vh] rounded-[50%] mt-2 ml-1'
                   />
                 </h1>
               </div>
               <div className='px-6'>
-                <div className='flex flex-wrap justify-center'>
+                <div className='flex  justify-center'>
                   <div className='w-full lg:w-3/12 px-4 lg:order-2 flex justify-center'>
                     <div className='relative '>
                       <img
@@ -74,7 +74,7 @@ const Profile = () => {
                       />
                     </div>
                   </div>
-                  <div className='w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center '>
+                  <div className='w-full mt-10 text-white lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center '>
                     <div className='py-6 px-3 mt-32 sm:mt-0'>
                       <div className='flex items-center justify-between gap-2'>
                         <Link
@@ -121,13 +121,13 @@ const Profile = () => {
                     </div> */}
                   </div>
                 </div>
-                <div className='text-center mt-12'>
-                  <h3 className='text-[7rem] font-bold leading-normal mb-2 text-blueGray-700 '>
+                <div className='  mt-40 '>
+                  <h3 className='text-[2rem] font-bold leading-normal mb-2 text-blueGray-700  '>
                     {Admindata.fullName}
                   </h3>
                   <div className='text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold '>
                     {/* <i className='fas fa-map-marker-alt  text-[3rem] mr-2 text-lg text-blueGray-400'></i> */}
-                    <p className='text-[3rem]'>
+                    <p className='text-[1rem]'>
                       branch:-
                       {Admindata.branch}
                     </p>
@@ -148,7 +148,9 @@ const Profile = () => {
                   <div className='flex flex-wrap justify-center'>
                     <div className='w-full lg:w-9/12 px-4'>
                       <p className='mb-4 text-lg leading-relaxed text-blueGray-700'>
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus illum commodi possimus dolorem iure ex voluptates voluptas aspernatur quae animi!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Temporibus illum commodi possimus dolorem iure ex
+                        voluptates voluptas aspernatur quae animi!
                       </p>
                       <a href='#pablo' className='font-normal text-pink-500'>
                         Show more

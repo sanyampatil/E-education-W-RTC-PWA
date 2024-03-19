@@ -148,7 +148,10 @@ function Signup () {
                           name='username'
                           id='username'
                           placeholder='Enter your name..'
-                          className='bg-transparent px-2 py-1 border'
+                          className={
+                            'bg-transparent px-2 py-1 border' +
+                            (lightTheme ? '' : ' text-white')
+                          }
                           onChange={handleUserInput}
                           value={signupData.username}
                         />
@@ -169,7 +172,10 @@ function Signup () {
                           name='email'
                           id='email'
                           placeholder='Enter your email..'
-                          className='bg-transparent px-2 py-1 border'
+                          className={
+                            'bg-transparent px-2 py-1 border' +
+                            (lightTheme ? '' : ' text-white')
+                          }
                           onChange={handleUserInput}
                           value={signupData.email}
                         />
@@ -190,7 +196,10 @@ function Signup () {
                           name='password'
                           id='password'
                           placeholder='Enter your password..'
-                          className='bg-transparent px-2 py-1 border'
+                          className={
+                            'bg-transparent px-2 py-1 border ' +
+                            (lightTheme ? '' : ' text-white')
+                          }
                           onChange={handleUserInput}
                           value={signupData.password}
                         />
@@ -204,11 +213,15 @@ function Signup () {
                         Create account
                       </button>
 
-                      <p className='text-center'>
+                      <p
+                        className={
+                          'text-center' + (lightTheme ? '' : ' text-white')
+                        }
+                      >
                         Already have an account ?{' '}
                         <Link
                           to='/admin/login'
-                          className='link text-accent cursor-pointer'
+                          className='link text-accent cursor-pointer underline'
                         >
                           {' '}
                           Login
