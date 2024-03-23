@@ -133,8 +133,8 @@ const PopupmodelAdmin = () => {
             onSubmit={createAdminInfo}
             className='flex ml-20  items-center justify-center flex-col gap-3 rounded-lg p-2 text-black  h-[70vh] w-[60vw] '
           >
-            <div className=' flex  bg-slate-200 rounded-lg items-center  justify-evenly gap-3 h-[55vh] w-[60vw] border-2  shadow-lg'>
-              <div className='border-2  w-[22vw] h-[32vh]  shadow-2xl  p-20 flex flex-col justify-center items-center'>
+            <div className=' flex  bg-white  rounded-lg items-center  justify-evenly gap-3 h-[55vh] w-[60vw]  shadow-lg'>
+              <div className=' w-[22vw] h-[32vh]  shadow-2xl  p-20 flex flex-col justify-center items-center'>
                 <label htmlFor='image_uploads' className='cursor-pointer'>
                   {previewImage ? (
                     <img
@@ -156,7 +156,7 @@ const PopupmodelAdmin = () => {
                 />
               </div>
 
-              <div className='border-2  w-[20vw] h-[30vh] flex flex-col gap-5'>
+              <div className='  w-[20vw] h-[30vh] flex flex-col gap-5'>
                 {/* <div className='flex flex-col gap-1'>
                     <label htmlFor='fullName' className='font-semibold'>
                       {' '}
@@ -192,8 +192,8 @@ const PopupmodelAdmin = () => {
                     variant='outlined'
                     color='secondary'
                     helperText=''
-                    name='branch'
                     label='Enter your branch..'
+                    name='branch'
                     onChange={handleUserInput}
                     value={infoData.branch}
                   />
@@ -209,8 +209,8 @@ const PopupmodelAdmin = () => {
                     variant='outlined'
                     color='secondary'
                     helperText=''
-                    name='subs'
                     label='Enter your subject Name'
+                    name='subs'
                     onChange={handleUserInput}
                     value={infoData.subs}
                   />
@@ -219,7 +219,7 @@ const PopupmodelAdmin = () => {
             </div>
 
             <div
-              className=' relative flex  border-2 border-black
+              className=' relative flex  
               '
             >
               <button

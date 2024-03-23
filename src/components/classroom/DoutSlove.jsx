@@ -26,6 +26,7 @@ const style = {
 const DoutSlove = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const lightTheme = useSelector(state => state.themeKey)
 
   const [infoData, setInfoData] = useState({
     email: '',
@@ -54,13 +55,9 @@ const DoutSlove = () => {
 
     // dispatch create account action
 
-    const response = await dispatch(sendDout(formData))
-    console.log('res>>', response)
+    // const response = await dispatch(sendDout(formData))
+    // console.log('res>>', response)
     // if (response?.payload?.success) navigate('/admin/profile')
-
-    if (response?.payload?.success) {
-      navigate('/my-doubts')
-    }
 
     setInfoData({
       email: '',
@@ -82,7 +79,14 @@ const DoutSlove = () => {
     console.log('zal j1')
   }
 
-  const lightTheme = useSelector(state => state.themeKey)
+  function handleJoinRoom ({ roomId }) {
+    // console.log('room id', roomId)
+    navigate(`/DoubtRoom/${roomId}`)
+  }
+
+  useEffect(() => {
+    socket.on('joined-room', handleJoinRoom)
+  }, [socket])
   return (
     <div className='w-full h-[90vh] relative '>
       <div className=' w-full h-[90vh] flex  items-center justify-evenly  '>

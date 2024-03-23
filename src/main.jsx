@@ -50,6 +50,8 @@ import CreateSchedule from './components/classroom/CreateSchedule.jsx'
 import ViewSchdule from './components/dashboard/ViewSchdule.jsx'
 import StudentViewSchedule from './components/classroom/StudentViewSchedule.jsx'
 import { SocketProvider } from './components/context/Socket.jsx'
+import MainClass from './components/classroom/MainClass.jsx'
+import { PeerProvider } from './components/context/provider/peer.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,7 +62,8 @@ const router = createBrowserRouter(
       <Route path='/classroom' element={<Classroom />} />
       {/* .....................................................>>>>>> */}
       <Route path='/classroom-Option' element={<ClassroomOption />} />
-      <Route path='/room/:roomId' element={<MainRoom />} />;
+      <Route path='/room/:roomId' element={<MainRoom />} />
+      ;<Route path='/DoubtRoom/:roomId' element={<MainClass />} />
       <Route path='/fill-doubt' element={<DoutForm />} />
       {/* <SocketProvider> */}
       <Route path='/class/doubt' element={<DoutSlove />} />
@@ -113,9 +116,11 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <SocketProvider>
-      <RouterProvider router={router} />
-      <Toaster />
-    </SocketProvider>
+    <PeerProvider>
+      <SocketProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </SocketProvider>
+    </PeerProvider>
   </Provider>
 )

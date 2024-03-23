@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import { GrSchedule } from 'react-icons/gr'
-import { AiOutlineSchedule } from "react-icons/ai";
+import { AiOutlineSchedule } from 'react-icons/ai'
 
 import {
   BsCart3,
@@ -63,32 +63,32 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
         </div>
 
         <ul className='sidebar-list'>
-            {/* <li className='sidebar-list-item'>
+          {/* <li className='sidebar-list-item'>
               <a href='' className='flex'>
                 <BsGrid1X2Fill className='icon' /> Dashboard
               </a>
             </li> */}
 
-          <li className='sidebar-list-item'>
-            <Link to='/admin-dashboard/create-schedule'  className='flex'>
+          <Link to='/admin-dashboard/create-schedule'>
+            <li className='sidebar-list-item flex  text-gray-400'>
               <GrSchedule className='icon' /> Crate Schedule
-            </Link>
-          </li>
-          <li className='sidebar-list-item'>
-            <Link to='/admin-dashboard/view-Student' className='flex'>
+            </li>
+          </Link>
+          <Link to='/admin-dashboard/view-Student' className='flex'>
+            <li className='sidebar-list-item flex  text-gray-400'>
               <BsPeopleFill className='icon' /> students
-            </Link>
-          </li>
-          <li className='sidebar-list-item'>
+            </li>
+          </Link>
           <Link to='/admin-dashboard/view-schedule' className='flex'>
-            <AiOutlineSchedule className='icon' /> check Studeule
-            </Link>
-          </li>
-          <li className='sidebar-list-item'>
-            <Link to='/admin-dashboard/view-Alldoubts' className='flex'>
+            <li className='sidebar-list-item flex  text-gray-400'>
+              <AiOutlineSchedule className='icon' /> check Studeule
+            </li>
+          </Link>
+          <Link to='/admin-dashboard/view-Alldoubts' className='flex'>
+            <li className='sidebar-list-item flex  text-gray-400'>
               <BsMenuButtonWideFill className='icon' /> Student doubts
-            </Link>
-          </li>
+            </li>
+          </Link>
           <li className='sidebar-list-item'>
             <a href='' className='flex'>
               <BsFillGearFill className='icon' /> Setting

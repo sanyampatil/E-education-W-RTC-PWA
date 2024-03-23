@@ -26,11 +26,11 @@ const ClassroomOption = () => {
               <div className='h-4 w-4 rounded-full bg-gray-900'></div>
             </div>
             {/* {showP2PPopUp && <P2pPopup closeahes={closeahes} />} */}
-            <p className='text-[3rem] font-bold'> Dout solving class</p>
+            <p className='text-[3rem] font-bold'> Doubt solving class</p>
 
             <p className='text-2xl'>one-to-one</p>
           </div>
-        </Link> 
+        </Link>
         <div
           className='w-[40vw] h-[40vh] bg-white shadow-xl rounded flex justify-center flex-col  items-center  cursor-pointer  relative'
           onClick={() => setshowPopUp(true)}
@@ -42,7 +42,7 @@ const ClassroomOption = () => {
 
           <p className='text-[3rem] font-bold'>video cnf class</p>
 
-          <p className='text-2xl text-left'>many -to-many </p>
+          <p className='text-2xl text-left'>many-to-many </p>
           <div className='flex '>
             {/* <button className=' bg-blue-600 px-5 py-2 text-white rounded-md '>
               start

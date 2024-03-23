@@ -116,7 +116,6 @@ const uploadNotes = () => {
             >
               <div className='border-2  p-5  w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
                 <h1 className='text-[1.7rem]'>upload notes for </h1>
-
                 <div className='  flex flex-col gap-1'>
                   <input
                     type='text'
@@ -130,7 +129,7 @@ const uploadNotes = () => {
                   />{' '}
                 </div>
                 <div className=' flex flex-col gap-1'>
-                  <input
+                  {/* <input
                     type='text'
                     required
                     name='class_Name'
@@ -139,9 +138,34 @@ const uploadNotes = () => {
                     className='bg-transparent px-2 py-1 border'
                     onChange={handleUserInput}
                     value={infoData.class_Name}
-                  />
-                </div>
+                  /> */}
+                  <select
+                    onChange={handleUserInput}
+                    value={infoData.class_Name}
+                    className='bg-transparent px-2 py-1 border'
+                    name='class_Name'
+                  >
+                    <option className='text-black  inline w-full' value=''>
+                      select your class
+                    </option>
 
+                    <option className='text-black  inline w-full' value='BCA-I'>
+                      BCA-I
+                    </option>
+                    <option
+                      className='text-black  inline w-full'
+                      value='BCA-II'
+                    >
+                      BCA-II
+                    </option>
+                    <option
+                      className='text-black  inline w-full'
+                      value='BCA-II'
+                    >
+                      BCA-III 3
+                    </option>
+                  </select>
+                </div>
                 <div className=' flex flex-col gap-1'>
                   <input
                     type='text'
@@ -166,7 +190,6 @@ const uploadNotes = () => {
                     value={infoData.createBy}
                   />
                 </div>
-
                 <div className=' flex flex-col gap-1'>
                   <input
                     type='File'
@@ -180,7 +203,6 @@ const uploadNotes = () => {
                     accept=' application/pdf'
                   />
                 </div>
-
                 <button
                   onClick={handleClick}
                   type='submit'
