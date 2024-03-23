@@ -243,20 +243,20 @@ function LoginRo () {
                 }
               }}
             />
-              <TextField
-                onChange={changeHandler}
-                id='standard-basic'
-                label='Enter Email Address'
-                variant='outlined'
-                color='secondary'
-                name='email'
-                onKeyDown={event => {
-                  if (event.code == 'Enter') {
-                    // console.log(event);
-                    signUpHandler()
-                  }
-                }}
-              />
+            <TextField
+              onChange={changeHandler}
+              id='standard-basic'
+              label='Enter Email Address'
+              variant='outlined'
+              color='secondary'
+              name='email'
+              onKeyDown={event => {
+                if (event.code == 'Enter') {
+                  // console.log(event);
+                  signUpHandler()
+                }
+              }}
+            />
             <TextField
               onChange={changeHandler}
               id='outlined-password-input'

@@ -51,6 +51,24 @@ const ViewNotes = () => {
     setExpanded(prevExpanded => !prevExpanded)
   }
 
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role='presentation' onClick={toggleDrawer(false)}>
+      <Divider />
+      <List>
+        {['BCA', 'BBA', 'MBA'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  )
+
   return (
     <>
       <div className='w-[full] h-[100vh]  relative bg-orange-300 flex flex-col space-x-4 items-center justify-center  pt-20'>
@@ -110,38 +128,15 @@ const ViewNotes = () => {
             </Typography>
           </AccordionDetails>
         </Accordion> */}
-
-        <Box
-          sx={{ width: 250 }}
-          role='presentation'
-          onClick={toggleDrawer(false)}
-        >
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+        ;
+        <div>
+          <Button onClick={toggleDrawer(true)} variant='contained'>
+            Get Notes
+          </Button>
+          <Drawer open={open} onClose={toggleDrawer(false)}>
+            {DrawerList}
+          </Drawer>
+        </div>
       </div>
     </>
   )
