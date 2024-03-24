@@ -6,11 +6,9 @@ import { StudentCard } from './components/studentCard'
 import '../../App.css'
 const ViewStudent = () => {
   const dispatch = useDispatch()
-
-  const LoadData = useCallback(async () => {
-    const data = await dispatch(AdminfetchAllStudent())
-    console.log('data --> AdminfetaAllStudent', data)
-  }, [])
+  async function LoadData () {
+    await dispatch(AdminfetchAllStudent())
+  }
 
   useEffect(() => {
     LoadData()
@@ -76,7 +74,7 @@ const ViewStudent = () => {
       </div>
       <div className='w-[45vw] h-[70vh]  m-2 text-white bg-gray-900 pt-5 rounded-lg  right-5   fixed flex flex-col  items-center justify-center '>
         <div className='text-[7rem] bg-slate-600  py-10 px-14 rounded-full inline '>
-          {StudentCardItems.length}
+          {/* {StudentCardItems.length} */}
         </div>
         <h1 className='text-[3rem] font-semibold '> Total Student</h1>
       </div>

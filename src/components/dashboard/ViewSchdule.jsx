@@ -10,8 +10,8 @@ const ViewSchdule = () => {
   console.log('fetchallSchdule', ScheduleCardItems)
 
   async function LoadData () {
-    const data = await dispatch(fetchAllSchedule())
-    console.log('data --> fetchallSchdule', data)
+    await dispatch(fetchAllSchedule())
+    // console.log('data --> fetchallSchdule', data)
   }
 
   useEffect(() => {
