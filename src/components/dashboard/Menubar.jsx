@@ -19,7 +19,7 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
   const data = useSelector(state => state.Admininfo.data)
 
   return (
-    <div className='w-[20vw] h-[90vh] bg-slate-700  '>
+    <div className='w-[20vw] h-[90vh] bg-slate-700 '>
       {/* <div className=' profile w-[20vw] h-[45vh]  rounded-lg bg-orange-400 flex flex-col items-center p-1 '>
         <div className='w-[12vw] h-[25vh] bg-black rounded-[50%] overflow-hidden'>
           <img
@@ -62,7 +62,7 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
           </span>
         </div>
 
-        <ul className='sidebar-list'>
+        <ul className='sidebar-list  mt-16'>
           {/* <li className='sidebar-list-item'>
               <a href='' className='flex'>
                 <BsGrid1X2Fill className='icon' /> Dashboard
@@ -74,17 +74,17 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
               <GrSchedule className='icon' /> Crate Schedule
             </li>
           </Link>
-          <Link to='/admin-dashboard/view-Student' className='flex'>
+          <Link to='/admin-dashboard/view-Student'>
             <li className='sidebar-list-item flex  text-gray-400'>
               <BsPeopleFill className='icon' /> students
             </li>
           </Link>
-          <Link to='/admin-dashboard/view-schedule' className='flex'>
+          <Link to='/admin-dashboard/view-schedule'>
             <li className='sidebar-list-item flex  text-gray-400'>
               <AiOutlineSchedule className='icon' /> check Studeule
             </li>
           </Link>
-          <Link to='/admin-dashboard/view-Alldoubts' className='flex'>
+          <Link to='/admin-dashboard/view-Alldoubts'>
             <li className='sidebar-list-item flex  text-gray-400'>
               <BsMenuButtonWideFill className='icon' /> Student doubts
             </li>

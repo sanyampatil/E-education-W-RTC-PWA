@@ -103,7 +103,7 @@ const CreateSchedule = () => {
 
   return (
     <div className='w-[80vw] h-[90vh]   flex   p-10  shadow-lg rounded-lg '>
-      <div className='  bg-slate-900 rounded-lg flex w-full h-[80vh] '>
+      <div className='  bg-slate-900 rounded-lg flex w-full h-[75vh]  mt-10'>
         {/* from -> */}
 
         <div className=' form '>
@@ -114,7 +114,9 @@ const CreateSchedule = () => {
               bg-slate-700 '
           >
             <div className='p-2 w-[40vw] h-[60vh] flex flex-col text-stone-50  gap-5'>
-              <h1 className='text-[1.7rem]'>please fill all information</h1>
+              <h1 className=' text-center text-[1.3rem]'>
+                please fill all information
+              </h1>
 
               <div className='  flex flex-col gap-1'>
                 <TextField

@@ -12,7 +12,12 @@ import { useSelector } from 'react-redux'
 
 function LoginRo () {
   const [showlogin, setShowLogin] = useState(false)
-  const [data, setData] = useState({ username: '', email: '', password: '' })
+  const [data, setData] = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+
   const [loading, setLoading] = useState(false)
 
   const [logInStatus, setLogInStatus] = React.useState('')
@@ -23,6 +28,15 @@ function LoginRo () {
   const changeHandler = e => {
     setData({ ...data, [e.target.name]: e.target.value })
   }
+
+  // function changeHandler (e) {
+  //   const { name, value } = e.target
+  //   // setSignupData({
+  //     ...signupData,
+  //     [name]: value
+  //   })
+  //   // console.log(signupData)
+  // }
 
   const loginHandler = async e => {
     setLoading(true)
@@ -58,6 +72,34 @@ function LoginRo () {
     }
     setLoading(false)
   }
+
+  // async function signUpHandler () {
+  //   formData.append('username', signupData.username)
+  //   formData.append('email', signupData.email)
+  //   formData.append('password', signupData.password)
+
+  //   // console.log('fromData from Signup', formData)
+
+  //   const response = await dispatch(createAdminAccount(formData))
+  //   console.log('one', response)
+
+  //   // console.log("three",response.[[PromiseResult]])
+  //   console.log('two', response.payload)
+
+  //   // dispatchClick(admineRegisterReducers())
+  //   // console.log('handleRegisterOnClk AdminRegister ', AdminRegister)
+  //   // const Success = response?.payload?.success\
+  //   localStorage.setItem('adminIsRegister', true)
+  //   if (response?.payload?.success) {
+  //     navigate('/admin/login')
+  //   }
+
+  //   // setSignupData({
+  //     username: '',
+  //     email: '',
+  //     password: ''
+  //   })
+  // }
 
   const signUpHandler = async () => {
     setLoading(true)
@@ -181,6 +223,8 @@ function LoginRo () {
                   loginHandler()
                 }
               }}
+
+              // value={signupData.username}
             />
             <TextField
               onChange={changeHandler}
@@ -196,6 +240,8 @@ function LoginRo () {
                   loginHandler()
                 }
               }}
+
+              // value={signupData.password 
             />
             <Button
               variant='outlined'

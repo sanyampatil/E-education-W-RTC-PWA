@@ -55,22 +55,21 @@ import { PeerProvider } from './components/context/provider/peer.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
+    <Route path='' element={<Layout />}>
       <Route path='' element={<Home />} />
       <Route path='*' element={<Error />} />
       <Route path='/community' element={<LoginRo />} />
       <Route path='/classroom' element={<Classroom />} />
       {/* .....................................................>>>>>> */}
       <Route path='/classroom-Option' element={<ClassroomOption />} />
-      <Route path='/room/:roomId' element={<MainRoom />} />
-      ;<Route path='/DoubtRoom/:roomId' element={<MainClass />} />
+      <Route path='classroom/room/:roomId' element={<MainRoom />} />
+      <Route path='/DoubtRoom/:roomId' element={<MainClass />} />
       <Route path='/fill-doubt' element={<DoutForm />} />
-      {/* <SocketProvider> */}
       <Route path='/class/doubt' element={<DoutSlove />} />
-      {/* </SocketProvider> */}
       {/* ////----> student view sche   */}
       <Route path='/view-sche' element={<StudentViewSchedule />} />
       <Route path='/my-doubts' element={<MyDoubts />} />
+      <Route />
       {/* ___________________________________________________>>>> dashboard */}
       <Route path='/admin-dashboard' element={<DashboardOne />}>
         <Route path='/admin-dashboard/view-Student' element={<ViewStudent />} />

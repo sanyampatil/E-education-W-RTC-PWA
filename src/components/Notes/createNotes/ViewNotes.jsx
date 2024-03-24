@@ -72,11 +72,20 @@ const ViewNotes = () => {
   return (
     <>
       <div className='w-[full] h-[100vh]  relative bg-orange-300 flex flex-col space-x-4 items-center justify-center  pt-20'>
+        ;
+        <div>
+          <Button onClick={toggleDrawer(true)} variant='contained'>
+            Get Notes
+          </Button>
+          <Drawer open={open} onClose={toggleDrawer(false)}>
+            {DrawerList}
+          </Drawer>
+        </div>
         {/*       
         <p className='text-[7rem] bg-gray-200 px-10 rounded-xl  font-bold  shadow-xl  '>
           notes
         </p> */}
-        {/* <div className=' border-1 border-black flex items-center justify-center  flex-row flex-wrap gap-10     mt-10 '>
+        <div className=' border-1 border-black flex items-center justify-center  flex-row flex-wrap gap-10     mt-10 '>
           {!NotesCardItems
             ? ''
             : NotesCardItems?.slice(0)
@@ -84,7 +93,7 @@ const ViewNotes = () => {
                 .map(note => {
                   return <NotesCard data={note} key={note._id} />
                 })}
-        </div> */}
+        </div>
         {/* <Accordion
           expanded={expanded}
           onChange={handleExpansion}
@@ -128,15 +137,6 @@ const ViewNotes = () => {
             </Typography>
           </AccordionDetails>
         </Accordion> */}
-        ;
-        <div>
-          <Button onClick={toggleDrawer(true)} variant='contained'>
-            Get Notes
-          </Button>
-          <Drawer open={open} onClose={toggleDrawer(false)}>
-            {DrawerList}
-          </Drawer>
-        </div>
       </div>
     </>
   )

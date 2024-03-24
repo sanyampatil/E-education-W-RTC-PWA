@@ -27,14 +27,14 @@ function Signup () {
 
   // }
 
-  function handleUserInput (e) {
-    const { name, value } = e.target
-    setSignupData({
-      ...signupData,
-      [name]: value
-    })
-    // console.log(signupData)
-  }
+    function handleUserInput (e) {
+      const { name, value } = e.target
+      setSignupData({
+        ...signupData,
+        [name]: value
+      })
+      // console.log(signupData)
+    }
 
   async function createNewAccount (event) {
     event.preventDefault()

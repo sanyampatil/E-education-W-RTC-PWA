@@ -65,7 +65,7 @@ const Header = () => {
     <>
       <nav
         className={
-          ' dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-900 dark:border-gray-600' +
+          ' dark:bg-gray-900 fixed w-full z-20 top-0 start-0  dark:border-gray-600' +
           (lightTheme ? '' : '')
         }
       >
@@ -284,13 +284,13 @@ const Header = () => {
               {adminIslogin && (
                 <li>
                   <Link
-                    to='admin/community'
+                    to='/classroom-Option'
                     className={
                       'block py-2 px-3 text-black  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
                       (lightTheme ? '' : ' text-white')
                     }
                   >
-                    adminCommunity
+                    Myclassromm
                   </Link>
                 </li>
               )}
@@ -320,15 +320,29 @@ const Header = () => {
                 )}
               </li>
               <li>
-                <Link
-                  to='/notes'
-                  className={
-                    'block py-2 px-3 text-black  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
-                    (lightTheme ? '' : ' text-white')
-                  }
-                >
-                  notes
-                </Link>
+                {adminIslogin && !stuIsLogin && (
+                  <Link
+                    to='/notes'
+                    className={
+                      'block py-2 px-3 text-black  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    notes
+                  </Link>
+                )}
+
+                {!adminIslogin && stuIsLogin && (
+                  <Link
+                    to='/student/notes/view-notes'
+                    className={
+                      'block py-2 px-3 text-black  md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700' +
+                      (lightTheme ? '' : ' text-white')
+                    }
+                  >
+                    notes
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

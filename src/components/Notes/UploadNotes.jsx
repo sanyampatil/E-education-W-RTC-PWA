@@ -164,7 +164,7 @@ const uploadNotes = () => {
                     >
                       BCA-III 3
                     </option>
-                  </select>
+                  </select> 
                 </div>
                 <div className=' flex flex-col gap-1'>
                   <input

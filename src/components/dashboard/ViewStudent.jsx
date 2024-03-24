@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { AdminfetchAllStudent } from '../../redux/slices/dashboardSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { StudentCard } from './components/studentCard'
@@ -7,10 +7,10 @@ import '../../App.css'
 const ViewStudent = () => {
   const dispatch = useDispatch()
 
-  async function LoadData () {
+  const LoadData = useCallback(async () => {
     const data = await dispatch(AdminfetchAllStudent())
     console.log('data --> AdminfetaAllStudent', data)
-  }
+  }, [])
 
   useEffect(() => {
     LoadData()
@@ -22,8 +22,7 @@ const ViewStudent = () => {
   console.log('StudentCardItems', StudentCardItems)
 
   return (
-    <div className='  bg-indigo-950  overflow-auto   custom-scrollbar flex  flex-col   '>
-      ;
+    <div className=' pt-20  bg-indigo-950  overflow-auto   custom-scrollbar flex  flex-col   '>
       <form className=' mx-auto'>
         <label
           for='default-search'
