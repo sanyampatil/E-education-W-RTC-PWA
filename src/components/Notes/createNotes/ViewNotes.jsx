@@ -24,6 +24,7 @@ import MailIcon from '@mui/icons-material/Mail'
 
 const ViewNotes = () => {
   const dispatch = useDispatch()
+  const lightTheme = useSelector(state => state.themeKey)
 
   async function LoadNotesData () {
     const data = await dispatch(studentfetchNotes())
@@ -71,7 +72,12 @@ const ViewNotes = () => {
 
   return (
     <>
-      <div className='w-[full] h-[100vh]  relative bg-orange-300 flex flex-col space-x-4 items-center justify-center  pt-20'>
+      <div
+        className={
+          'w-full h-full  relative bg-orange-300 flex flex-col space-x-4 items-center justify-center pt-44  ' +
+          (lightTheme ? '' : 'dark')
+        }
+      >
         <div>
           <Button onClick={toggleDrawer(true)} variant='contained'>
             Get Notes
@@ -93,49 +99,6 @@ const ViewNotes = () => {
                   return <NotesCard data={note} key={note._id} />
                 })}
         </div>
-        {/* <Accordion
-          expanded={expanded}
-          onChange={handleExpansion}
-          slots={{ transition: Fade }}
-          slotProps={{ transition: { timeout: 400 } }}
-          sx={{
-            '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
-            '& .MuiAccordionDetails-root': {
-              display: expanded ? 'block' : 'none'
-            }
-          }}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls='panel1-content'
-            id='panel1-header'
-          >
-            <Typography>Custom transition using Fade</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls='panel2-content'
-            id='panel2-header'
-          >
-            <Typography>Default transition using Collapse</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion> */}
       </div>
     </>
   )

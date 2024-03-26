@@ -44,7 +44,7 @@ const ClassroomOption = () => {
           </div>
           {showPopUp && <VideoConfPopup onClose={closeahes} />}
 
-          <p className='text-[3rem] font-bold'>video cnf class</p>
+          <p className='text-[3rem] font-bold'>video conference class</p>
 
           <p className='text-2xl text-left'>many-to-many </p>
           <div className='flex '>

@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllSchedule } from '../../redux/slices/dashboardSlice'
 import ScheduleCard from '../dashboard/components/scheduleCard'
 
 const StudentViewSchedule = () => {
-  // const [first, setfirst] = useState(second)
   const dispatch = useDispatch()
+  const [ScheduleCardItems, setScheduleCardItems] = useState('')
 
-  const ScheduleCardItems = useSelector(state => state?.dashboard?.ScheduleData)
+  // const ScheduleCardItems = useSelector(state => state?.dashboard?.ScheduleData)
 
-  console.log('fetchallSchedule', ScheduleCardItems)
+  // console.log('fetchallSchedule', ScheduleCardItems)
   async function LoadData () {
     const data = await dispatch(fetchAllSchedule())
-    console.log('data --> fetchallSchdule', data)
+    setScheduleCardItems(data?.payload?.allschedule)
   }
 
   useEffect(() => {
     LoadData()
   }, [])
+
   return (
     <div className='w-[100vw] h-full relative  flex items-center justify-center pt-28 '>
       <div className='w-[80vw] h-full  bg-slate-950    '>
@@ -25,22 +26,22 @@ const StudentViewSchedule = () => {
           <h1 className=' text-yellow-400 text-[3rem] bg-slate-900 p-5 rounded-lg font-bold'>
             checke Schedule
           </h1>
-            {!ScheduleCardItems
-              ? ''
-              : ScheduleCardItems?.slice(0)
-                  .reverse()
-                  .map((schedule, index) => {
-                    {
-                      console.log('schedule', schedule)
-                    }
-                    return (
-                      <ScheduleCard
-                        data={schedule}
-                        key={schedule._id}
-                        index={index}
-                      />
-                    )
-                  })}
+          {!ScheduleCardItems
+            ? ''
+            : ScheduleCardItems?.slice(0)
+                .reverse()
+                .map((schedule, index) => {
+                  {
+                    console.log('schedule', schedule)
+                  }
+                  return (
+                    <ScheduleCard
+                      data={schedule}
+                      key={schedule._id}
+                      index={index}
+                    />
+                  )
+                })}
         </div>
       </div>
     </div>

@@ -42,14 +42,14 @@ const Profile = () => {
             <div className='flex justify-center px-5  -mt-12'>
               <img
                 className='h-44 w-44 bg-white p-2 rounded-full   '
-                src={Admindata.avatar.secure_url}
+                src={Admindata?.avatar?.secure_url}
                 alt=''
               />
             </div>
             <div className=' '>
               <div className='text-center px-14'>
                 <h2 className='text-gray-800 text-3xl font-bold'>
-                  {Admindata.fullName}
+                  {Admindata?.fullName}
                 </h2>
                 <a
                   className='text-gray-400 mt-2 hover:text-blue-500'
@@ -58,8 +58,8 @@ const Profile = () => {
                 >
                   @immohitdhiman
                 </a>
-                <p>{Admindata.branch}</p>
-                <p>{Admindata.subs}</p>
+                <p>{Admindata?.branch}</p>
+                <p>{Admindata?.subs}</p>
 
                 <p className='mt-2 text-gray-500 text-sm'>
                   Lorem Ipsum is simply dummy text of the printing and

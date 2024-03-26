@@ -16,7 +16,7 @@ const MyDoubts = () => {
 
   console.log('under the student')
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const userId = userData.data.user._id
+  const userId = userData.data._id
   console.log(userId)
   async function LoadDataStudent () {
     console.log('jnbujbuj')

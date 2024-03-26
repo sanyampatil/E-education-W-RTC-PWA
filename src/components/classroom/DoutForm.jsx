@@ -15,8 +15,8 @@ import { calcLength } from 'framer-motion'
 
 const DoutForm = () => {
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const userId = userData.data.user._id
-  console.log('userId', userId)
+  const userId = userData.data._id
+  // console.log('userId', userId.data._id)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
