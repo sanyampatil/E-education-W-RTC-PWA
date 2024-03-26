@@ -5,7 +5,6 @@ import toast from 'react-hot-toast'
 
 const initialState = {
   // notes: [{ id: 1, text: 'Hello world' }]
-
   // uploadNotes: localStorage.getItem('uploadNotes') != undefined? JSON.parse(localStorage.getItem('uploadNotes')): {}
 }
 
@@ -37,7 +36,6 @@ export const AdminNotesUpload = createAsyncThunk(
 export const fetchNotes = createAsyncThunk(
   'admin/notes/upload-notes',
   async data => {
-
     console.log('daga', data)
     try {
       const res = axiosInstance.get(`/admin-notes/fetch-Notes/${data}`)
@@ -61,17 +59,11 @@ export const fetchNotes = createAsyncThunk(
   }
 )
 
-
-
-
-
 // /student/fetch-Notes/
-
 
 export const studentfetchNotes = createAsyncThunk(
   '/student/notes/view-notes',
-  async () =>  {
-
+  async () => {
     // console.log('daga', data)
     try {
       const res = axiosInstance.get(`/admin-notes/student/fetch-Notes`)
@@ -81,7 +73,7 @@ export const studentfetchNotes = createAsyncThunk(
         loading: 'Wait! to load your notes',
 
         success: data => {
-          return data?.data?.message
+          return data?.data?.massege
         },
         error: 'Failed to load your notes'
       })
@@ -94,9 +86,6 @@ export const studentfetchNotes = createAsyncThunk(
     }
   }
 )
-
-
-
 
 export const notesSlice = createSlice({
   name: 'note',
@@ -114,15 +103,13 @@ export const notesSlice = createSlice({
     // }
   },
 
-  
-
   extraReducers: builder => {
     builder.addCase(fetchNotes.fulfilled, (state, action) => {
       localStorage.setItem(
         'uploadNotes',
         JSON.stringify(action?.payload?.getnts)
       )
-        state.uploadNotes = action?.payload?.getnts
+      state.uploadNotes = action?.payload?.getnts
     })
 
     builder.addCase(studentfetchNotes.fulfilled, (state, action) => {
@@ -130,9 +117,9 @@ export const notesSlice = createSlice({
         'uploadNotes',
         JSON.stringify(action?.payload?.studentNotes)
       )
-        state.uploadNotes = action?.payload?.studentNotes
+      state.uploadNotes = action?.payload?.studentNotes
     })
-  } 
+  }
 })
 
 // export const { addNotes, removeNotes } = notesSlice.actions

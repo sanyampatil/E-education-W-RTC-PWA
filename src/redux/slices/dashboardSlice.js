@@ -85,7 +85,29 @@ export const fetchAllSchedule = createAsyncThunk(
         loading: 'Wait! to load schedule',
 
         success: data => {
-          return data?.data?.message
+          return data?.data?.massege
+        },
+        error: 'Failed to load your doubts'
+      })
+      return (await res).data
+    } catch (error) {
+      toast.error(error?.response?.data?.message)
+    }
+  }
+)
+
+export const fetchAllAdmins = createAsyncThunk(
+  '/admin-dashboard/all-schedule',
+  async () => {
+    try {
+      const res = axiosInstance.get('/admin-dashboard/all-admins')
+
+      console.log('aalo')
+      toast.promise(res, {
+        loading: 'Wait! to load admins ',
+
+        success: data => {
+          return data?.data?.massege
         },
         error: 'Failed to load your doubts'
       })

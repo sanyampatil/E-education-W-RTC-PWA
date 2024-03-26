@@ -260,7 +260,7 @@ const Header = () => {
                 <Link
                   to='/'
                   className={
-                    'block py-2 px-3 text-black rounded md:bg-transparent  md:p-0 md:dark:text-blue-500' +
+                    'block py-2 px-3 text-black rounded md:bg-transparent  md:p-0 md:dark:text-blue-500   group-hover:bg-opacity-0' +
                     (lightTheme ? '' : ' text-white')
                   }
                   aria-current='page'
@@ -290,7 +290,7 @@ const Header = () => {
                       (lightTheme ? '' : ' text-white')
                     }
                   >
-                    Myclassromm
+                    Myclassroom
                   </Link>
                 </li>
               )}
@@ -331,7 +331,6 @@ const Header = () => {
                     notes
                   </Link>
                 )}
-
                 {!adminIslogin && stuIsLogin && (
                   <Link
                     to='/student/notes/view-notes'

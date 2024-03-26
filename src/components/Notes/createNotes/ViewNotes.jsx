@@ -72,7 +72,6 @@ const ViewNotes = () => {
   return (
     <>
       <div className='w-[full] h-[100vh]  relative bg-orange-300 flex flex-col space-x-4 items-center justify-center  pt-20'>
-        ;
         <div>
           <Button onClick={toggleDrawer(true)} variant='contained'>
             Get Notes

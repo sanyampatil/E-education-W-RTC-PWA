@@ -18,7 +18,7 @@ const NotesCard = ({ data }) => {
           </button>
 
           {stuIsLogin && (
-            <a href={data.noteFile.secure_url} download="notes.pdf">
+            <a href={data.noteFile.secure_url} download='notes.pdf'>
               <button className='bg-red-500 p-3 rounded-lg'>download</button>
             </a>
           )}

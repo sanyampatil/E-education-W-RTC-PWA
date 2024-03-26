@@ -52,6 +52,7 @@ import StudentViewSchedule from './components/classroom/StudentViewSchedule.jsx'
 import { SocketProvider } from './components/context/Socket.jsx'
 import MainClass from './components/classroom/MainClass.jsx'
 import { PeerProvider } from './components/context/provider/peer.jsx'
+import AllAdmins from './components/dashboard/AllAdmins.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -62,7 +63,7 @@ const router = createBrowserRouter(
       <Route path='/classroom' element={<Classroom />} />
       {/* .....................................................>>>>>> */}
       <Route path='/classroom-Option' element={<ClassroomOption />} />
-      <Route path='classroom/room/:roomId' element={<MainRoom />} />
+      <Route path='/room/:roomId' element={<MainRoom />} />
       <Route path='/DoubtRoom/:roomId' element={<MainClass />} />
       <Route path='/fill-doubt' element={<DoutForm />} />
       <Route path='/class/doubt' element={<DoutSlove />} />
@@ -82,6 +83,8 @@ const router = createBrowserRouter(
           path='/admin-dashboard/view-schedule'
           element={<ViewSchdule />}
         />
+
+        <Route path='/admin-dashboard/view-myStaff' element={<AllAdmins />} />
       </Route>
       {/* ___________________________________________________________>>>> authAdmin */}
       <Route path='/admin/signup' element={<Signup />} />

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import '../../App.css'
 import { GrSchedule } from 'react-icons/gr'
 import { AiOutlineSchedule } from 'react-icons/ai'
+import { GiTeacher } from 'react-icons/gi'
 
 import {
   BsCart3,
@@ -68,7 +69,6 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
                 <BsGrid1X2Fill className='icon' /> Dashboard
               </a>
             </li> */}
-
           <Link to='/admin-dashboard/create-schedule'>
             <li className='sidebar-list-item flex  text-gray-400'>
               <GrSchedule className='icon' /> Crate Schedule
@@ -87,6 +87,12 @@ const Manubar = ({ openSidebarToggle, OpenSidebar }) => {
           <Link to='/admin-dashboard/view-Alldoubts'>
             <li className='sidebar-list-item flex  text-gray-400'>
               <BsMenuButtonWideFill className='icon' /> Student doubts
+            </li>
+          </Link>
+
+          <Link to='/admin-dashboard/view-myStaff'>
+            <li className='sidebar-list-item flex  text-gray-400'>
+              <GiTeacher className='icon' /> My-staff
             </li>
           </Link>
           <li className='sidebar-list-item'>

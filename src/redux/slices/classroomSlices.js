@@ -69,7 +69,7 @@ export const AdminfetaAllDoubts = createAsyncThunk(
         loading: 'Wait! to load your doubts',
 
         success: data => {
-          return data?.data?.message
+          return data?.data?.massege                                                                                                                                                                                                                                                           
         },
         error: 'Failed to load your doubts'
       })
@@ -100,12 +100,8 @@ const classroomSlices = createSlice({
         state.AdminAllDout = action?.payload?.allDoubts
       })
 
-
       .addCase(fetchAllDoubt.fulfilled, (state, action) => {
-        localStorage.setItem(
-          ' Doubt',
-          JSON.stringify(action?.payload?.student)
-        )
+        localStorage.setItem(' Doubt', JSON.stringify(action?.payload?.student))
         state.Doubt = action?.payload?.student
       })
   }

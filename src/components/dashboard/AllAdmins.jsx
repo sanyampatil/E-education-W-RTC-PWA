@@ -1,25 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { AdminfetchAllStudent } from '../../redux/slices/dashboardSlice'
+import {
+  AdminfetchAllStudent,
+  fetchAllAdmins
+} from '../../redux/slices/dashboardSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { StudentCard } from './components/studentCard'
 
-import '../../App.css'
-const ViewStudent = () => {
-  const [StudentCardItems, setStudentCardItems] = useState('')
+const AllAdmins = () => {
+  const [AdminsCardItems, setAdminsCardItems] = useState('')
   const dispatch = useDispatch()
   async function LoadData () {
-    const studentData = await dispatch(AdminfetchAllStudent())
-    // console.log('StudentCardItems', studentData)
-    setStudentCardItems(studentData.payload?.student)
+    console.log('hii')
+    const AdminsData = await dispatch(fetchAllAdmins())
+
+    setAdminsCardItems(AdminsData.payload?.AllAdmins)
   }
 
   useEffect(() => {
     LoadData()
   }, [])
 
-  // const   StudentCardItems = useSelector(
-  //   state => state?.dashboard?.Al lStudentData
-  // )
+  // console.log('AdminsCardItems', AdminsCardItems)
 
   return (
     <div className=' pt-20  bg-indigo-950  overflow-auto   custom-scrollbar flex  flex-col   '>
@@ -63,25 +64,19 @@ const ViewStudent = () => {
           </button>
         </div>
       </form>
-      {/* <div className='w-full'>;</div> */}
+      <div className='w-full'>;</div>
       <div className='w-full h-[90vh]'>
-        {!StudentCardItems
+        {!AdminsCardItems
           ? ''
-          : StudentCardItems.map(note => {
+          : AdminsCardItems.map(Admin => {
               {
-                console.log(note)
+                console.log(Admin)
               }
-              return <StudentCard data={note} key={note._id} />
+              return <StudentCard data={Admin} key={Admin._id} />
             })}
-      </div>
-      <div className='w-[45vw] h-[70vh]  m-2 text-white bg-gray-900 pt-5 rounded-lg  right-5   fixed flex flex-col  items-center justify-center '>
-        <div className='text-[7rem] bg-slate-600  py-10 px-14 rounded-full inline '>
-          {StudentCardItems.length}
-        </div>
-        <h1 className='text-[3rem] font-semibold '> Total Student</h1>
       </div>
     </div>
   )
 }
 
-export default ViewStudent
+export default AllAdmins

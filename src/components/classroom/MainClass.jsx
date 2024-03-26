@@ -10,7 +10,7 @@ const MainClass = () => {
       const offer = await createOffer()
       socket.emit('call-user', { emailId, offer })
 
-      const { emailId } = data
+      const { emailId }            = data
       console.log('user join room', emailId)
     },
     [createOffer, socket]

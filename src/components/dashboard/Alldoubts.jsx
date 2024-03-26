@@ -24,7 +24,7 @@ const Alldoubts = () => {
 
   return (
     <div className='w-[80vw] h-[90vh] bg-indigo-950 flex overflow-auto p-10  custom-scrollbar'>
-      <div className='flex flex-wrap  items-center justify-center mt-20 gap-5'>
+      <div className='flex flex-wrap  items-center justify-center mt-20  gap-5'>
         {!DoubtCardItems
           ? ''
           : DoubtCardItems.slice(0)

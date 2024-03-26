@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllDoubt } from '../../redux/slices/classroomSlices'
 import DoubtCard from './DoubtCard'
-import '../../App.css'  
+import '../../App.css'
 const MyDoubts = () => {
   const dispatch = useDispatch()
 
   const DoubtCardItems = useSelector(state => state?.classroom?.Doubt)
-  console.log("DoubtCardItems",DoubtCardItems)
-
+  console.log('DoubtCardItems', DoubtCardItems)
 
   // const AdminIsLogin = localStorage.getItem('adminIslogin')
   // console.log('AdminLogin:::-', AdminIsLogin)
@@ -17,18 +16,18 @@ const MyDoubts = () => {
 
   console.log('under the student')
   const userData = JSON.parse(localStorage.getItem('userData'))
-  const userId = userData.data._id
+  const userId = userData.data.user._id
   console.log(userId)
   async function LoadDataStudent () {
-    console.log("jnbujbuj")
-    
+    console.log('jnbujbuj')
+
     const data = await dispatch(fetchAllDoubt(userId))
     console.log('hey', data)
-  } 
+  }
 
-    useEffect(() => {
-      LoadDataStudent()
-    }, [])
+  useEffect(() => {
+    LoadDataStudent()
+  }, [])
 
   return (
     <div className='w-full h-full bg-slate-900'>

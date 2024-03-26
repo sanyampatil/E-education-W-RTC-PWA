@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllSchedule } from '../../redux/slices/dashboardSlice'
 import ScheduleCard from './components/scheduleCard'
+
 import '../../App.css'
 const ViewSchdule = () => {
-  const dispatch = useDispatch()
-  const ScheduleCardItems = useSelector(state => state?.dashboard?.ScheduleData)
+  const [ScheduleCardItems, setScheduleCardItems] = useState('')
 
-  console.log('fetchallSchdule', ScheduleCardItems)
+  const dispatch = useDispatch()
+  // const ScheduleCardItems = useSelector(state => state?.dashboard?.ScheduleData)
 
   async function LoadData () {
-    await dispatch(fetchAllSchedule())
-    // console.log('data --> fetchallSchdule', data)
+    const ScheduleData = await dispatch(fetchAllSchedule())
+    setScheduleCardItems(ScheduleData.payload?.allschedule)
+
+    console.log('fetchallSchdule', ScheduleData.payload.allschedule)
   }
 
   useEffect(() => {
