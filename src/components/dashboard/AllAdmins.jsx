@@ -5,6 +5,7 @@ import {
 } from '../../redux/slices/dashboardSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { StudentCard } from './components/studentCard'
+import AdminsCards from './components/AdminsCards'
 
 const AllAdmins = () => {
   const [AdminsCardItems, setAdminsCardItems] = useState('')
@@ -23,8 +24,8 @@ const AllAdmins = () => {
   // console.log('AdminsCardItems', AdminsCardItems)
 
   return (
-    <div className=' pt-20  bg-indigo-950  overflow-auto   custom-scrollbar flex  flex-col   '>
-      <form className=' mx-auto'>
+    <div className=' pt-20  bg-indigo-950  w-full overflow-auto   custom-scrollbar  '>
+      <form className=' mx-auto '>
         <label
           for='default-search'
           className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
@@ -64,15 +65,14 @@ const AllAdmins = () => {
           </button>
         </div>
       </form>
-      <div className='w-full'>;</div>
-      <div className='w-full h-[90vh]'>
+      <div className='w-full   h-[90vh] flex  flex-col  gap-5 pt-10'>
         {!AdminsCardItems
           ? ''
           : AdminsCardItems.map(Admin => {
               {
                 console.log(Admin)
               }
-              return <StudentCard data={Admin} key={Admin._id} />
+              return <AdminsCards data={Admin} key={Admin._id} />
             })}
       </div>
     </div>
